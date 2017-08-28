@@ -1,3 +1,7 @@
-Functional:
+Functional: The database should have a login page that can distinguish between advertisers, developers, league owners and
+operators (Spectators can choose whether to log in or not).
+The database should provide encryption for each and every password. 
 
-Nonfunctional:
+
+Nonfunctional: The system should take no more than five hours to completely understand(We can change this later).
+
