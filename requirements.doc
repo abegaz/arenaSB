@@ -1,3 +1,12 @@
 Functional:
 
+1.) Users should be able to create a player.
+2.) Users should be able to create teams to participate within tournaments.
+3.) Teams should have designated Admins that can add and delete users.
+4.) Users should be able to see team members of their teams.
+5.) Interface should be intuitive and easy to use. (Based on modern design principles)
+...Continue later
+
 Nonfunctional:
+1.) The system should be written in Java and JavaFX.
+2.) System should not be vurnerable to cross-site scripting and SQL injection.
