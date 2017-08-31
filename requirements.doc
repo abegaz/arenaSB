@@ -15,3 +15,10 @@ The training time shouldn't take more than five hours
 Simple user interface that should be as user friendly as possible
 
 Tools for spectators to view player info/ swap between players
+
+
+What it's NOT:
+
+--Broadcasting service, but may link to some (e.g. Twitch)
+--Game-integrated spectation client (e.g. Source TV)
+--Does not /require/ live stats of a game, just records
