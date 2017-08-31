@@ -1,0 +1,26 @@
+User Story:
+As a spectator,
+I want to view matches,
+So that I can keep track of my favorite players.
+
+Acceptance Criteria:
+The spectator can view the progress of any match.
+The spectator can view the end summary of past matches.
+The spectator can track each player's progression.
+
+User Story:
+As an operator,
+I want to manage the system,
+So that I can define tournaments.
+
+Acceptance Criteria:
+The operator can create new tournaments.
+The operator can define a new type of tournaments.
+The operator can create championship rounds.
+
+ 
+
+
+
+
+
