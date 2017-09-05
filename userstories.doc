@@ -48,6 +48,8 @@ The ordinary internet user can get to the system.
 The ordinary internet user can be a spectator.
 The ordinary internet user can see stats from each player.
 
+
+// I'm not sure this is a goal of the dev-team so I don't think it should be included
 User Story:
 As a hacker,
 I want to pry open the system,
@@ -57,6 +59,33 @@ Acceptance Criteria:
 The hacker can not gain access to the system.
 The hacker can not modify database entries.
 
+
+User Story: 
+As a user,
+I would like to access he information stored in the database,
+So I can keep track of the games.
+
+Acceptance Criteria:
+Any user can access their games information through the UI.
+Each user only has access to the games they subscribe to.
+
+User Story:
+As an outside viewer,
+I would like to be able to sign up as a spectator or an admin,
+So that I can manage or view games.
+
+Acceptance Criteria:
+A Sign Up form that populates users.
+Error checking on the form to catch SQL-inject or otherwise
+
+User Story:
+As a user, 
+I would like a functional UI,
+So that I can manage things efficiently.
+
+Acceptance Criteria:
+Functional and clear UI.
+Allows user to do and see what they need to.
 
 
 
