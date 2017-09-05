@@ -1,5 +1,6 @@
 package arena_source;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -8,6 +9,8 @@ public class Player {
 	private int age;
 	private Date creationTime;
 	public boolean isAdmin;
+	public ArrayList<String> memberOf;
+	public int memberSize = 0;
 	
 	Player(String name, int age, boolean isAdmin) {
 		Calendar time = Calendar.getInstance();
@@ -46,5 +49,11 @@ public class Player {
 		System.out.println("Age: " + getAge());
 		System.out.println("Created: " + getCreationTime());
 		System.out.println("Admin: " + isAdmin + "\n");
+		/*
+		System.out.println("Member of: [");
+		for(int i = 0; i <= memberSize; i++)
+			System.out.print(memberOf.get(i) + ", ");
+		System.out.println("]");
+		*/
 	}
 }
