@@ -87,12 +87,22 @@ Acceptance Criteria:
 Functional and clear UI.
 Allows user to do and see what they need to.
 
+User Story:
+As a creator,
+I would like the ability to have a closed tournament with invite only group,
+So that I can keep random people from joining.
 
+Acceptance Criteria:
+The creator can close the group to only invited members.
+The creator can reopen the group to anyone that would like to join.
 
+User Story:
+As a user,
+I would like a discussion board to post/view open tournaments accepting players.
+So that individuals looking to join a tournament can easily find the game type or time the tournament starts. (possibly with filters)
+
+Acceptance Criteria:
+The user can post tournaments and info.
+The user can view all open tournaments.
 
  
-
-
-
-
-
