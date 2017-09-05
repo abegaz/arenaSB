@@ -5,6 +5,8 @@ Functional:
 3.) Teams should have designated Admins that can add and delete users.
 4.) Users should be able to see team members of their teams.
 5.) Interface should be intuitive and easy to use. (Based on modern design principles)
+6.) League owners should be able to designate how many matches to be played and the sequencing of the matches.
+7.) An infrastructure should be provided for advertisers.
 ...Continue later
 
 Nonfunctional:
