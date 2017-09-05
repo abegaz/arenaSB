@@ -87,6 +87,16 @@ Acceptance Criteria:
 Functional and clear UI.
 Allows user to do and see what they need to.
 
+User Story:
+As a player,
+I would like to communicate with other players in the game,
+So that I can coordinate strategy, congratulate good performance, etc. 
+
+Acceptance Criteria:
+Functional chatting platform with pre-set phrases and words, as well as,
+A pop up keyboard for longer responses.
+
+
 
 
 
