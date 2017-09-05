@@ -12,9 +12,7 @@ public class Main {
 		Player [] players = {luke,jamie,connor,dane};
 		
 		Team lol = new Team("League of Legends", players);
-		for(Player player : lol.players) {
-			player.getPlayerStats();
-		}
+		lol.printTeam();
 		
 	}
 }

@@ -16,11 +16,6 @@ public class Player {
 		this.setCreationTime(time.getTime());
 		this.isAdmin = isAdmin;
 	}
-	
-	public static void main(String [] args) {
-		Calendar x = Calendar.getInstance();
-		System.out.println(x.getTime());
-	}
 
 	public String getName() {
 		return name;

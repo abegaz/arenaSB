@@ -26,4 +26,11 @@ public class Team {
 	public void setLosses(int losses) {
 		this.losses = losses;
 	}
+	
+	public void printTeam() {
+		System.out.println("Team: " + this.teamName + "\n");
+		for(Player player : players) {
+			player.getPlayerStats();
+		}
+	}
 }
