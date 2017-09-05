@@ -18,6 +18,49 @@ The operator can create new tournaments.
 The operator can define a new type of tournaments.
 The operator can create championship rounds.
 
+User Story:
+As an advertiser,
+I want to create ads,
+So that I can boost my revenue.
+
+Acceptance Criteria:
+The advertiser can create ads.
+The advertiser can modify ads.
+The advertiser can view ad effectiveness.
+
+User Story:
+As a league owner,
+I want to manage leagues,
+So that I can increase my team's fanbase.
+
+Acceptance Criteria:
+The league owner can add new leagues.
+The league owner can declare a winner.
+The league owner can create new tournaments.
+
+User Story:
+As an ordinary internet user,
+I want to access the website from anywhere,
+So that I can experience something new.
+
+Acceptance Criteria:
+The ordinary internet user can get to the system.
+The ordinary internet user can be a spectator.
+The ordinary internet user can see stats from each player.
+
+User Story:
+As a hacker,
+I want to pry open the system,
+So that I can destroy the database.
+
+Acceptance Criteria:
+The hacker can not gain access to the system.
+The hacker can not modify database entries.
+
+
+
+
+
  
 
 
