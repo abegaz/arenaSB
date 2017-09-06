@@ -8,6 +8,7 @@ The spectator can view the progress of any match.
 The spectator can view the end summary of past matches.
 The spectator can track each player's progression.
 
+
 User Story:
 As an operator,
 I want to manage the system,
@@ -17,6 +18,7 @@ Acceptance Criteria:
 The operator can create new tournaments.
 The operator can define a new type of tournaments.
 The operator can create championship rounds.
+
 
 User Story:
 As an advertiser,
@@ -28,6 +30,7 @@ The advertiser can create ads.
 The advertiser can modify ads.
 The advertiser can view ad effectiveness.
 
+
 User Story:
 As a league owner,
 I want to manage leagues,
@@ -37,6 +40,7 @@ Acceptance Criteria:
 The league owner can add new leagues.
 The league owner can declare a winner.
 The league owner can create new tournaments.
+
 
 User Story:
 As an ordinary internet user,
@@ -49,17 +53,6 @@ The ordinary internet user can be a spectator.
 The ordinary internet user can see stats from each player.
 
 
-// I'm not sure this is a goal of the dev-team so I don't think it should be included
-User Story:
-As a hacker,
-I want to pry open the system,
-So that I can destroy the database.
-
-Acceptance Criteria:
-The hacker can not gain access to the system.
-The hacker can not modify database entries.
-
-
 User Story: 
 As a user,
 I would like to access he information stored in the database,
@@ -68,6 +61,7 @@ So I can keep track of the games.
 Acceptance Criteria:
 Any user can access their games information through the UI.
 Each user only has access to the games they subscribe to.
+
 
 User Story:
 As an outside viewer,
@@ -78,6 +72,7 @@ Acceptance Criteria:
 A Sign Up form that populates users.
 Error checking on the form to catch SQL-inject or otherwise
 
+
 User Story:
 As a user, 
 I would like a functional UI,
@@ -87,14 +82,16 @@ Acceptance Criteria:
 Functional and clear UI.
 Allows user to do and see what they need to.
 
+
 User Story:
-As a creator,
+As a tournament host,
 I would like the ability to have a closed tournament with invite only group,
 So that I can keep random people from joining.
 
 Acceptance Criteria:
-The creator can close the group to only invited members.
-The creator can reopen the group to anyone that would like to join.
+The host can close the group to only invited members.
+The host can reopen the group to anyone that would like to join.
+
 
 User Story:
 As a user,
@@ -104,6 +101,30 @@ So that individuals looking to join a tournament can easily find the game type o
 Acceptance Criteria:
 The user can post tournaments and info.
 The user can view all open tournaments.
+
+
+User Story: 
+As a league owner,
+I would like to define admins of the league,
+So that they can make changes to tournaments in the event of bugs or disqualifications.
+
+Acceptance Critera:
+Authorized users can be defined.
+Admins can make changes to brackets/groups (DQ).
+Admins can throw out a game for a remake.
+
+
+User Story:
+As a league owner,
+I would like to create a custom scoring scheme for my league,
+So that winners/losers can be set by the score(s) or combination of scores.
+
+Acceptance Criteria:
+If the stat to be used as a score is integrated with the game (e.g. damage done):
+The stat can be used to help define winners/losers/custom league score
+Certain stats can be assigned new values (e.g., a kill = .5 pts) to be used in another way --Similar to fantasy
+
+
 User Story:
 As a player,
 I would like to communicate with other players in the game,
