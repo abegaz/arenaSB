@@ -11,6 +11,10 @@ public class Main {
 		
 		Team lol = new Team("League of Legends", players);
 		Team lol2 = new Team("Pizza Team", players2);
+		League loll = new League("Competition");
+		loll.addTeam(lol);
+		loll.addTeam(lol2);
+		loll.printTeams();
 		lol.printTeam();
 		lol2.printTeam();
 	}
