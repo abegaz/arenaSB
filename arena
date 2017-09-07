@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker run --name a1 arena java arena_source.Main
+docker rm a1

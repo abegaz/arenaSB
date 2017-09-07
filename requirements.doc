@@ -7,6 +7,13 @@ Build simple Web API to hold users & games?
 The database should have a login page that can distinguish between advertisers, developers, league owners and operators (Spectators can choose whether to log in or not).
 The database should provide encryption for each and every password. 
 
+1.) Users should be able to create a player.
+2.) Users should be able to create teams to participate within tournaments.
+3.) Teams should have designated Admins that can add and delete users.
+4.) Users should be able to see team members of their teams.
+5.) Interface should be intuitive and easy to use. (Based on modern design principles)
+6.) League owners should be able to designate how many matches to be played and the sequencing of the matches.
+7.) An infrastructure should be provided for advertisers.
 
 Nonfunctional: 
 
@@ -16,9 +23,13 @@ Simple user interface that should be as user friendly as possible
 
 Tools for spectators to view player info/ swap between players
 
+1.) The system should be written in Java and JavaFX.
+2.) System should not be vurnerable to cross-site scripting and SQL injection.
+
 
 What it's NOT:
 
 --Broadcasting service, but may link to some (e.g. Twitch)
 --Game-integrated spectation client (e.g. Source TV)
 --Does not /require/ live stats of a game, just records
+
