@@ -4,7 +4,7 @@ I want to view matches,
 So that I can keep track of my favorite players.
 
 Acceptance Criteria:
-The spectator can view the progress of any match.
+The spectator can save a list of followed events to find them easier
 The spectator can view the end summary of past matches.
 The spectator can track each player's progression.
 
@@ -53,16 +53,6 @@ The ordinary internet user can be a spectator.
 The ordinary internet user can see stats from each player.
 
 
-User Story: 
-As a user,
-I would like to access he information stored in the database,
-So I can keep track of the games.
-
-Acceptance Criteria:
-Any user can access their games information through the UI.
-Each user only has access to the games they subscribe to.
-
-
 User Story:
 As an outside viewer,
 I would like to be able to sign up as a spectator or an admin,
@@ -103,33 +93,10 @@ The user can post tournaments and info.
 The user can view all open tournaments.
 
 
-User Story: 
-As a league owner,
-I would like to define admins of the league,
-So that they can make changes to tournaments in the event of bugs or disqualifications.
-
-Acceptance Critera:
-Authorized users can be defined.
-Admins can make changes to brackets/groups (DQ).
-Admins can throw out a game for a remake.
-
-
 User Story:
 As a league owner,
 I would like to create a custom scoring scheme for my league,
 So that winners/losers can be set by the score(s) or combination of scores.
 
 Acceptance Criteria:
-If the stat to be used as a score is integrated with the game (e.g. damage done):
-The stat can be used to help define winners/losers/custom league score
-Certain stats can be assigned new values (e.g., a kill = .5 pts) to be used in another way --Similar to fantasy
-
-
-User Story:
-As a player,
-I would like to communicate with other players in the game,
-So that I can coordinate strategy, congratulate good performance, etc. 
-
-Acceptance Criteria:
-Functional chatting platform with pre-set phrases and words, as well as,
-A pop up keyboard for longer responses.
+The league owner will contact operators to change the database.
