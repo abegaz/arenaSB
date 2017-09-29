@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2017 at 08:44 PM
+-- Generation Time: Sep 29, 2017 at 01:58 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -19,6 +19,46 @@ SET time_zone = "+00:00";
 --
 -- Database: `arenadb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `format`
+--
+
+CREATE TABLE IF NOT EXISTS `format` (
+  `FID` char(6) NOT NULL,
+  `FName` varchar(50) NOT NULL,
+  `Fdesc` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `format`
+--
+
+INSERT INTO `format` (`FID`, `FName`, `Fdesc`) VALUES
+('000001', 'Single Elimination', 'Contestants are out of the tournament when they lose a series.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game`
+--
+
+CREATE TABLE IF NOT EXISTS `game` (
+  `GID` char(6) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `TeamCount` int(11) DEFAULT NULL,
+  `TeamSize` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `game`
+--
+
+INSERT INTO `game` (`GID`, `Name`, `TeamCount`, `TeamSize`) VALUES
+('000001', 'Chess', 2, 1),
+('000440', 'Team Fortress 2 6s', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -43,11 +83,170 @@ INSERT INTO `league` (`LID`, `NAME`, `lgLogo`, `lgOwnerID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `matchhist000001`
+--
+
+CREATE TABLE IF NOT EXISTS `matchhist000001` (
+  `MID` char(9) NOT NULL,
+  `matchDate` date NOT NULL,
+  `winnerPlayer` char(3) DEFAULT NULL,
+  `TournID` char(9) DEFAULT NULL,
+  `whiteP` char(9) DEFAULT NULL,
+  `blackP` char(9) DEFAULT NULL,
+  `whtScore` int(11) DEFAULT NULL,
+  `whtSecsLeft` int(11) DEFAULT NULL,
+  `blkScore` int(11) DEFAULT NULL,
+  `blkSecsLeft` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `matchhist000001`
+--
+
+INSERT INTO `matchhist000001` (`MID`, `matchDate`, `winnerPlayer`, `TournID`, `whiteP`, `blackP`, `whtScore`, `whtSecsLeft`, `blkScore`, `blkSecsLeft`) VALUES
+('001000001', '2016-05-12', 'blk', NULL, '000000001', '999999999', 12, 1230, 17, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `matchhist000440`
+--
+
+CREATE TABLE IF NOT EXISTS `matchhist000440` (
+  `MID` char(9) NOT NULL,
+  `matchDate` date NOT NULL,
+  `winnerTeam` int(11) DEFAULT NULL,
+  `TournID` char(9) DEFAULT NULL,
+  `team1` char(9) DEFAULT NULL,
+  `t1p1` char(9) DEFAULT NULL,
+  `t1p2` char(9) DEFAULT NULL,
+  `t1p3` char(9) DEFAULT NULL,
+  `t1p4` char(9) DEFAULT NULL,
+  `t1p5` char(9) DEFAULT NULL,
+  `t1p6` char(9) DEFAULT NULL,
+  `team2` char(9) DEFAULT NULL,
+  `t2p1` char(9) DEFAULT NULL,
+  `t2p2` char(9) DEFAULT NULL,
+  `t2p3` char(9) DEFAULT NULL,
+  `t2p4` char(9) DEFAULT NULL,
+  `t2p5` char(9) DEFAULT NULL,
+  `t2p6` char(9) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `matchhist000440`
+--
+
+INSERT INTO `matchhist000440` (`MID`, `matchDate`, `winnerTeam`, `TournID`, `team1`, `t1p1`, `t1p2`, `t1p3`, `t1p4`, `t1p5`, `t1p6`, `team2`, `t2p1`, `t2p2`, `t2p3`, `t2p4`, `t2p5`, `t2p6`) VALUES
+('440000001', '2017-02-02', 1, '000000150', '000000002', '000000001', '000100000', '000200000', '000300000', '000400000', '000500000', '000000000', '010101010', '101010101', '000010000', '000020000', '000030000', '000040000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `matchscores000440`
+--
+
+CREATE TABLE IF NOT EXISTS `matchscores000440` (
+  `MatchID` char(9) NOT NULL,
+  `playerID` char(9) NOT NULL,
+  `score` int(11) DEFAULT NULL,
+  `kills` int(11) DEFAULT NULL,
+  `deaths` int(11) DEFAULT NULL,
+  `assists` int(11) DEFAULT NULL,
+  `healing` int(11) DEFAULT NULL,
+  `damage` int(11) DEFAULT NULL,
+  `Captures` int(11) DEFAULT NULL,
+  `Defenses` int(11) DEFAULT NULL,
+  `Destructions` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `matchscores000440`
+--
+
+INSERT INTO `matchscores000440` (`MatchID`, `playerID`, `score`, `kills`, `deaths`, `assists`, `healing`, `damage`, `Captures`, `Defenses`, `Destructions`) VALUES
+('440000001', '000000001', 50, 32, 1, 5, 0, 6552, NULL, NULL, NULL),
+('440000001', '000100000', 32, 12, 5, 23, 4321, 312, NULL, NULL, NULL),
+('440000001', '000200000', 20, 10, 5, 10, 0, 3312, NULL, NULL, NULL),
+('440000001', '000300000', 20, 10, 5, 2, 600, 2331, NULL, NULL, NULL),
+('440000001', '000400000', 20, 10, 5, 23, 53, 1000, NULL, NULL, NULL),
+('440000001', '000500000', 13, 6, 3, 2, 0, 600, NULL, NULL, NULL),
+('440000001', '010101010', 0, 0, 30, 0, 0, 1, NULL, NULL, NULL),
+('440000001', '101010101', 3, 2, 12, 4, 1234, 325, NULL, NULL, NULL),
+('440000001', '000010000', 7, 2, 10, 8, 0, 341, NULL, NULL, NULL),
+('440000001', '000020000', 15, 8, 5, 3, 300, 2560, NULL, NULL, NULL),
+('440000001', '000030000', 4, 1, 3, 2, 0, 544, NULL, NULL, NULL),
+('440000001', '000040000', 9, 5, 3, 2, 0, 450, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `passwords`
+--
+
+CREATE TABLE IF NOT EXISTS `passwords` (
+  `UIDno` char(9) DEFAULT NULL,
+  `encrypted` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `passwords`
+--
+
+INSERT INTO `passwords` (`UIDno`, `encrypted`) VALUES
+('000000001', 'MyPasswordButEncrypted'),
+('000000100', 'a23457yhsdf097'),
+('000011112', 'q34otyi80er7y'),
+('010101010', 'aseopy673w'),
+('101010101', 'a0w8e56'),
+('999999999', '999999999'),
+('000010000', 'h346yusr'),
+('000020000', 'w34uy6hs'),
+('000030000', 'h43wteh5b'),
+('000040000', 'h3e6hjutsr'),
+('000100000', '35yrjnhe3'),
+('000200000', 'j35hynj357jk'),
+('000300000', 'j35yj73weryj'),
+('000400000', '35whjn5ryj76'),
+('000500000', '3576yjh3we5y6j7');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `playsfor`
+--
+
+CREATE TABLE IF NOT EXISTS `playsfor` (
+  `TeamID` char(9) DEFAULT NULL,
+  `PlayerID` char(9) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `playsfor`
+--
+
+INSERT INTO `playsfor` (`TeamID`, `PlayerID`) VALUES
+('000000000', '010101010'),
+('000000000', '101010101'),
+('000000000', '000020000'),
+('000000000', '000030000'),
+('000000000', '000040000'),
+('000000002', '000100000'),
+('000000002', '000200000'),
+('000000002', '000300000'),
+('000000002', '000400000'),
+('000000002', '000500000'),
+('000000002', '000000001'),
+('000000000', '000010000');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `team`
 --
 
 CREATE TABLE IF NOT EXISTS `team` (
-  `TID` char(9) NOT NULL,
+  `TmID` char(9) NOT NULL,
   `LogoLocation` varchar(50) DEFAULT NULL,
   `Name` varchar(30) NOT NULL,
   `OwnerID` char(9) DEFAULT NULL
@@ -57,8 +256,9 @@ CREATE TABLE IF NOT EXISTS `team` (
 -- Dumping data for table `team`
 --
 
-INSERT INTO `team` (`TID`, `LogoLocation`, `Name`, `OwnerID`) VALUES
-('000000000', 'filepath', 'Big Nothing', '000000001');
+INSERT INTO `team` (`TmID`, `LogoLocation`, `Name`, `OwnerID`) VALUES
+('000000000', 'filepath', 'Big Nothings', '000011112'),
+('000000002', 'filepath', 'Somebodies', '000000001');
 
 -- --------------------------------------------------------
 
@@ -81,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `tournament` (
 --
 
 INSERT INTO `tournament` (`TID`, `TrnName`, `TrnLogo`, `TrnStart`, `TrnEnd`, `leagueID`, `FormatID`) VALUES
-('000000150', 'Dinky Tourney', 'filepath', '2017-09-30', '2017-09-30', '000000199', NULL);
+('000000150', 'Dinky Tourney', 'filepath', '2017-09-30', '2017-09-30', '000000199', '000001');
 
 -- --------------------------------------------------------
 
@@ -94,7 +294,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Username` varchar(30) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Nickname` varchar(30) NOT NULL DEFAULT 'NewUser',
-  `psswrd` varchar(20) DEFAULT NULL,
   `DateJoined` date DEFAULT NULL,
   `isOp` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -103,14 +302,39 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`UID`, `Username`, `Email`, `Nickname`, `psswrd`, `DateJoined`, `isOp`) VALUES
-('000000001', 'Gauss', 'gaussnine@gmail.com', 'Gauss', 'somethingencrypted', '2017-09-27', 1),
-('000000100', 'DaBoss99', 'owner@dinkyLeague.mine', 'Pretentious League Owner', 'itsminetho', '2015-11-16', 0),
-('999999999', 'TheLastOne', 'survivor@apocalypes.net', 'hello?', 'Imissthesegames', '4062-11-27', 0);
+INSERT INTO `user` (`UID`, `Username`, `Email`, `Nickname`, `DateJoined`, `isOp`) VALUES
+('000000001', 'Gauss', 'gaussnine@gmail.com', 'Gauss', '2017-09-27', 1),
+('000000100', 'DaBoss99', 'owner@dinkyLeague.mine', 'Pretentious League Owner', '2015-11-16', 0),
+('000010000', 'nobody3', '3@nothing.net', 'nobody3', '2017-01-01', 0),
+('000011112', 'nothingismine', 'biggestnobody@nothing.net', 'OwnerofNothings', '1999-11-28', 0),
+('000020000', 'nobody4', '4@nothing.net', 'nobody4', '2017-01-01', 0),
+('000030000', 'nobody5', '5@nothing.net', 'nobody5', '2017-01-01', 0),
+('000040000', 'nobody6', '6@nothing.net', 'nobody6', '2017-01-01', 0),
+('000100000', 'some1', '1@people.com', 'some1', '2017-01-01', 0),
+('000200000', 'some2', '2@people.com', 'some2', '2017-01-01', 0),
+('000300000', 'some3', '3@people.com', 'some3', '2017-01-01', 0),
+('000400000', 'some4', '4@people.com', 'some4', '2017-01-01', 0),
+('000500000', 'some5', '5@people.com', 'some5', '2017-01-01', 0),
+('010101010', 'MrCellophane', 'nobody@nothing.net', 'GreatBigNobody00', '2000-01-01', 0),
+('101010101', 'nobody2', 'nobody2@nothing.net', 'nobody2', '2017-09-06', 0),
+('999999999', 'TheLastOne', 'survivor@apocalypes.net', 'hello?', '4062-11-27', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `format`
+--
+ALTER TABLE `format`
+  ADD PRIMARY KEY (`FID`),
+  ADD UNIQUE KEY `FName` (`FName`);
+
+--
+-- Indexes for table `game`
+--
+ALTER TABLE `game`
+  ADD PRIMARY KEY (`GID`);
 
 --
 -- Indexes for table `league`
@@ -121,11 +345,61 @@ ALTER TABLE `league`
   ADD KEY `lgOwnerID` (`lgOwnerID`);
 
 --
+-- Indexes for table `matchhist000001`
+--
+ALTER TABLE `matchhist000001`
+  ADD PRIMARY KEY (`MID`),
+  ADD KEY `whiteP` (`whiteP`),
+  ADD KEY `blackP` (`blackP`),
+  ADD KEY `TournID` (`TournID`);
+
+--
+-- Indexes for table `matchhist000440`
+--
+ALTER TABLE `matchhist000440`
+  ADD PRIMARY KEY (`MID`),
+  ADD KEY `TournID` (`TournID`),
+  ADD KEY `t1p1` (`t1p1`),
+  ADD KEY `t1p2` (`t1p2`),
+  ADD KEY `t1p3` (`t1p3`),
+  ADD KEY `t1p4` (`t1p4`),
+  ADD KEY `t1p5` (`t1p5`),
+  ADD KEY `t1p6` (`t1p6`),
+  ADD KEY `t2p1` (`t2p1`),
+  ADD KEY `t2p2` (`t2p2`),
+  ADD KEY `t2p3` (`t2p3`),
+  ADD KEY `t2p4` (`t2p4`),
+  ADD KEY `t2p5` (`t2p5`),
+  ADD KEY `t2p6` (`t2p6`),
+  ADD KEY `team1` (`team1`),
+  ADD KEY `team2` (`team2`);
+
+--
+-- Indexes for table `matchscores000440`
+--
+ALTER TABLE `matchscores000440`
+  ADD KEY `MatchID` (`MatchID`),
+  ADD KEY `playerID` (`playerID`);
+
+--
+-- Indexes for table `passwords`
+--
+ALTER TABLE `passwords`
+  ADD UNIQUE KEY `UIDno` (`UIDno`);
+
+--
+-- Indexes for table `playsfor`
+--
+ALTER TABLE `playsfor`
+  ADD UNIQUE KEY `PlayerID` (`PlayerID`),
+  ADD KEY `TeamID` (`TeamID`);
+
+--
 -- Indexes for table `team`
 --
 ALTER TABLE `team`
-  ADD PRIMARY KEY (`TID`),
-  ADD UNIQUE KEY `LogoLocation` (`LogoLocation`),
+  ADD PRIMARY KEY (`TmID`),
+  ADD UNIQUE KEY `Name` (`Name`),
   ADD KEY `OwnerID` (`OwnerID`);
 
 --
@@ -133,9 +407,8 @@ ALTER TABLE `team`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`TID`),
-  ADD UNIQUE KEY `TrnName` (`TrnName`),
-  ADD UNIQUE KEY `TrnLogo` (`TrnLogo`),
-  ADD KEY `leagueID` (`leagueID`);
+  ADD KEY `leagueID` (`leagueID`),
+  ADD KEY `FormatID` (`FormatID`);
 
 --
 -- Indexes for table `user`
@@ -157,6 +430,54 @@ ALTER TABLE `league`
   ADD CONSTRAINT `league_ibfk_1` FOREIGN KEY (`lgOwnerID`) REFERENCES `user` (`UID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
+-- Constraints for table `matchhist000001`
+--
+ALTER TABLE `matchhist000001`
+  ADD CONSTRAINT `matchhist000001_ibfk_1` FOREIGN KEY (`whiteP`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000001_ibfk_2` FOREIGN KEY (`blackP`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000001_ibfk_3` FOREIGN KEY (`TournID`) REFERENCES `tournament` (`TID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `matchhist000440`
+--
+ALTER TABLE `matchhist000440`
+  ADD CONSTRAINT `matchhist000440_ibfk_1` FOREIGN KEY (`TournID`) REFERENCES `tournament` (`TID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_10` FOREIGN KEY (`t2p3`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_11` FOREIGN KEY (`t2p4`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_12` FOREIGN KEY (`t2p5`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_13` FOREIGN KEY (`t2p6`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_14` FOREIGN KEY (`team1`) REFERENCES `team` (`TmID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_15` FOREIGN KEY (`team2`) REFERENCES `team` (`TmID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_2` FOREIGN KEY (`t1p1`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_3` FOREIGN KEY (`t1p2`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_4` FOREIGN KEY (`t1p3`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_5` FOREIGN KEY (`t1p4`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_6` FOREIGN KEY (`t1p5`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_7` FOREIGN KEY (`t1p6`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_8` FOREIGN KEY (`t2p1`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000440_ibfk_9` FOREIGN KEY (`t2p2`) REFERENCES `user` (`UID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `matchscores000440`
+--
+ALTER TABLE `matchscores000440`
+  ADD CONSTRAINT `matchscores000440_ibfk_1` FOREIGN KEY (`MatchID`) REFERENCES `matchhist000440` (`MID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchscores000440_ibfk_2` FOREIGN KEY (`playerID`) REFERENCES `user` (`UID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `passwords`
+--
+ALTER TABLE `passwords`
+  ADD CONSTRAINT `passwords_ibfk_1` FOREIGN KEY (`UIDno`) REFERENCES `user` (`UID`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `playsfor`
+--
+ALTER TABLE `playsfor`
+  ADD CONSTRAINT `playsfor_ibfk_1` FOREIGN KEY (`PlayerID`) REFERENCES `user` (`UID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `playsfor_ibfk_2` FOREIGN KEY (`TeamID`) REFERENCES `team` (`TmID`);
+
+--
 -- Constraints for table `team`
 --
 ALTER TABLE `team`
@@ -166,7 +487,8 @@ ALTER TABLE `team`
 -- Constraints for table `tournament`
 --
 ALTER TABLE `tournament`
-  ADD CONSTRAINT `tournament_ibfk_1` FOREIGN KEY (`leagueID`) REFERENCES `league` (`LID`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `tournament_ibfk_1` FOREIGN KEY (`leagueID`) REFERENCES `league` (`LID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `tournament_ibfk_2` FOREIGN KEY (`FormatID`) REFERENCES `format` (`FID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
