@@ -5,8 +5,12 @@ Choose a Database Language and Server Technology
 Build simple Web API to hold users & games?
 
 The database should have a login page that can distinguish between advertisers, developers, league owners and operators (Spectators can choose whether to log in or not).
+
 The database should provide encryption for each and every password. 
 
+The ability to store statistics post game/tournament
+
+Bug report ability
 
 Nonfunctional: 
 
