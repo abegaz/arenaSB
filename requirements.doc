@@ -12,6 +12,8 @@ The ability to store statistics post game/tournament
 
 Bug report ability
 
+League owners should be able to designate how many matches to be played and the sequencing of the matches.
+
 Nonfunctional: 
 
 The training time shouldn't take more than five hours
@@ -19,6 +21,8 @@ The training time shouldn't take more than five hours
 Simple user interface that should be as user friendly as possible
 
 Tools for spectators to view player info/ swap between players
+
+Updated data should be accessible within at least two seconds
 
 
 What it's NOT:
