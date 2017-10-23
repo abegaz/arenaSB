@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2017 at 07:32 PM
+-- Generation Time: Oct 23, 2017 at 07:01 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `arenadb`
+-- Database: `arenadb2`
 --
 
 -- --------------------------------------------------------
@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `followsgame` (
-  `SpecID` char(9) NOT NULL,
-  `GameID` char(9) NOT NULL
+  `SpecID` int(9) NOT NULL,
+  `GameID` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `followsgame` (
 --
 
 INSERT INTO `followsgame` (`SpecID`, `GameID`) VALUES
-('000000001', '000440');
+(0, 2);
 
 -- --------------------------------------------------------
 
@@ -45,8 +45,8 @@ INSERT INTO `followsgame` (`SpecID`, `GameID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `followsleague` (
-  `SpecID` char(9) NOT NULL,
-  `LgID` char(9) NOT NULL
+  `SpecID` int(9) NOT NULL,
+  `LgID` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `followsleague` (
 --
 
 INSERT INTO `followsleague` (`SpecID`, `LgID`) VALUES
-('000000001', '000000199');
+(0, 199);
 
 -- --------------------------------------------------------
 
@@ -63,8 +63,8 @@ INSERT INTO `followsleague` (`SpecID`, `LgID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `followsplayer` (
-  `SpecID` char(9) NOT NULL,
-  `playerID` char(9) NOT NULL
+  `SpecID` int(9) NOT NULL,
+  `playerID` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -72,9 +72,9 @@ CREATE TABLE IF NOT EXISTS `followsplayer` (
 --
 
 INSERT INTO `followsplayer` (`SpecID`, `playerID`) VALUES
-('999999999', '000000001'),
-('000000001', '010101010'),
-('000000001', '999999999');
+(14, 0),
+(0, 12),
+(0, 14);
 
 -- --------------------------------------------------------
 
@@ -83,8 +83,8 @@ INSERT INTO `followsplayer` (`SpecID`, `playerID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `followsteam` (
-  `SpecID` char(9) NOT NULL,
-  `teamID` char(9) NOT NULL
+  `SpecID` int(9) NOT NULL,
+  `teamID` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `followsteam` (
 --
 
 INSERT INTO `followsteam` (`SpecID`, `teamID`) VALUES
-('000000001', '000000002');
+(0, 2);
 
 -- --------------------------------------------------------
 
@@ -101,8 +101,8 @@ INSERT INTO `followsteam` (`SpecID`, `teamID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `followstourn` (
-  `SpecID` char(9) NOT NULL,
-  `TrnID` char(9) NOT NULL
+  `SpecID` int(9) NOT NULL,
+  `TrnID` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `followstourn` (
 --
 
 INSERT INTO `followstourn` (`SpecID`, `TrnID`) VALUES
-('000000001', '000000150');
+(0, 150);
 
 -- --------------------------------------------------------
 
@@ -119,17 +119,17 @@ INSERT INTO `followstourn` (`SpecID`, `TrnID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `format` (
-  `FID` char(6) NOT NULL,
+  `FID` int(6) NOT NULL,
   `FName` varchar(50) NOT NULL,
   `Fdesc` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `format`
 --
 
 INSERT INTO `format` (`FID`, `FName`, `Fdesc`) VALUES
-('000001', 'Single Elimination', 'Contestants are out of the tournament when they lose a series.');
+(1, 'Single Elimination', 'Contestants are out of the tournament when they lose a series.');
 
 -- --------------------------------------------------------
 
@@ -138,19 +138,19 @@ INSERT INTO `format` (`FID`, `FName`, `Fdesc`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `game` (
-  `GID` char(6) NOT NULL,
+  `GID` int(6) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `TeamCount` int(11) DEFAULT NULL,
   `TeamSize` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=441 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `game`
 --
 
 INSERT INTO `game` (`GID`, `Name`, `TeamCount`, `TeamSize`) VALUES
-('000001', 'Chess', 2, 1),
-('000440', 'Team Fortress 2 6s', 2, 6);
+(1, 'Chess', 2, 1),
+(2, 'Team Fortress 2 6s', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ INSERT INTO `game` (`GID`, `Name`, `TeamCount`, `TeamSize`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `gamedigi` (
-  `gmID` char(6) NOT NULL DEFAULT '',
+  `gmID` int(6) NOT NULL,
   `Developer` varchar(50) DEFAULT NULL,
   `CurVersion` varchar(25) DEFAULT NULL,
   `GmLogo` varchar(100) DEFAULT NULL
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `gamedigi` (
 --
 
 INSERT INTO `gamedigi` (`gmID`, `Developer`, `CurVersion`, `GmLogo`) VALUES
-('000440', 'Valve Corporation', '2017-08-03', 'filepath');
+(2, 'Valve Corporation', '2017-08-03', 'filepath');
 
 -- --------------------------------------------------------
 
@@ -179,18 +179,18 @@ INSERT INTO `gamedigi` (`gmID`, `Developer`, `CurVersion`, `GmLogo`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `league` (
-  `LID` char(9) NOT NULL,
+  `LID` int(9) NOT NULL,
   `NAME` varchar(50) NOT NULL,
   `lgLogo` varchar(50) DEFAULT NULL,
-  `lgOwnerID` char(9) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `lgOwnerID` int(9) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `league`
 --
 
 INSERT INTO `league` (`LID`, `NAME`, `lgLogo`, `lgOwnerID`) VALUES
-('000000199', 'Dinky League', 'filepath', '000000100');
+(199, 'Dinky League', 'filepath', 1);
 
 -- --------------------------------------------------------
 
@@ -199,8 +199,8 @@ INSERT INTO `league` (`LID`, `NAME`, `lgLogo`, `lgOwnerID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `leaguememberplyr` (
-  `leagueID` char(9) NOT NULL,
-  `plyrID` char(9) NOT NULL,
+  `leagueID` int(9) NOT NULL,
+  `plyrID` int(9) NOT NULL,
   `startDate` date DEFAULT NULL,
   `endDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -210,18 +210,18 @@ CREATE TABLE IF NOT EXISTS `leaguememberplyr` (
 --
 
 INSERT INTO `leaguememberplyr` (`leagueID`, `plyrID`, `startDate`, `endDate`) VALUES
-('000000199', '000000001', '2017-09-29', NULL),
-('000000199', '000010000', '2017-09-29', NULL),
-('000000199', '000020000', '2017-09-29', NULL),
-('000000199', '000030000', '2017-09-29', NULL),
-('000000199', '000040000', '2017-09-29', NULL),
-('000000199', '000100000', '2017-09-29', NULL),
-('000000199', '000200000', '2017-09-29', NULL),
-('000000199', '000300000', '2017-09-29', NULL),
-('000000199', '000400000', '2017-09-29', NULL),
-('000000199', '000500000', '2017-09-29', NULL),
-('000000199', '010101010', '2017-09-29', NULL),
-('000000199', '101010101', '2017-09-29', NULL);
+(199, 0, '2017-09-29', NULL),
+(199, 2, '2017-09-29', NULL),
+(199, 4, '2017-09-29', NULL),
+(199, 5, '2017-09-29', NULL),
+(199, 6, '2017-09-29', NULL),
+(199, 7, '2017-09-29', NULL),
+(199, 8, '2017-09-29', NULL),
+(199, 9, '2017-09-29', NULL),
+(199, 10, '2017-09-29', NULL),
+(199, 11, '2017-09-29', NULL),
+(199, 12, '2017-09-29', NULL),
+(199, 13, '2017-09-29', NULL);
 
 -- --------------------------------------------------------
 
@@ -230,8 +230,8 @@ INSERT INTO `leaguememberplyr` (`leagueID`, `plyrID`, `startDate`, `endDate`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `leaguememberteam` (
-  `leagueID` char(9) NOT NULL,
-  `TeamID` char(9) NOT NULL,
+  `leagueID` int(9) NOT NULL,
+  `TeamID` int(9) NOT NULL,
   `startDate` date DEFAULT NULL,
   `endDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -241,8 +241,8 @@ CREATE TABLE IF NOT EXISTS `leaguememberteam` (
 --
 
 INSERT INTO `leaguememberteam` (`leagueID`, `TeamID`, `startDate`, `endDate`) VALUES
-('000000199', '000000000', '2017-09-29', NULL),
-('000000199', '000000002', '2017-09-29', NULL);
+(199, 0, '2017-09-29', NULL),
+(199, 2, '2017-09-29', NULL);
 
 -- --------------------------------------------------------
 
@@ -251,72 +251,73 @@ INSERT INTO `leaguememberteam` (`leagueID`, `TeamID`, `startDate`, `endDate`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `matchhist000001` (
-  `MID` char(9) NOT NULL,
+  `MID` int(9) NOT NULL,
   `matchDate` date NOT NULL,
   `winnerPlayer` char(3) DEFAULT NULL,
-  `TournID` char(9) DEFAULT NULL,
+  `TournID` int(9) DEFAULT NULL,
   `replay` varchar(100) DEFAULT NULL,
-  `whiteP` char(9) DEFAULT NULL,
-  `blackP` char(9) DEFAULT NULL,
+  `whiteP` int(9) DEFAULT NULL,
+  `blackP` int(9) DEFAULT NULL,
   `whtScore` int(11) DEFAULT NULL,
   `whtSecsLeft` int(11) DEFAULT NULL,
   `blkScore` int(11) DEFAULT NULL,
   `blkSecsLeft` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `matchhist000001`
 --
 
 INSERT INTO `matchhist000001` (`MID`, `matchDate`, `winnerPlayer`, `TournID`, `replay`, `whiteP`, `blackP`, `whtScore`, `whtSecsLeft`, `blkScore`, `blkSecsLeft`) VALUES
-('000000001', '2016-05-12', 'blk', NULL, 'videolink', '000000001', '999999999', 12, 1230, 17, 3);
+(1, '2016-05-12', 'blk', NULL, 'videolink', 0, 14, 12, 1230, 17, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `matchhist000440`
+-- Table structure for table `matchhist000002`
 --
 
-CREATE TABLE IF NOT EXISTS `matchhist000440` (
-  `MID` char(9) NOT NULL,
+CREATE TABLE IF NOT EXISTS `matchhist000002` (
+  `MID` int(9) NOT NULL,
   `matchDate` date NOT NULL,
   `winnerTeam` int(11) DEFAULT NULL,
-  `TournID` char(9) DEFAULT NULL,
+  `TournID` int(9) DEFAULT NULL,
+  `roundInfo` char(6) DEFAULT NULL,
   `replay` varchar(100) DEFAULT NULL,
   `Version` date DEFAULT NULL,
-  `team1` char(9) DEFAULT NULL,
-  `t1p1` char(9) DEFAULT NULL,
-  `t1p2` char(9) DEFAULT NULL,
-  `t1p3` char(9) DEFAULT NULL,
-  `t1p4` char(9) DEFAULT NULL,
-  `t1p5` char(9) DEFAULT NULL,
-  `t1p6` char(9) DEFAULT NULL,
-  `team2` char(9) DEFAULT NULL,
-  `t2p1` char(9) DEFAULT NULL,
-  `t2p2` char(9) DEFAULT NULL,
-  `t2p3` char(9) DEFAULT NULL,
-  `t2p4` char(9) DEFAULT NULL,
-  `t2p5` char(9) DEFAULT NULL,
-  `t2p6` char(9) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `team1` int(9) DEFAULT NULL,
+  `t1p1` int(9) DEFAULT NULL,
+  `t1p2` int(9) DEFAULT NULL,
+  `t1p3` int(9) DEFAULT NULL,
+  `t1p4` int(9) DEFAULT NULL,
+  `t1p5` int(9) DEFAULT NULL,
+  `t1p6` int(9) DEFAULT NULL,
+  `team2` int(9) DEFAULT NULL,
+  `t2p1` int(9) DEFAULT NULL,
+  `t2p2` int(9) DEFAULT NULL,
+  `t2p3` int(9) DEFAULT NULL,
+  `t2p4` int(9) DEFAULT NULL,
+  `t2p5` int(9) DEFAULT NULL,
+  `t2p6` int(9) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `matchhist000440`
+-- Dumping data for table `matchhist000002`
 --
 
-INSERT INTO `matchhist000440` (`MID`, `matchDate`, `winnerTeam`, `TournID`, `replay`, `Version`, `team1`, `t1p1`, `t1p2`, `t1p3`, `t1p4`, `t1p5`, `t1p6`, `team2`, `t2p1`, `t2p2`, `t2p3`, `t2p4`, `t2p5`, `t2p6`) VALUES
-('000000001', '2017-09-30', 1, '000000150', 'videolink', '2017-01-16', '000000002', '000000001', '000100000', '000200000', '000300000', '000400000', '000500000', '000000000', '010101010', '101010101', '000010000', '000020000', '000030000', '000040000'),
-('000000002', '2018-09-30', NULL, '000000151', NULL, NULL, '000000000', NULL, NULL, NULL, NULL, NULL, NULL, '000000002', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `matchhist000002` (`MID`, `matchDate`, `winnerTeam`, `TournID`, `roundInfo`, `replay`, `Version`, `team1`, `t1p1`, `t1p2`, `t1p3`, `t1p4`, `t1p5`, `t1p6`, `team2`, `t2p1`, `t2p2`, `t2p3`, `t2p4`, `t2p5`, `t2p6`) VALUES
+(1, '2017-09-30', 1, 150, NULL, 'videolink', '2017-01-16', 2, 0, 7, 8, 9, 10, 11, 0, 12, 13, 2, 4, 5, 6),
+(2, '2018-09-30', NULL, 151, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `matchscores000440`
+-- Table structure for table `matchscores000002`
 --
 
-CREATE TABLE IF NOT EXISTS `matchscores000440` (
-  `MatchID` char(9) NOT NULL,
-  `playerID` char(9) NOT NULL,
+CREATE TABLE IF NOT EXISTS `matchscores000002` (
+  `MatchID` int(9) NOT NULL,
+  `playerID` int(9) NOT NULL,
   `score` int(11) DEFAULT NULL,
   `kills` int(11) DEFAULT NULL,
   `deaths` int(11) DEFAULT NULL,
@@ -329,22 +330,22 @@ CREATE TABLE IF NOT EXISTS `matchscores000440` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `matchscores000440`
+-- Dumping data for table `matchscores000002`
 --
 
-INSERT INTO `matchscores000440` (`MatchID`, `playerID`, `score`, `kills`, `deaths`, `assists`, `healing`, `damage`, `Captures`, `Defenses`, `Destructions`) VALUES
-('000000001', '000000001', 50, 32, 1, 5, 0, 6552, 7, 3, 0),
-('000000001', '000010000', 7, 2, 10, 8, 0, 341, 5, 4, 3),
-('000000001', '000020000', 15, 8, 5, 3, 300, 2560, 6, 2, 3),
-('000000001', '000030000', 4, 1, 3, 2, 0, 544, 2, 4, 1),
-('000000001', '000040000', 9, 5, 3, 2, 0, 450, 2, 2, 2),
-('000000001', '000100000', 32, 12, 5, 23, 4321, 312, 5, 3, 2),
-('000000001', '000200000', 20, 10, 5, 10, 0, 3312, NULL, NULL, NULL),
-('000000001', '000300000', 20, 10, 5, 2, 600, 2331, NULL, NULL, NULL),
-('000000001', '000400000', 20, 10, 5, 23, 53, 1000, NULL, NULL, NULL),
-('00000001', '000500000', 13, 6, 3, 2, 0, 600, NULL, NULL, NULL),
-('000000001', '010101010', 0, 0, 30, 0, 0, 1, NULL, NULL, NULL),
-('000000001', '101010101', 3, 2, 12, 4, 1234, 325, NULL, NULL, NULL);
+INSERT INTO `matchscores000002` (`MatchID`, `playerID`, `score`, `kills`, `deaths`, `assists`, `healing`, `damage`, `Captures`, `Defenses`, `Destructions`) VALUES
+(1, 0, 50, 32, 1, 5, 0, 6552, 7, 3, 0),
+(1, 2, 7, 2, 10, 8, 0, 341, 5, 4, 3),
+(1, 4, 15, 8, 5, 3, 300, 2560, 6, 2, 3),
+(1, 5, 4, 1, 3, 2, 0, 544, 2, 4, 1),
+(1, 6, 9, 5, 3, 2, 0, 450, 2, 2, 2),
+(1, 7, 32, 12, 5, 23, 4321, 312, 5, 3, 2),
+(1, 8, 20, 10, 5, 10, 0, 3312, NULL, NULL, NULL),
+(1, 9, 20, 10, 5, 2, 600, 2331, NULL, NULL, NULL),
+(1, 10, 20, 10, 5, 23, 53, 1000, NULL, NULL, NULL),
+(1, 11, 13, 6, 3, 2, 0, 600, NULL, NULL, NULL),
+(1, 12, 0, 0, 30, 0, 0, 1, NULL, NULL, NULL),
+(1, 13, 3, 2, 12, 4, 1234, 325, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -353,7 +354,7 @@ INSERT INTO `matchscores000440` (`MatchID`, `playerID`, `score`, `kills`, `death
 --
 
 CREATE TABLE IF NOT EXISTS `passwords` (
-  `UIDno` char(9) DEFAULT NULL,
+  `UIDno` int(9) DEFAULT NULL,
   `encrypted` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -362,21 +363,21 @@ CREATE TABLE IF NOT EXISTS `passwords` (
 --
 
 INSERT INTO `passwords` (`UIDno`, `encrypted`) VALUES
-('000000001', 'MyPasswordButEncrypted'),
-('000000100', 'a23457yhsdf097'),
-('000011112', 'q34otyi80er7y'),
-('010101010', 'aseopy673w'),
-('101010101', 'a0w8e56'),
-('999999999', '999999999'),
-('000010000', 'h346yusr'),
-('000020000', 'w34uy6hs'),
-('000030000', 'h43wteh5b'),
-('000040000', 'h3e6hjutsr'),
-('000100000', '35yrjnhe3'),
-('000200000', 'j35hynj357jk'),
-('000300000', 'j35yj73weryj'),
-('000400000', '35whjn5ryj76'),
-('000500000', '3576yjh3we5y6j7');
+(1, 'MyPasswordButEncrypted'),
+(100, 'a23457yhsdf097'),
+(11112, 'q34otyi80er7y'),
+(10101010, 'aseopy673w'),
+(101010101, 'a0w8e56'),
+(999999999, '999999999'),
+(10000, 'h346yusr'),
+(20000, 'w34uy6hs'),
+(30000, 'h43wteh5b'),
+(40000, 'h3e6hjutsr'),
+(100000, '35yrjnhe3'),
+(200000, 'j35hynj357jk'),
+(300000, 'j35yj73weryj'),
+(400000, '35whjn5ryj76'),
+(500000, '3576yjh3we5y6j7');
 
 -- --------------------------------------------------------
 
@@ -385,8 +386,8 @@ INSERT INTO `passwords` (`UIDno`, `encrypted`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `playsfor` (
-  `TeamID` char(9) DEFAULT NULL,
-  `PlayerID` char(9) DEFAULT NULL
+  `TeamID` int(9) DEFAULT NULL,
+  `PlayerID` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -394,18 +395,18 @@ CREATE TABLE IF NOT EXISTS `playsfor` (
 --
 
 INSERT INTO `playsfor` (`TeamID`, `PlayerID`) VALUES
-('000000000', '010101010'),
-('000000000', '101010101'),
-('000000000', '000020000'),
-('000000000', '000030000'),
-('000000000', '000040000'),
-('000000002', '000100000'),
-('000000002', '000200000'),
-('000000002', '000300000'),
-('000000002', '000400000'),
-('000000002', '000500000'),
-('000000002', '000000001'),
-('000000000', '000010000');
+(0, 10101010),
+(0, 101010101),
+(0, 20000),
+(0, 30000),
+(0, 40000),
+(2, 100000),
+(2, 200000),
+(2, 300000),
+(2, 400000),
+(2, 500000),
+(2, 1),
+(0, 10000);
 
 -- --------------------------------------------------------
 
@@ -414,19 +415,19 @@ INSERT INTO `playsfor` (`TeamID`, `PlayerID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `team` (
-  `TmID` char(9) NOT NULL,
+  `TmID` int(9) NOT NULL,
   `LogoLocation` varchar(50) DEFAULT NULL,
   `Name` varchar(30) NOT NULL,
-  `OwnerID` char(9) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `OwnerID` int(9) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `team`
 --
 
 INSERT INTO `team` (`TmID`, `LogoLocation`, `Name`, `OwnerID`) VALUES
-('000000000', 'filepath', 'Big Nothings', '000011112'),
-('000000002', 'filepath', 'Somebodies', '000000001');
+(0, 'filepath', 'Big Nothings', 11112),
+(2, 'filepath', 'Somebodies', 1);
 
 -- --------------------------------------------------------
 
@@ -435,22 +436,22 @@ INSERT INTO `team` (`TmID`, `LogoLocation`, `Name`, `OwnerID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tournament` (
-  `TID` char(9) NOT NULL,
+  `TID` int(9) NOT NULL,
   `TrnName` varchar(50) NOT NULL,
   `TrnLogo` varchar(50) DEFAULT NULL,
   `TrnStart` date DEFAULT NULL,
   `TrnEnd` date DEFAULT NULL,
-  `leagueID` char(9) DEFAULT NULL,
+  `leagueID` int(9) DEFAULT NULL,
   `FormatID` char(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tournament`
 --
 
 INSERT INTO `tournament` (`TID`, `TrnName`, `TrnLogo`, `TrnStart`, `TrnEnd`, `leagueID`, `FormatID`) VALUES
-('000000150', 'Dinky Tourney 2017', 'filepath', '2017-09-30', '2017-09-30', '000000199', '000001'),
-('000000151', 'Dinky Tourney 2018', 'filepath', '2018-09-30', '2018-09-30', '000000199', '000001');
+(150, 'Dinky Tourney 2017', 'filepath', '2017-09-30', '2017-09-30', 199, '1'),
+(151, 'Dinky Tourney 2018', 'filepath', '2018-09-30', '2018-09-30', 199, '1');
 
 -- --------------------------------------------------------
 
@@ -459,34 +460,34 @@ INSERT INTO `tournament` (`TID`, `TrnName`, `TrnLogo`, `TrnStart`, `TrnEnd`, `le
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `UID` char(9) NOT NULL,
+  `UID` int(9) NOT NULL,
   `Username` varchar(30) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Nickname` varchar(30) NOT NULL DEFAULT 'NewUser',
   `DateJoined` date DEFAULT NULL,
-  `isOp` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `isOp` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=1000000000 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`UID`, `Username`, `Email`, `Nickname`, `DateJoined`, `isOp`) VALUES
-('000000001', 'Gauss', 'gaussnine@gmail.com', 'Gauss', '2017-09-27', 1),
-('000000100', 'DaBoss99', 'owner@dinkyLeague.mine', 'Pretentious League Owner', '2015-11-16', 0),
-('000010000', 'nobody3', '3@nothing.net', 'nobody3', '2017-01-01', 0),
-('000011112', 'nothingismine', 'biggestnobody@nothing.net', 'OwnerofNothings', '1999-11-28', 0),
-('000020000', 'nobody4', '4@nothing.net', 'nobody4', '2017-01-01', 0),
-('000030000', 'nobody5', '5@nothing.net', 'nobody5', '2017-01-01', 0),
-('000040000', 'nobody6', '6@nothing.net', 'nobody6', '2017-01-01', 0),
-('000100000', 'some1', '1@people.com', 'some1', '2017-01-01', 0),
-('000200000', 'some2', '2@people.com', 'some2', '2017-01-01', 0),
-('000300000', 'some3', '3@people.com', 'some3', '2017-01-01', 0),
-('000400000', 'some4', '4@people.com', 'some4', '2017-01-01', 0),
-('000500000', 'some5', '5@people.com', 'some5', '2017-01-01', 0),
-('010101010', 'MrCellophane', 'nobody@nothing.net', 'GreatBigNobody00', '2000-01-01', 0),
-('101010101', 'nobody2', 'nobody2@nothing.net', 'nobody2', '2017-09-06', 0),
-('999999999', 'TheLastOne', 'survivor@apocalypse.net', 'hello?', '4062-11-27', 0);
+(0, 'Gauss', 'gaussnine@gmail.com', 'Gauss', '2017-09-27', 1),
+(1, 'DaBoss99', 'owner@dinkyLeague.mine', 'Pretentious League Owner', '2015-11-16', 0),
+(2, 'nobody3', '3@nothing.net', 'nobody3', '2017-01-01', 0),
+(3, 'nothingismine', 'biggestnobody@nothing.net', 'OwnerofNothings', '1999-11-28', 0),
+(4, 'nobody4', '4@nothing.net', 'nobody4', '2017-01-01', 0),
+(5, 'nobody5', '5@nothing.net', 'nobody5', '2017-01-01', 0),
+(6, 'nobody6', '6@nothing.net', 'nobody6', '2017-01-01', 0),
+(7, 'some1', '1@people.com', 'some1', '2017-01-01', 0),
+(8, 'some2', '2@people.com', 'some2', '2017-01-01', 0),
+(9, 'some3', '3@people.com', 'some3', '2017-01-01', 0),
+(10, 'some4', '4@people.com', 'some4', '2017-01-01', 0),
+(11, 'some5', '5@people.com', 'some5', '2017-01-01', 0),
+(12, 'MrCellophane', 'nobody@nothing.net', 'GreatBigNobody00', '2000-01-01', 0),
+(13, 'nobody2', 'nobody2@nothing.net', 'nobody2', '2017-09-06', 0),
+(14, 'TheLastOne', 'survivor@apocalypse.net', 'hello?', '4062-11-27', 0);
 
 -- --------------------------------------------------------
 
@@ -495,8 +496,8 @@ INSERT INTO `user` (`UID`, `Username`, `Email`, `Nickname`, `DateJoined`, `isOp`
 --
 
 CREATE TABLE IF NOT EXISTS `winnerslgplyr` (
-  `LeagueID` char(9) NOT NULL,
-  `playerID` char(9) DEFAULT NULL,
+  `LeagueID` int(9) NOT NULL,
+  `playerID` int(9) DEFAULT NULL,
   `winDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -505,12 +506,12 @@ CREATE TABLE IF NOT EXISTS `winnerslgplyr` (
 --
 
 INSERT INTO `winnerslgplyr` (`LeagueID`, `playerID`, `winDate`) VALUES
-('000000199', '000000001', '2017-02-02'),
-('000000199', '000100000', '2017-02-02'),
-('000000199', '000200000', '2017-02-02'),
-('000000199', '000300000', '2017-02-02'),
-('000000199', '000400000', '2017-02-02'),
-('000000199', '000500000', '2017-02-02');
+(199, 1, '2017-02-02'),
+(199, 100000, '2017-02-02'),
+(199, 200000, '2017-02-02'),
+(199, 300000, '2017-02-02'),
+(199, 400000, '2017-02-02'),
+(199, 500000, '2017-02-02');
 
 -- --------------------------------------------------------
 
@@ -519,8 +520,8 @@ INSERT INTO `winnerslgplyr` (`LeagueID`, `playerID`, `winDate`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `winnerslgteam` (
-  `LeagueID` char(9) NOT NULL,
-  `TeamID` char(9) DEFAULT NULL,
+  `LeagueID` int(9) NOT NULL,
+  `TeamID` int(9) DEFAULT NULL,
   `winDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -529,7 +530,7 @@ CREATE TABLE IF NOT EXISTS `winnerslgteam` (
 --
 
 INSERT INTO `winnerslgteam` (`LeagueID`, `TeamID`, `winDate`) VALUES
-('000000199', '000000002', '2017-02-02');
+(199, 2, '2017-02-02');
 
 -- --------------------------------------------------------
 
@@ -538,8 +539,8 @@ INSERT INTO `winnerslgteam` (`LeagueID`, `TeamID`, `winDate`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `winnerstrnplyr` (
-  `TournID` char(9) NOT NULL,
-  `player` char(9) DEFAULT NULL
+  `TournID` int(9) NOT NULL,
+  `player` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -547,12 +548,12 @@ CREATE TABLE IF NOT EXISTS `winnerstrnplyr` (
 --
 
 INSERT INTO `winnerstrnplyr` (`TournID`, `player`) VALUES
-('000000150', '000000001'),
-('000000150', '000100000'),
-('000000150', '000200000'),
-('000000150', '000300000'),
-('000000150', '000400000'),
-('000000150', '000500000');
+(150, 1),
+(150, 100000),
+(150, 200000),
+(150, 300000),
+(150, 400000),
+(150, 500000);
 
 -- --------------------------------------------------------
 
@@ -561,8 +562,8 @@ INSERT INTO `winnerstrnplyr` (`TournID`, `player`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `winnerstrnteam` (
-  `TournID` char(9) NOT NULL,
-  `TeamID` char(9) DEFAULT NULL
+  `TournID` int(9) NOT NULL,
+  `TeamID` int(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -570,7 +571,7 @@ CREATE TABLE IF NOT EXISTS `winnerstrnteam` (
 --
 
 INSERT INTO `winnerstrnteam` (`TournID`, `TeamID`) VALUES
-('000000150', '000000002');
+(150, 2);
 
 --
 -- Indexes for dumped tables
@@ -662,9 +663,9 @@ ALTER TABLE `matchhist000001`
   ADD KEY `TournID` (`TournID`);
 
 --
--- Indexes for table `matchhist000440`
+-- Indexes for table `matchhist000002`
 --
-ALTER TABLE `matchhist000440`
+ALTER TABLE `matchhist000002`
   ADD PRIMARY KEY (`MID`),
   ADD KEY `TournID` (`TournID`),
   ADD KEY `t1p1` (`t1p1`),
@@ -683,9 +684,10 @@ ALTER TABLE `matchhist000440`
   ADD KEY `team2` (`team2`);
 
 --
--- Indexes for table `matchscores000440`
+-- Indexes for table `matchscores000002`
 --
-ALTER TABLE `matchscores000440`
+ALTER TABLE `matchscores000002`
+  ADD PRIMARY KEY (`MatchID`,`playerID`),
   ADD UNIQUE KEY `MatchID_2` (`MatchID`,`playerID`),
   ADD KEY `MatchID` (`MatchID`),
   ADD KEY `playerID` (`playerID`);
@@ -756,6 +758,50 @@ ALTER TABLE `winnerstrnteam`
   ADD UNIQUE KEY `TournID` (`TournID`,`TeamID`),
   ADD KEY `TeamID` (`TeamID`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `format`
+--
+ALTER TABLE `format`
+  MODIFY `FID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `game`
+--
+ALTER TABLE `game`
+  MODIFY `GID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=441;
+--
+-- AUTO_INCREMENT for table `league`
+--
+ALTER TABLE `league`
+  MODIFY `LID` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=200;
+--
+-- AUTO_INCREMENT for table `matchhist000001`
+--
+ALTER TABLE `matchhist000001`
+  MODIFY `MID` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `matchhist000002`
+--
+ALTER TABLE `matchhist000002`
+  MODIFY `MID` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `team`
+--
+ALTER TABLE `team`
+  MODIFY `TmID` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tournament`
+--
+ALTER TABLE `tournament`
+  MODIFY `TID` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=152;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `UID` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1000000000;
 --
 -- Constraints for dumped tables
 --
@@ -830,85 +876,31 @@ ALTER TABLE `matchhist000001`
   ADD CONSTRAINT `matchhist000001_ibfk_3` FOREIGN KEY (`TournID`) REFERENCES `tournament` (`TID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `matchhist000440`
+-- Constraints for table `matchhist000002`
 --
-ALTER TABLE `matchhist000440`
-  ADD CONSTRAINT `matchhist000440_ibfk_1` FOREIGN KEY (`TournID`) REFERENCES `tournament` (`TID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_10` FOREIGN KEY (`t2p3`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_11` FOREIGN KEY (`t2p4`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_12` FOREIGN KEY (`t2p5`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_13` FOREIGN KEY (`t2p6`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_14` FOREIGN KEY (`team1`) REFERENCES `team` (`TmID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_15` FOREIGN KEY (`team2`) REFERENCES `team` (`TmID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_2` FOREIGN KEY (`t1p1`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_3` FOREIGN KEY (`t1p2`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_4` FOREIGN KEY (`t1p3`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_5` FOREIGN KEY (`t1p4`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_6` FOREIGN KEY (`t1p5`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_7` FOREIGN KEY (`t1p6`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_8` FOREIGN KEY (`t2p1`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchhist000440_ibfk_9` FOREIGN KEY (`t2p2`) REFERENCES `user` (`UID`) ON UPDATE CASCADE;
+ALTER TABLE `matchhist000002`
+  ADD CONSTRAINT `matchhist000002_ibfk_1` FOREIGN KEY (`TournID`) REFERENCES `tournament` (`TID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_10` FOREIGN KEY (`t2p3`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_11` FOREIGN KEY (`t2p4`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_12` FOREIGN KEY (`t2p5`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_13` FOREIGN KEY (`t2p6`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_14` FOREIGN KEY (`team1`) REFERENCES `team` (`TmID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_15` FOREIGN KEY (`team2`) REFERENCES `team` (`TmID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_2` FOREIGN KEY (`t1p1`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_3` FOREIGN KEY (`t1p2`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_4` FOREIGN KEY (`t1p3`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_5` FOREIGN KEY (`t1p4`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_6` FOREIGN KEY (`t1p5`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_7` FOREIGN KEY (`t1p6`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_8` FOREIGN KEY (`t2p1`) REFERENCES `user` (`UID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchhist000002_ibfk_9` FOREIGN KEY (`t2p2`) REFERENCES `user` (`UID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `matchscores000440`
+-- Constraints for table `matchscores000002`
 --
-ALTER TABLE `matchscores000440`
-  ADD CONSTRAINT `matchscores000440_ibfk_1` FOREIGN KEY (`MatchID`) REFERENCES `matchhist000440` (`MID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `matchscores000440_ibfk_2` FOREIGN KEY (`playerID`) REFERENCES `user` (`UID`) ON UPDATE CASCADE;
-
---
--- Constraints for table `passwords`
---
-ALTER TABLE `passwords`
-  ADD CONSTRAINT `passwords_ibfk_1` FOREIGN KEY (`UIDno`) REFERENCES `user` (`UID`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `playsfor`
---
-ALTER TABLE `playsfor`
-  ADD CONSTRAINT `playsfor_ibfk_1` FOREIGN KEY (`PlayerID`) REFERENCES `user` (`UID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `playsfor_ibfk_2` FOREIGN KEY (`TeamID`) REFERENCES `team` (`TmID`);
-
---
--- Constraints for table `team`
---
-ALTER TABLE `team`
-  ADD CONSTRAINT `team_ibfk_1` FOREIGN KEY (`OwnerID`) REFERENCES `user` (`UID`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `tournament`
---
-ALTER TABLE `tournament`
-  ADD CONSTRAINT `tournament_ibfk_1` FOREIGN KEY (`leagueID`) REFERENCES `league` (`LID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `tournament_ibfk_2` FOREIGN KEY (`FormatID`) REFERENCES `format` (`FID`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `winnerslgplyr`
---
-ALTER TABLE `winnerslgplyr`
-  ADD CONSTRAINT `winnerslgplyr_ibfk_1` FOREIGN KEY (`LeagueID`) REFERENCES `league` (`LID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `winnerslgplyr_ibfk_2` FOREIGN KEY (`playerID`) REFERENCES `user` (`UID`) ON UPDATE CASCADE;
-
---
--- Constraints for table `winnerslgteam`
---
-ALTER TABLE `winnerslgteam`
-  ADD CONSTRAINT `winnerslgteam_ibfk_1` FOREIGN KEY (`LeagueID`) REFERENCES `league` (`LID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `winnerslgteam_ibfk_2` FOREIGN KEY (`TeamID`) REFERENCES `team` (`TmID`) ON UPDATE CASCADE;
-
---
--- Constraints for table `winnerstrnplyr`
---
-ALTER TABLE `winnerstrnplyr`
-  ADD CONSTRAINT `winnerstrnplyr_ibfk_1` FOREIGN KEY (`TournID`) REFERENCES `tournament` (`TID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `winnerstrnplyr_ibfk_2` FOREIGN KEY (`player`) REFERENCES `user` (`UID`) ON UPDATE CASCADE;
-
---
--- Constraints for table `winnerstrnteam`
---
-ALTER TABLE `winnerstrnteam`
-  ADD CONSTRAINT `winnerstrnteam_ibfk_1` FOREIGN KEY (`TournID`) REFERENCES `tournament` (`TID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `winnerstrnteam_ibfk_2` FOREIGN KEY (`TeamID`) REFERENCES `team` (`TmID`) ON UPDATE CASCADE;
+ALTER TABLE `matchscores000002`
+  ADD CONSTRAINT `matchscores000002_ibfk_1` FOREIGN KEY (`MatchID`) REFERENCES `matchhist000002` (`MID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `matchscores000002_ibfk_2` FOREIGN KEY (`playerID`) REFERENCES `user` (`UID`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
