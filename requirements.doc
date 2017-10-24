@@ -5,6 +5,7 @@ Choose a Database Language and Server Technology
 Build simple Web API to hold users & games?
 
 The database should have a login page that can distinguish between advertisers, developers, league owners and operators (Spectators can choose whether to log in or not).
+
 The database should provide encryption for each and every password. 
 
 1.) Users should be able to create a player.
@@ -14,6 +15,14 @@ The database should provide encryption for each and every password.
 5.) Interface should be intuitive and easy to use. (Based on modern design principles)
 6.) League owners should be able to designate how many matches to be played and the sequencing of the matches.
 7.) An infrastructure should be provided for advertisers.
+8.) The system should be written in Java and JavaFX.
+9.) System should not be vurnerable to cross-site scripting and SQL injection.
+=======
+The ability to store statistics post game/tournament
+
+Bug report ability
+
+League owners should be able to designate how many matches to be played and the sequencing of the matches.
 
 Nonfunctional: 
 
@@ -23,8 +32,8 @@ Simple user interface that should be as user friendly as possible
 
 Tools for spectators to view player info/ swap between players
 
-1.) The system should be written in Java and JavaFX.
-2.) System should not be vurnerable to cross-site scripting and SQL injection.
+=======
+Updated data should be accessible within at least two seconds
 
 
 What it's NOT:
