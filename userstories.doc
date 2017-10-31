@@ -1,4 +1,55 @@
 User Story:
+As an admin,
+I want to create new users
+from within a functional UI.
+
+Acceptance Criteria:
+The admin can create a new user within the web interface.
+The users's data persists because it is stored within a database.
+
+
+User Story:
+As an admin,
+I want to create teams
+from within a functional UI.
+
+Acceptance Criteria:
+The admin can create a new team within the web interface.
+The team's data persists because it is stored within a database.
+
+
+User Story:
+As an admin,
+I want to create leagues
+from within a functional UI.
+
+Acceptance Criteria:
+The admin can create a new league within the web interface.
+The leagues's data persists because it is stored within a database.
+
+
+User Story:
+As a user, 
+I would like a functional UI,
+So that I can manage things efficiently.
+
+Acceptance Criteria:
+Functional and clear UI.
+Allows user to do and see what they need to.
+
+
+User Story:
+As an ordinary internet user,
+I want to access the website from anywhere,
+So that I can experience something new.
+
+Acceptance Criteria:
+The ordinary internet user can get to the system.
+The ordinary internet user can be a spectator.
+The ordinary internet user can see stats from each player.
+
+
+User Story:
 As a spectator,
 I want to view matches,
 So that I can keep track of my favorite players.
@@ -43,17 +94,6 @@ The league owner can create new tournaments.
 
 
 User Story:
-As an ordinary internet user,
-I want to access the website from anywhere,
-So that I can experience something new.
-
-Acceptance Criteria:
-The ordinary internet user can get to the system.
-The ordinary internet user can be a spectator.
-The ordinary internet user can see stats from each player.
-
-
-User Story:
 As an outside viewer,
 I would like to be able to sign up as a spectator or an admin,
 So that I can manage or view games.
@@ -61,16 +101,6 @@ So that I can manage or view games.
 Acceptance Criteria:
 A Sign Up form that populates users.
 Error checking on the form to catch SQL-inject or otherwise
-
-
-User Story:
-As a user, 
-I would like a functional UI,
-So that I can manage things efficiently.
-
-Acceptance Criteria:
-Functional and clear UI.
-Allows user to do and see what they need to.
 
 
 User Story:
