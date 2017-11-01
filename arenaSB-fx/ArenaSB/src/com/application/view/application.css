@@ -1,13 +1,37 @@
 html,body {
   color: hsl(0, 0%, 95%) !important;
   background: hsl(0, 0%, 15%) !important;
-  /*font-family: 'Saira Semi Condensed', sans-serif !important;*/
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
 }
 
 h1.title {
   border-bottom: 1px solid hsl(0, 0%, 95%);
+  padding: 10px;
 }
 
 p.description {
-  font-size: 12px;
+  font-size: 15px;
+}
+
+.nav {
+	width: 100%;
+	text-align: center;
+	margin-top: 50px;
+}
+
+a.nav-btn {
+  border: 1px solid hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 95%);
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none !important;
+  transition: all .2s ease;
+}
+a.nav-btn:hover {
+  background: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 15%);
 }

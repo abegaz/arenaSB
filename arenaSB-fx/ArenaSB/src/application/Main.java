@@ -21,7 +21,7 @@ public class Main extends Application {
 		VBox root = new VBox();
 		root.getChildren().addAll(browser);
 		
-		Scene scene = new Scene(root, 600, 800);
+		Scene scene = new Scene(root, 600, 600);
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
