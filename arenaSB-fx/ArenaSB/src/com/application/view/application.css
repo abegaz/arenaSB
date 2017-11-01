@@ -1,0 +1,13 @@
+html,body {
+  color: hsl(0, 0%, 95%) !important;
+  background: hsl(0, 0%, 15%) !important;
+  /*font-family: 'Saira Semi Condensed', sans-serif !important;*/
+}
+
+h1.title {
+  border-bottom: 1px solid hsl(0, 0%, 95%);
+}
+
+p.description {
+  font-size: 12px;
+}
