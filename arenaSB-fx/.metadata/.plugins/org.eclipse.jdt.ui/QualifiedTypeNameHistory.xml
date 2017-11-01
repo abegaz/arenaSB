@@ -4,4 +4,6 @@
 <fullyQualifiedTypeName name="javafx.scene.web.WebEngine"/>
 <fullyQualifiedTypeName name="javafx.scene.web.WebView"/>
 <fullyQualifiedTypeName name="javafx.fxml.FXML"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.VBox"/>
 </qualifiedTypeNameHistroy>

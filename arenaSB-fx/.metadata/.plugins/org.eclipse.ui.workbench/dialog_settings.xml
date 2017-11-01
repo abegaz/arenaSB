@@ -4,6 +4,11 @@
 		<item value="411" key="DIALOG_X_ORIGIN"/>
 		<item value="94" key="DIALOG_Y_ORIGIN"/>
 	</section>
+	<section name="EditorSelectionDialog">
+		<item value="true" key="EditorSelectionDialog.STORE_ID_INTERNAL_EXTERNAL"/>
+		<item value=".css" key="EditorSelectionDialog.STORE_ID_FILE_EXTENSION"/>
+		<item value="Sublime Text" key="EditorSelectionDialog.STORE_ID_DESCR"/>
+	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item value="-1" key="dialogHeight"/>
 		<item value="-1" key="dialogWidth"/>
@@ -17,9 +22,10 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.fx.ide.jdt.ui.newhtmltemplate" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.wst.html.ui.internal.wizard.NewHTMLWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.eclipse.fx.ide"/>
+			<item value="org.eclipse.wst.web.ui"/>
 		</list>
 	</section>
 	<section name="ImportExportAction">
