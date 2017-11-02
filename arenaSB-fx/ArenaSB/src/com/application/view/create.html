@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ArenaSB</title>
 
 <!-- Import Stylesheet -->
 <link rel="stylesheet" href="application.css">
@@ -15,31 +15,43 @@
 
 </head>
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <h1 class="title text-center">ArenaSB</h1>
     <div class="nav">
       <a href="index.html" class="nav-btn">Home</a>
     </div>
-    <div class="below-header">
-      <h2 class="page-title">Create New Items:</h2>
-      <div class="forms-wrap">
-      	<div class="form">
-      		<p class="form-title">Create User:</p>
-      		<form action="">
-      			<input type="email" name="email" placeholder="Email"/>
-      			<input type="password" name="password" placeholder="Password"/>
-      		</form>
-      	</div>
-      	<div class="form">
-      		<p class="form-title">Create Team:</p>
-      	</div>
-      	<div class="form">
-      		<p class="form-title">Create Tournament:</p>
-      	</div>
-      	<div class="form">
-      		<p class="form-title">Create League:</p>
-      	</div>
-      </div>
+    <h2 class="page-title">Create New:</h2>
+    <div class="forms-wrap">
+    	<div class="form">
+    		<p class="form-title">Create User:</p>
+    		<form action="">
+    			<input type="email" name="email" placeholder="Email"/>
+    			<input type="password" name="password" placeholder="Password"/>
+    			<input type="password" name="password-confirmation" placeholder="Confirm Password" />
+    			<input type="submit" name="submit-user" value="Create User"/>
+    		</form>
+    	</div>
+    	<div class="form">
+    		<p class="form-title">Create Team:</p>
+    		<form action="">
+    			<input type="text" name="team-name" placeholder="Team Name"/>
+    			<input type="submit" name="submit-team" value="Create Team"/>
+    		</form>
+    	</div>
+    	<div class="form">
+    		<p class="form-title">Create Tournament:</p>
+    		<form action="">
+    			<input type="text" name="tournament-name" placeholder="Tournament Name"/>
+    			<input type="submit" name="submit-tournament" value="Create Tournament"/>
+    		</form>
+    	</div>
+    	<div class="form">
+    		<p class="form-title">Create League:</p>
+    		<form action="">
+    			<input type="text" name="league-name" placeholder="League Name"/>
+    			<input type="submit" name="submit-league" value="Create League"/>
+    		</form>
+    	</div>
     </div>
   </div>
 </body>

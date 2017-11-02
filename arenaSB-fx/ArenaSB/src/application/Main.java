@@ -15,13 +15,13 @@ public class Main extends Application {
 		WebView browser = new WebView();
 		WebEngine engine = browser.getEngine();
 		
-		URL index = getClass().getResource("../com/application/view/index.html");
+		URL index = getClass().getResource("/com/application/view/index.html");
 		engine.load(index.toString());
 		
 		VBox root = new VBox();
 		root.getChildren().addAll(browser);
 		
-		Scene scene = new Scene(root, 1000, 600);
+		Scene scene = new Scene(root, 1200, 600);
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
