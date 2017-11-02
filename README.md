@@ -5,6 +5,4 @@ Product Owner: Luke Brady
 
 Scrum Master: Dane Carpenter
 
-website: https://arena-phoenix.herokuapp.com/
-
 trello: https://trello.com/b/EVUrUNdv/arenasb
