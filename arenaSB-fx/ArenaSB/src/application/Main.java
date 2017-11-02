@@ -35,7 +35,6 @@ public class Main extends Application {
 		
 		primaryStage.show();
 		
-		
 		// engine.executeScript(script) // <--- Execute javascript from JavaFX code
 		
 		// Creates a JSObject, and can execute functions in the JavaFX Code
@@ -57,3 +56,4 @@ public class Main extends Application {
 		}
 	}
 }
+
