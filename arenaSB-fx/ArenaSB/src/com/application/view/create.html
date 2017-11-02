@@ -24,7 +24,7 @@
     <div class="forms-wrap">
     	<div class="form">
     		<p class="form-title">Create User:</p>
-    		<form action="">
+    		<form onsubmit="app.submitUser()">
     			<input type="email" name="email" placeholder="Email"/>
     			<input type="text" name="user-nickname" placeholder="Nickname" />
     			<input type="password" name="password" placeholder="Password"/>
@@ -34,21 +34,21 @@
     	</div>
     	<div class="form">
     		<p class="form-title">Create Team:</p>
-    		<form action="">
+    		<form>
     			<input type="text" name="team-name" placeholder="Team Name"/>
     			<input type="submit" name="submit-team" value="Create Team"/>
     		</form>
     	</div>
     	<div class="form">
     		<p class="form-title">Create Tournament:</p>
-    		<form action="">
+    		<form>
     			<input type="text" name="tournament-name" placeholder="Tournament Name"/>
     			<input type="submit" name="submit-tournament" value="Create Tournament"/>
     		</form>
     	</div>
     	<div class="form">
     		<p class="form-title">Create League:</p>
-    		<form action="">
+    		<form>
     			<input type="text" name="league-name" placeholder="League Name"/>
     			<input type="submit" name="submit-league" value="Create League"/>
     		</form>
