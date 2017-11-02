@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2017 at 07:41 PM
+-- Generation Time: Nov 02, 2017 at 07:21 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `arenadb2`
+-- Database: `arenadb`
 --
 
 -- --------------------------------------------------------
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `format` (
 --
 
 INSERT INTO `format` (`FID`, `FName`, `Fdesc`) VALUES
-(1, 'Single Elimination', 'Contestants are out of the tournament when they lose a series.');
+(1, 'Single Elimination', 'Contestants are out of the tournament when they lose a series. Format x.y: x is the round, y is the match.');
 
 -- --------------------------------------------------------
 
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `game` (
   `Name` varchar(50) NOT NULL,
   `TeamCount` int(11) DEFAULT NULL,
   `TeamSize` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=441 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `game`
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `league` (
   `NAME` varchar(50) NOT NULL,
   `lgLogo` varchar(50) DEFAULT NULL,
   `lgOwnerID` int(9) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `league`
@@ -255,6 +255,7 @@ CREATE TABLE IF NOT EXISTS `matchhist000001` (
   `matchDate` date NOT NULL,
   `winnerPlayer` char(3) DEFAULT NULL,
   `TournID` int(9) DEFAULT NULL,
+  `roundInfo` varchar(6) DEFAULT NULL,
   `replay` varchar(100) DEFAULT NULL,
   `whiteP` int(9) DEFAULT NULL,
   `blackP` int(9) DEFAULT NULL,
@@ -268,8 +269,8 @@ CREATE TABLE IF NOT EXISTS `matchhist000001` (
 -- Dumping data for table `matchhist000001`
 --
 
-INSERT INTO `matchhist000001` (`MID`, `matchDate`, `winnerPlayer`, `TournID`, `replay`, `whiteP`, `blackP`, `whtScore`, `whtSecsLeft`, `blkScore`, `blkSecsLeft`) VALUES
-(1, '2016-05-12', 'blk', NULL, 'videolink', 0, 14, 12, 1230, 17, 3);
+INSERT INTO `matchhist000001` (`MID`, `matchDate`, `winnerPlayer`, `TournID`, `roundInfo`, `replay`, `whiteP`, `blackP`, `whtScore`, `whtSecsLeft`, `blkScore`, `blkSecsLeft`) VALUES
+(1, '2016-05-12', 'blk', NULL, NULL, 'videolink', 0, 14, 12, 1230, 17, 3);
 
 -- --------------------------------------------------------
 
@@ -282,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `matchhist000002` (
   `matchDate` date NOT NULL,
   `winnerTeam` int(11) DEFAULT NULL,
   `TournID` int(9) DEFAULT NULL,
-  `roundInfo` char(6) DEFAULT NULL,
+  `roundInfo` varchar(6) DEFAULT NULL,
   `replay` varchar(100) DEFAULT NULL,
   `Version` date DEFAULT NULL,
   `team1` int(9) DEFAULT NULL,
@@ -306,8 +307,8 @@ CREATE TABLE IF NOT EXISTS `matchhist000002` (
 --
 
 INSERT INTO `matchhist000002` (`MID`, `matchDate`, `winnerTeam`, `TournID`, `roundInfo`, `replay`, `Version`, `team1`, `t1p1`, `t1p2`, `t1p3`, `t1p4`, `t1p5`, `t1p6`, `team2`, `t2p1`, `t2p2`, `t2p3`, `t2p4`, `t2p5`, `t2p6`) VALUES
-(1, '2017-09-30', 1, 1, NULL, 'videolink', '2017-01-16', 1, 0, 7, 8, 9, 10, 11, 0, 12, 13, 2, 4, 5, 6),
-(2, '2018-09-30', NULL, 2, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, '2017-09-30', 1, 1, 1.1, 'videolink', '2017-01-16', 1, 0, 7, 8, 9, 10, 11, 0, 12, 13, 2, 4, 5, 6),
+(2, '2018-09-30', NULL, 1.1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -419,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `team` (
   `LogoLocation` varchar(50) DEFAULT NULL,
   `Name` varchar(30) NOT NULL,
   `OwnerID` int(9) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `team`
@@ -443,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `tournament` (
   `TrnEnd` date DEFAULT NULL,
   `leagueID` int(9) DEFAULT NULL,
   `FormatID` char(6) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tournament`
@@ -466,7 +467,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Nickname` varchar(30) NOT NULL DEFAULT 'NewUser',
   `DateJoined` date DEFAULT NULL,
   `isOp` int(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=1000000001 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
