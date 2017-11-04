@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
@@ -10,51 +11,52 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="432.0" prefWidth="444.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="application.SignUpController">
+<AnchorPane prefHeight="355.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpController">
    <children>
-      <AnchorPane layoutX="-112.0" layoutY="-107.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label fx:id="label" alignment="CENTER" layoutX="74.0" layoutY="23.0" text="ArenaSB Sign Up" textAlignment="CENTER" textFill="#d02222">
-         <font>
-            <Font name="Algerian" size="36.0" />
-         </font>
-      </Label>
-      <Text fontSmoothingType="LCD" layoutX="144.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter your email address">
-         <font>
-            <Font name="Cambria" size="13.0" />
-         </font>
-      </Text>
-      <TextField fx:id="User" layoutX="151.0" layoutY="114.0" promptText="jsmith123@gmail.com" />
-      <Text layoutX="176.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a username">
-         <font>
-            <Font name="Cambria" size="13.0" />
-         </font>
-      </Text>
-      <TextField fx:id="password" layoutX="152.0" layoutY="191.0" promptText="jsmiththeballer" />
-      <Text layoutX="176.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a password">
-         <font>
-            <Font name="Cambria" size="13.0" />
-         </font>
-      </Text>
-      <PasswordField fx:id="password" layoutX="153.0" layoutY="267.0" promptText="password123" />
-      <Button fx:id="SignUpButton" layoutX="207.0" layoutY="312.0" mnemonicParsing="false" text="Sign Up" textFill="#2212d0">
-         <font>
-            <Font name="Cambria" size="13.0" />
-         </font>
-      </Button>
-      <TextArea layoutX="311.0" layoutY="229.0" prefHeight="148.0" prefWidth="133.0" text="Note: Password &#10;must be at least &#10;8 characters long &#10;containg a special&#10; character, number&#10; or an uppercase&#10; letter.&#10;">
-         <font>
-            <Font name="Cambria" size="13.0" />
-         </font>
-      </TextArea>
-      <HBox layoutX="1.0" layoutY="390.0" prefHeight="40.0" prefWidth="467.0">
+      <AnchorPane layoutX="6.0" layoutY="8.0" prefHeight="405.0" prefWidth="576.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
          <children>
-            <Text fill="#dd1d1d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Arena SB">
+            <Label alignment="CENTER" layoutX="134.0" layoutY="38.0" text="ArenaSB Sign Up" textFill="#cd1c1c">
                <font>
-                  <Font name="Cambria Bold" size="10.0" />
+                  <Font name="Algerian" size="36.0" />
+               </font>
+            </Label>
+            <Text layoutX="202.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter your email address">
+               <font>
+                  <Font name="Cambria" size="13.0" />
                </font>
             </Text>
+            <TextField fx:id="email" layoutX="216.0" layoutY="135.0" promptText="jsmith123@gmail.com" />
+            <Text layoutX="239.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a username">
+               <font>
+                  <Font name="Cambria" size="13.0" />
+               </font>
+            </Text>
+            <TextField fx:id="username" layoutX="216.0" layoutY="206.0" promptText="jsmiththeballer" />
+            <Text layoutX="239.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a password">
+               <font>
+                  <Font name="Cambria" size="13.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="password" layoutX="216.0" layoutY="270.0" promptText="password123" />
+            <TextArea layoutX="432.0" layoutY="187.0" prefHeight="141.0" prefWidth="150.0" text="Note: Password &#10;must be at least 8 &#10;characters long &#10;containg a special&#10;character, a number&#10;or an uppercase&#10; letter" AnchorPane.topAnchor="187.0">
+               <font>
+                  <Font name="Cambria" size="12.0" />
+               </font>
+            </TextArea>
+            <Button fx:id="SignUp" layoutX="260.0" layoutY="318.0" mnemonicParsing="false" text="Sign Up" textFill="#4617d2">
+               <font>
+                  <Font name="Cambria" size="13.0" />
+               </font>
+            </Button>
+            <HBox layoutX="-2.0" layoutY="379.0" />
+            <HBox layoutX="-1.0" layoutY="9.0" prefHeight="27.0" prefWidth="598.0" />
+            <Hyperlink fx:id="LogIn" layoutX="34.0" layoutY="319.0" text="Click here to go back to login page">
+               <font>
+                  <Font name="Cambria" size="13.0" />
+               </font>
+            </Hyperlink>
          </children>
-      </HBox>
+      </AnchorPane>
    </children>
 </AnchorPane>
+
