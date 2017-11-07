@@ -1,6 +1,7 @@
 This is for copy/pasting database commands for different requests from the server.
 
 [Title]
+
 [Description of function]
 
 [Command]
@@ -15,4 +16,11 @@ BEGIN;
 INSERT INTO user (Username, Email, DateJoined) VALUES('nameEntry', 'emailEntry', NOW());
 INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), 'passwordEntry');
 COMMIT;
+__________________________________
+
+Verify login
+User enters a username and password. The server looks in the database to see if the password is correct. It must look at
+the User table to retrieve the user's ID, then get the password to present to the server so it can compare.\
+
+SELECT encrypted FROM passwords as p, user as u WHERE u.Username LIKE 'userEntry' AND p.UIDno = u.UID;
 __________________________________
