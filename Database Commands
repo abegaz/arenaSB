@@ -22,5 +22,5 @@ Verify login
 User enters a username and password. The server looks in the database to see if the password is correct. It must look at
 the User table to retrieve the user's ID, then get the password to present to the server so it can compare.\
 
-SELECT encrypted FROM passwords as p, user as u WHERE u.Username LIKE 'userEntry' AND p.UIDno = u.UID;
+SELECT encrypted FROM passwords as p, user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID;
 __________________________________
