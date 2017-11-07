@@ -1,0 +1,18 @@
+This is for copy/pasting database commands for different requests from the server.
+
+[Title]
+[Description of function]
+
+[Command]
+__________________________________
+
+Create user
+Takes in a username, email, and password. The webpage handles password requirements such as length. If the username or email
+has already been taken, the database will return an error that the server will need to handle, and tell the client
+that the user needs to enter different information. Valid input is added to the user table.
+
+BEGIN;
+INSERT INTO user (Username, Email, DateJoined) VALUES('nameEntry', 'emailEntry', NOW());
+INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), 'passwordEntry');
+COMMIT;
+__________________________________
