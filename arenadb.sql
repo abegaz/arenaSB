@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2017 at 07:21 PM
+-- Generation Time: Nov 09, 2017 at 09:12 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -307,8 +307,8 @@ CREATE TABLE IF NOT EXISTS `matchhist000002` (
 --
 
 INSERT INTO `matchhist000002` (`MID`, `matchDate`, `winnerTeam`, `TournID`, `roundInfo`, `replay`, `Version`, `team1`, `t1p1`, `t1p2`, `t1p3`, `t1p4`, `t1p5`, `t1p6`, `team2`, `t2p1`, `t2p2`, `t2p3`, `t2p4`, `t2p5`, `t2p6`) VALUES
-(1, '2017-09-30', 1, 1, 1.1, 'videolink', '2017-01-16', 1, 0, 7, 8, 9, 10, 11, 0, 12, 13, 2, 4, 5, 6),
-(2, '2018-09-30', NULL, 1.1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, '2017-09-30', 1, 1, '1.1', 'videolink', '2017-01-16', 1, 0, 7, 8, 9, 10, 11, 0, 12, 13, 2, 4, 5, 6),
+(2, '2018-09-30', NULL, 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -720,6 +720,7 @@ ALTER TABLE `team`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`TID`),
+  ADD UNIQUE KEY `TrnName` (`TrnName`,`TrnStart`,`TrnEnd`,`FormatID`),
   ADD KEY `leagueID` (`leagueID`),
   ADD KEY `FormatID` (`FormatID`);
 
