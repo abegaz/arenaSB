@@ -1,6 +1,7 @@
 package application;
 	
 import java.net.URL;
+import java.sql.*;
 
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -15,7 +16,30 @@ import javafx.concurrent.Worker.State;
 
 public class Main extends Application {
 	
+	private static String DB_DRIVER = "com.mysql.jdbc.Driver";
+	private static String DB_URL = "67.205.191.64:3306";
+	
+	private static String DB_USER = "root";
+	private static String DB_PASS = "arenasb";
+	
 	public static void main(String[] args) {
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			System.out.println("Connecting...");
+			conn = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
+			
+		}catch(SQLException se) {
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		}catch(Exception e) {
+		      //Handle errors for Class.forName
+		      e.printStackTrace();
+		}
+		
+		
 		launch(args);
 	}
 	
