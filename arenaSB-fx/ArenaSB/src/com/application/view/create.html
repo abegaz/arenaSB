@@ -24,11 +24,11 @@
     <div class="forms-wrap">
     	<div class="form">
     		<p class="form-title">Create User:</p>
-    		<form onsubmit="app.submitUser()">
-    			<input type="email" name="email" placeholder="Email"/>
-    			<input type="text" name="user-nickname" placeholder="Nickname" />
-    			<input type="password" name="password" placeholder="Password"/>
-    			<input type="password" name="password-confirmation" placeholder="Confirm Password" />
+    		<form onsubmit="handleUser()">
+    			<input id="user-email" type="email" name="email" placeholder="Email"/>
+    			<input id="user-nick" type="text" name="user-nickname" placeholder="Nickname" />
+    			<input id="user-pass" type="password" name="password" placeholder="Password"/>
+    			<input id="user-pass-conf" type="password" name="password-confirmation" placeholder="Confirm Password" />
     			<input type="submit" name="submit-user" value="Create User"/>
     		</form>
     	</div>
@@ -55,5 +55,17 @@
     	</div>
     </div>
   </div>
+  
+<script>
+	function handleUser() {
+		var email = document.getElementById("user-email").value;
+		var nick = document.getElementById("user-nick").value;
+		var pass = document.getElementById("user-pass").value;
+		var passC = document.getElementById("user-pass-conf").value;
+		app.submitUser(email, nick, pass, passC);
+	}
+</script>
+  
+  
 </body>
 </html>
