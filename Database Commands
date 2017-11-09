@@ -24,3 +24,23 @@ the User table to retrieve the user's ID, then get the password to present to th
 
 SELECT encrypted FROM passwords as p, user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID;
 __________________________________
+
+Create team
+Client will submit the username and team name (we will handle images in later sprint). Gets the UID and adds info to
+the table. Returns an error if there is a duplicate team name.
+
+INSERT INTO team (Name, OwnerID) VALUES('tmNameEntry', (SELECT UID FROM user WHERE Username LIKE 'usersName'));
+__________________________________
+
+Create League
+Works the same as creating a team.
+
+INSERT INTO league (NAME, LgOwnerID) VALUES('lgNameEntry', (SELECT UID FROM user WHERE Username LIKE 'usersName'));
+__________________________________
+
+Create Tournament
+Client submits username. User must enter the tournament name and parent league and may enter a format and
+start and/or end dates. Error occurs with duplicate set of name, league, format, and dates. 
+
+INSERT INTO tournament (TrnName, leagueID, TrnStart, TrnEnd, FormatID) VALUES('TrnNameEntry', (SELECT LID FROM league WHERE NAME LIKE 'lgNameEntry'), 'stDateEntry', 'endDateEntry', (SELECT FID FROM format WHERE FName LIKE 'formNameEntry'));
+__________________________________
