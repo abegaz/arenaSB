@@ -9,4 +9,6 @@
 <fullyQualifiedTypeName name="netscape.javascript.JSObject"/>
 <fullyQualifiedTypeName name="javafx.beans.value.ObservableValue"/>
 <fullyQualifiedTypeName name="javafx.beans.value.ChangeListener"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.beans.Statement"/>
 </qualifiedTypeNameHistroy>
