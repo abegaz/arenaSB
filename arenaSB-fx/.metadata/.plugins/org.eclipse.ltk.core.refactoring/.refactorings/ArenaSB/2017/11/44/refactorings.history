@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;application.css&apos; to &apos;ArenaSB/src/com.application.view&apos;&#x0A;- Original project: &apos;ArenaSB&apos;&#x0A;- Destination element: &apos;ArenaSB/src/com.application.view&apos;&#x0A;- Original element: &apos;application.css&apos;&#x0A;- Update references to refactored element" description="Move file" destination="/src&lt;com.application.view" element1="src/application/application.css" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1509554224676" units="0" version="1.0"/>
-</session>
