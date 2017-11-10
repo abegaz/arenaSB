@@ -17,11 +17,15 @@
 					</div>
 					<div class="input-wrap">
 						<p>Please Create A Username </p>
-						<input id = "username" type="text" name="username" placeholder="jsmiththeballer">
+						<input id="username" type="text" name="username" placeholder="jsmiththeballer">
 					</div>
 					<div class="input-wrap">
 						<p>Please Create A Password</p>
-						<input id = "password" type="password" name="password" placeholder="password123">
+						<input id="password" type="password" name="password" placeholder="password123">
+					</div>
+					<div class="input-wrap">
+						<p>Password Confirmation</p>
+						<input id="password-conf" type="password" name="password" placeholder="password123">
 					</div>
 					<div class="input-wrap">
 						<p>*Note: The password must be at least eight characters <br> long including a special character, number or a letter.</p>
@@ -36,6 +40,7 @@
 				var email = document.getElementById("email").value;
 				var nick = document.getElementById("username").value;
 				var pass = document.getElementById("password").value;
+				var passC = document.getElementById("password-conf").value;
 				app.submit(email, nick, pass, passC);
 			}
 		</script>
@@ -83,6 +88,7 @@
 			}
 			.form {
 				max-width: 25%;
+				min-width: 300px;
 				margin: 20px auto;
 			}
 			form {
@@ -97,7 +103,6 @@
 				outline: none;
 				border: none;
 				width: 100%;
-				margin: 20px;
 				border-bottom: 1px solid hsl(0, 0%, 5%);
 			}
 			input:first-child{
