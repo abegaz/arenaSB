@@ -1,69 +1,133 @@
+html,body {
+  color: hsl(0, 0%, 95%) !important;
+  background: hsl(0, 0%, 15%) !important;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+h1.title {
+  border-bottom: 1px solid hsl(0, 0%, 95%);
+  padding: 10px;
+}
+
+p.description {
+  font-size: 15px;
+  margin-top: 30px;
+}
+
+.nav {
+	width: 100%;
+	text-align: left;
+	margin: 30px 0px;
+}
+a.nav-btn {
+  border: 1px solid hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 95%);
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none !important;
+  transition: all .2s ease;
+}
+a.nav-btn:hover {
+  background: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 15%);
+}
+
+
+.forms-wrap {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.form {
+	max-width: 25%;
+	margin: 20px 0px;
+}
+
+form {
+	width: 100%;
+}
+
+p.form-title {
+	width: 100%;
+}
+
+input {
+	background: hsl(0, 0%, 20%);
+	padding: 10px 20px;
+	outline: none;
+	border: none;
+	width: 100%;
+	margin: 20px;
+	border-bottom: 1px solid hsl(0, 0%, 5%);
+}
+input:first-child{
+	border-radius: 5px 5px 0px 0px;
+}
+input:last-child {
+	border-radius: 0px 0px 5px 5px;
+	border-bottom: none;
+}
+input[type=submit] {
+	box-shadow: inset 0px 0px 0px 0px hsla(0, 0%, 95%, .2);
+	transition: all .2s ease;
+}
+input[type=submit]:hover {
+	box-shadow: inset 0px 50px 0px 0px hsla(0, 0%, 95%, .2);
+}
+
+
 <!DOCTYPE html>
 <html>
-<head>
+<head> <center>
 	<title>Arena sign up</title>
-	<style>
-body{
-	margin: 0;
-	padding: 0;
-	font-family: 'cambria';
-	background-color: #fff
-}
-.wrap{
-	width: 410px;
-	overflow: hidden;
-	margin: auto;
-	margin-top: 180px;
-	padding: 20px;
-	background: #fff;
-	border: 1px solid silver;
-	border-radius: 5px;
-}
-.wrap h1{
-	text-align: left;
-	margin-bottom: 3px;
-	color: #ff0000;
-	font-size: 18px;
-}
-.wrap h2{
-	text-align: center;
-	margin-bottom: 30px;
-	color:#ff0000;
-}
-.wrap input{
-	width: 400px;
-	height: 35px;
-	margin-bottom: 10px;
-	border-radius: 3px;
-	border:1px solid silver;
-	padding: 5px;
-}
-.wrap .btn-login{
-	align-self: center;
-	width: 70px;
-	height: 40px;
-	background-color: #808080;
-	color: #fff;
-	border-radius: 3px;
-	padding: 5px;
-	bottom: 0;
-	font-size: 18px;
-	cursor: pointer;
-}
-	</style>
+	<link rel="stylesheet" type="text/css" href="application.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
 </head>
 <body>
-	<div class="wrap">
-		<h2>Arena Sign Up</h2>
-		<h1>Please Enter Your Email Address </h1>
-		<input type="text" name="email" placeholder="jsmith123@email.com">
-		<h1>Please Create A Username </h1>
-		<input type="text" name="username" placeholder="jsmiththeballer">
-		<h1>Please Create A Password</h1>
-		<input type="password" name="password" placeholder="password123"> 
+	<div class="form">
+		    		<form onsubmit="handleUser()">
+	    <h1 class="title text-center">ArenaSB</h1> 
+	    <form onsubmit="handleUser()">
+
+		Please Enter Your Email Address 
+		<input id = "email" type="text" name="email" placeholder="jsmith123@email.com"> 
+
+		<br><br>
+		Please Create A Username 
+		<input id = "username" type="text" name="username" placeholder="jsmiththeballer">
+
+		<br><br>
+	     Please Create A Password
+		<input id = "password" type="password" name="password" placeholder="password123"> 
+		*Note: The password must be at least eight characters <br> long including a special character, number or a letter.
+
+		<br><br>
 		<input class="btn-login" type="submit" name="" value="Sign up">
-		<a href="./loginpage.html">Already have an account? Log in here.</a>
-		<br>
-</body>
-       *Note: The password must be at least eight characters <br> long including a special character, number or a letter. 
+
+		<br><br>
+		<a href="Loginpage.html">Already have an account? Log in here.</a> 
+
+  </div>
+
+	    <script>
+	     function handleUser() {
+		var email = document.getElementById("email").value;
+		var nick = document.getElementById("username").value;
+		var pass = document.getElementById("password").value;
+		app.submit(email, nick, pass, passC);
+	    }
+       </script>
+    </body> 
 </html>
