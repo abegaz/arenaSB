@@ -1,0 +1,2 @@
+INDEX VERSION 1.130+/Users/Conner/My Things/School/Software Engineering/arenaSB/arenaSB-fx/.metadata/.plugins/org.eclipse.jdt.core
+731417253.index
