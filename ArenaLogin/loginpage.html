@@ -1,69 +1,113 @@
 <!DOCTYPE html>
 <html>
+<center>
 <head>
-	<title>Arena login</title>
-		<style>
-body{
-	margin: 0;
-	padding: 0;
-	font-family: 'cambria';
-	background-color: hsl(0, 0%, 10%);
+<style>
+html,body {
+  color: hsl(0, 0%, 95%) !important;
+  background: hsl(0, 0%, 15%) !important;
+  height: 100%;
 }
-.wrap{
-	width: 410px;
-	overflow: hidden;
-	margin: auto;
-	margin-top: 180px;
-	padding: 20px;
-	background: hsl(0, 0%, 10%);
-	border: 1px solid silver;
-	border-radius: 5px;
+body {
+  min-height: 100%;
 }
-.wrap h1{
-	text-align: left;
-	margin-bottom: 3px;
-	color: hsl(0, 0%, 95%);
-	font-size: 18px;
-
-
-
+h1.title {
+  border-bottom: 1px solid hsl(0, 0%, 95%);
+  padding: 10px;
 }
-.wrap h2{
+.form h2{
 	text-align: center;
 	margin-bottom: 30px;
 	color:hsl(0, 0%, 95%);
 }
-.wrap input{
+p.description {
+  font-size: 15px;
+  margin-top: 30px;
+}
+.nav {
+	width: 100%;
+	text-align: left;
+	margin: 30px 0px;
+}
+a.nav-btn {
+  border: 1px solid hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 95%);
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none !important;
+  transition: all .2s ease;
+}
+a.nav-btn:hover {
+  background: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 15%);
+}
+.forms-wrap {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+}
+.form {
+	max-width: 25%;
+	margin: 10px;
+}
+form {
+	width: 100%;
+}
+p.form-title {
+	width: 100%;
+}
+input {
+	background: hsl(0, 0%, 20%);
+	padding: 10px 20px;
+	outline: none;
+	border: none;
 	width: 400px;
-	height: 35px;
-	margin-bottom: 10px;
-	border-radius: 3px;
-	border:1px solid silver;
-	padding: 5px;
-
+	margin: 20px;
+	border-bottom: 1px solid hsl(0, 0%, 5%);
 }
-.wrap .btn-login{
-	align-self: center;
-	width: 70px;
-	height: 40px;
-	background-color: hsl(0, 0%, 10%);
-	color: #fff;
-	border-radius: 3px;
-	padding: 5px;
-	bottom: 0;
-	font-size: 18px;
-	cursor: pointer;
+input:first-child{
+	border-radius: 5px 5px 0px 0px;
 }
-	</style>
+input:last-child {
+	border-radius: 0px 0px 5px 5px;
+	border-bottom: none;
+}
+input[type=submit] {
+	box-shadow: inset 0px 0px 0px 0px hsla(0, 0%, 95%, .2);
+	transition: all .2s ease;
+}
+input[type=submit]:hover {
+	box-shadow: inset 0px 50px 0px 0px hsla(0, 0%, 95%, .2);
+}
+</style>
+	<title>Arena login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<meta name=viewport content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div class="wrap">
+	<div class="form">
 		<h2>Arena Login</h2>
-		<h1>Enter Username or Email Address</h1>
-		<input type="text" name="email" placeholder="username3@email.com">
-		<h1>Enter your password</h1>
-		<input type="password" name="password" placeholder="password">
-		<input class="btn-login" type="submit" name="" value="Sign in">
-		<a href="index.html">Don't have an account? Sign up here.</a>
+		<form onsubmit="handleUser()">
+		<h2>Enter Username</h2>
+			<input id= "username" type="text" name="username" placeholder="username">
+		<h2>Enter your password</h2>
+			<input id = "password" type="password" name="password" placeholder="password">
+			<input action= "login.php" class="btn-login" type="submit" name="" value="Sign in">
+			<br><br>
+			<a href="index.html">Don't have an account? Sign up here.</a>
+		</form>
+		
+
+<script>
+	function handleUser() {
+		var email = document.getElementById("username").value;
+		var pass = document.getElementById("password").value;
+		app.submitUser(email, pass);
+	}
+</script>
+
 </body>
+</center>
 </html>
