@@ -29,7 +29,7 @@
 					</div>
 					<div class="input-wrap">
 						<p>*Note: The password must be at least eight characters <br> long including a special character, number or a letter.</p>
-						<input class="btn-login" type="submit" name="" value="Sign up">
+						<input class="btn-login" type="submit" name="signup" value="Sign up">
 					</div>
 					<a href="./loginpage.html">Already have an account? Log in here.</a>
 				</form>
@@ -41,7 +41,7 @@
 				var nick = document.getElementById("username").value;
 				var pass = document.getElementById("password").value;
 				var passC = document.getElementById("password-conf").value;
-				app.submit(email, nick, pass, passC);
+				app.submit(email, username, password, passC);
 			}
 		</script>
 		<style>
