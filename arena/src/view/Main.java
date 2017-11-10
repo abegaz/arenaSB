@@ -1,8 +1,9 @@
-package Arena;
+package view;
 	
 import java.net.URL;
 import java.sql.*;
 
+import controller.ArenaWebBridge;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -53,7 +54,7 @@ public class Main extends Application {
 		VBox root = new VBox();
 		root.getChildren().addAll(browser);
 		
-		Scene scene = new Scene(root, 1080, 720);
+		Scene scene = new Scene(root, 1080, 840);
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
@@ -65,13 +66,9 @@ public class Main extends Application {
 			public void changed(ObservableValue ov, State oldState, State newState) {
 				if (newState == State.SUCCEEDED) {
 					JSObject js = (JSObject) engine.executeScript("window"); 
-			        	js.setMember("app", new Bridge());
+			        	js.setMember("app", new ArenaWebBridge());
 		        }
 		    }
 		});
-	}
-	
-	public class Bridge {
-		
 	}
 }
