@@ -1,9 +1,9 @@
-package Arena;
+package view;
 	
 import java.net.URL;
 import java.sql.*;
 
-import Controller.ArenaWebBridge;
+import controller.ArenaWebBridge;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

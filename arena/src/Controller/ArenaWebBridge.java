@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;;

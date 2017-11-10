@@ -1,4 +1,4 @@
-package Arena;
+package view;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
