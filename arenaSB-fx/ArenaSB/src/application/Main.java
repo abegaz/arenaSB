@@ -52,7 +52,7 @@ public class Main extends Application {
 		VBox root = new VBox();
 		root.getChildren().addAll(browser);
 		
-		Scene scene = new Scene(root, 1200, 600);
+		Scene scene = new Scene(root, 1400, 600);
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
@@ -73,9 +73,22 @@ public class Main extends Application {
 	}
 	
 	public class Bridge {
+		// Handler functions for the html forms
 //		This function takes in data from a JS function located on Create.html
 		public void submitUser(String email, String nickname, String password, String passwordConfirmation) {
 			System.out.println("Email: "+email+"\nNickname: "+nickname+"\nPassword: "+password+"\nPassword Confirmation: "+passwordConfirmation);
+		}
+		
+		public void submitTeam(String name) {
+			System.out.println("Team Name: "+name);
+		}
+		
+		public void submitTournament(String t, String league) {
+			System.out.println("Tournament Name: "+t+"\nLeague Name: "+league);
+		}
+		
+		public void submitLeague(String leagueName) {
+			System.out.println("League Name: "+leagueName);
 		}
 	}
 }
