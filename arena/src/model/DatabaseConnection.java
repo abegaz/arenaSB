@@ -12,13 +12,10 @@ public class DatabaseConnection {
 	public String db_pass;
 	public Connection conn;
 	
-	DatabaseConnection(String db_url, String db_user, String db_pass) {
+	public DatabaseConnection(String db_url, String db_user, String db_pass) {
 		this.db_url = db_url;
 		this.db_user = db_user;
 		this.db_pass = db_pass;
-	}
-	
-	public void newConnection() {
 		Connection conn = null;
 		try {
 			Class.forName(DB_DRIVER);
@@ -34,6 +31,6 @@ public class DatabaseConnection {
 	}
 	
 	public void createUser(String email, String username, String password) {
-	
+		System.out.println("Username: " + username + "\nPassword: " + password);
 	}
 }
