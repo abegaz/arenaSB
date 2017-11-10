@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
 <?import javafx.scene.layout.AnchorPane?>
-	
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="Arena.ArenaMainController">
-	<!-- TODO Add Nodes -->
+<?import javafx.scene.web.WebView?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <WebView fx:id="webView" prefHeight="400.0" prefWidth="600.0" />
+   </children>
 </AnchorPane>
