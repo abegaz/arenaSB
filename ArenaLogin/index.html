@@ -52,7 +52,7 @@ a.nav-btn:hover {
 
 .form {
 	max-width: 25%;
-	margin: 20px 0px;
+	margin: 20px auto;
 }
 
 form {
@@ -228,7 +228,6 @@ form {
 p.form-title {
 	width: 100%;
 }
-
 input {
 	background: hsl(0, 0%, 20%);
 	padding: 10px 20px;
@@ -288,12 +287,12 @@ input[type=submit]:hover {
   </div>
 
 	    <script>
-	     function handleUser() {
-		var email = document.getElementById("email").value;
-		var nick = document.getElementById("username").value;
-		var pass = document.getElementById("password").value;
-		app.submit(email, nick, pass, passC);
-	    }
+	    	function handleUser() {
+					var email = document.getElementById("email").value;
+					var nick = document.getElementById("username").value;
+					var pass = document.getElementById("password").value;
+					app.submit(email, nick, pass, passC);
+				}
        </script>
     </body> 
 </html>
