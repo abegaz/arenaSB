@@ -17,7 +17,7 @@ import javafx.concurrent.Worker.State;
 public class Main extends Application {
 	
 	private static String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private static String DB_URL = "67.205.191.64:3306";
+	private static String DB_URL = "67.205.191.64";
 	
 	private static String DB_USER = "root";
 	private static String DB_PASS = "arenasb";
@@ -26,9 +26,8 @@ public class Main extends Application {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(DB_DRIVER);
 			
-			System.out.println("Connecting...");
 			conn = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
 			
 		}catch(SQLException se) {
