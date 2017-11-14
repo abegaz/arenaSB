@@ -5,16 +5,6 @@
 		<title>ArenaSB Log In</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<meta name=viewport content="width=device-width, initial-scale=1">
-
-		<script>
-        function validateForm() {
-        var x = document.forms["myForm"]["fname"].value;
-        if (x == "") {
-        alert("Incorrect username or password");
-        return false;
-       }
-    }
-</script>
 	</head>
 	<body>
 		<div class="container">
@@ -34,14 +24,28 @@
 			             <a href="./index.html">Don't have an account? Sign up here.</a>
 			         </form>
 			     </form>
-              
 			</div>
 		</div>
 		<script>
+			var serverURL = 'http://67.205.191.64/'
+
+			function validateForm() {
+				var x = document.forms["myForm"]["fname"].value;
+				if (x == "") {
+					alert("Incorrect username or password");
+					return false;
+				}	
+			}	
+			
+			function toCreate() {
+				window.location.replace(serverURL+'create.html');
+			}
+
 			function handleUser() {
 				var email = document.getElementById("username").value;
 				var pass = document.getElementById("password").value;
 				app.loginUser(username, pass);
+			}
 		</script>
 		<style>
 			html,body {

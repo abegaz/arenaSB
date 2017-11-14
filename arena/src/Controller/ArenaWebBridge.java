@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

@@ -1,6 +1,6 @@
 package view;
 
-import controller.ArenaWebBridge;
+import Controller.ArenaWebBridge;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
