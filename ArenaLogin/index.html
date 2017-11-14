@@ -24,10 +24,6 @@
 						<input id="password" type="password" name="password" placeholder="password123">
 					</div>
 					<div class="input-wrap">
-						<p>Password Confirmation</p>
-						<input id="password-conf" type="password" name="password" placeholder="password123">
-					</div>
-					<div class="input-wrap">
 						<p>*Note: The password must be at least eight characters <br> long including a special character, number or a letter.</p>
 						<input class="btn-login" type="submit" name="signup" value="Sign up">
 					</div>
@@ -40,8 +36,7 @@
 				var email = document.getElementById("email").value;
 				var user = document.getElementById("username").value;
 				var pass = document.getElementById("password").value;
-				var passC = document.getElementById("password-conf").value;
-				app.submitUser(email, user, pass, passC);
+				app.createUser(email, user, pass);
 			}
 		</script>
 		<style>
