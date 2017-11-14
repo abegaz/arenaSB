@@ -3,7 +3,6 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DatabaseConnection {
 	private static String DB_DRIVER = "com.mysql.jdbc.Driver";
@@ -30,7 +29,17 @@ public class DatabaseConnection {
 		this.conn = conn;
 	}
 	
-	public void createUser(String email, String username, String password) {
+	public void createUser(String username, String email, String password) {
+		String query = "BEGIN;\n" + 
+				"INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+ email +"', NOW());\n" + 
+				"INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+  password +"');\n" + 
+				"COMMIT;";
+		try {
+			conn.prepareStatement(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("Username: " + username + "\nPassword: " + password);
 	}
 }

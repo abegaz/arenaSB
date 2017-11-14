@@ -20,7 +20,7 @@ public class Main extends Application {
 		browser.setPrefHeight(1080.00);
 		WebEngine engine = browser.getEngine();
 		
-		String url = "http://67.205.191.64";
+		String url = "http://67.205.191.64/arenadb";
 		engine.load(url);
 		
 		VBox root = new VBox();

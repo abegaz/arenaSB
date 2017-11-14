@@ -10,8 +10,8 @@ public class ArenaWebBridge {
 	public ArenaWebBridge() {}
 	DatabaseConnection db = new DatabaseConnection("http://67.205.191.64","root", "arenasb");
 	
-	public void submitUser(String username, String password) {
+	public void createUser(String username, String email, String password) {
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
-		db.createUser("test@gmail.com", username, hashPassword);
+		db.createUser(username, email, hashPassword);
 	}
 }
