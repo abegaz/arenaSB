@@ -8,7 +8,7 @@ import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;;
 
 public class ArenaWebBridge {
 	public ArenaWebBridge() {}
-	DatabaseConnection db = new DatabaseConnection("http://67.205.191.64","root", "arenasb");
+	DatabaseConnection db = new DatabaseConnection("http://67.205.191.64/arenadb","root", "arenasb");
 	
 	public void createUser(String username, String email, String password) {
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);

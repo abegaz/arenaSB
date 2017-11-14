@@ -1,8 +1,12 @@
 package model;
 
+import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class DatabaseConnection {
 	private static String DB_DRIVER = "com.mysql.jdbc.Driver";
@@ -30,10 +34,24 @@ public class DatabaseConnection {
 	}
 	
 	public void createUser(String username, String email, String password) {
+		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
 		String query = "BEGIN;\n" + 
 				"INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+ email +"', NOW());\n" + 
-				"INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+  password +"');\n" + 
+				"INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+  hashPassword +"');\n" + 
 				"COMMIT;";
+		try {
+			conn.prepareStatement(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Username: " + username + "\nPassword: " + password);
+	}
+	
+	public void loginUser(String username, String password) {
+		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
+		String query = "SELECT encrypted FROM passwords as p," + 
+					   "user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID";
 		try {
 			conn.prepareStatement(query);
 		} catch (SQLException e) {
