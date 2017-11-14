@@ -14,6 +14,7 @@ body {
 h1.title {
   border-bottom: 1px solid hsl(0, 0%, 95%);
   padding: 10px;
+  width: 100%;
 }
 .form h2{
 	text-align: center;
@@ -49,11 +50,12 @@ a.nav-btn:hover {
 	align-items: flex-start;
 }
 .form {
-	max-width: 25%;
+	max-width: 350px;
 	margin: 10px;
 }
 form {
 	width: 100%;
+	text-align: left;
 }
 p.form-title {
 	width: 100%;
@@ -63,8 +65,8 @@ input {
 	padding: 10px 20px;
 	outline: none;
 	border: none;
-	width: 400px;
-	margin: 20px;
+	width: 100%;
+	margin: 20px 0px;
 	border-bottom: 1px solid hsl(0, 0%, 5%);
 }
 input:first-child{
@@ -76,14 +78,19 @@ input:last-child {
 }
 input[type=submit] {
 	box-shadow: inset 0px 0px 0px 0px hsla(0, 0%, 95%, .2);
+	margin: 20px 0px;
 	transition: all .2s ease;
 }
 input[type=submit]:hover {
 	box-shadow: inset 0px 50px 0px 0px hsla(0, 0%, 95%, .2);
 }
 select { 
-background: hsl(0, 0%, 20%);
-pading: 10px 20px;
+	background: hsl(0, 0%, 20%);
+	padding: 10px 20px;
+	width: 100%;
+	-webkit-appearance: none;
+    border: none;
+	margin: 10px 0px;
 }
 </style>
 	<title>Create Team, Tournament, or League</title>
@@ -95,21 +102,24 @@ pading: 10px 20px;
 		<h1 class="title text">ArenaSB</h1>
 		
 		<form onsubmit="handleCreate()">
-		Create new: 
-		<select id="classSelect" name="classSelect" type="text">
-		<option value="team" selected>Team</option>
-		<option value="tourn">Tournament</option>
-		<option value="league">League</option>
-		</select>
-		<br><br>
-		Enter a name:
-			<input id= "name" type="text" name="name" placeholder="name">
-			<br><br>
-			For tournaments, enter the parent league name
-			<input id= "parentLg" type="text" name="parentLg" placeholder="parent league">
-			<br><br>
-			<input action= "create.php" class="btn-create" type="submit" name="" value="Create">
-			<br><br>
+			<div class="form-group">
+					<p>Create new:</p>
+					<select id="classSelect" name="classSelect" type="text">
+						<option value="team" selected>Team</option>
+						<option value="tourn">Tournament</option>
+						<option value="league">League</option>
+					</select>
+			</div>
+			<div class="form-group">
+				<p>Enter a name:</p>
+				<input id= "name" type="text" name="name" placeholder="Name">
+			</div>
+			<div class="form-group">
+				<!-- Later on, the parent league option would be conditional -->
+				<p>For Tournaments, Enter the Parent League:</p>
+				<input id= "parentLg" type="text" name="parentLg" placeholder="Parent League">
+			</div>
+			<input class="btn-create" type="submit" name="" value="Create">
 		</form>
 		
 
