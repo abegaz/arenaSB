@@ -20,7 +20,8 @@
 			             <br><br>	
 			             <input class="btn-login" type="submit" name="" value="Sign in">
 						 <a href="./index.html">Don't have an account? Sign up here.</a>
-						 <button onclick="toCreate()">Redirect</button>
+						 <br>
+						 <a class="button" href="./create.html">To Create Forms</a>
 					</div>
 				</form>
 			</div>
@@ -35,10 +36,6 @@
 					return false;
 				}	
 			}	
-			
-			function toCreate() {
-				window.location.replace(serverURL+'create.html');
-			}
 
 			function handleUser() {
 				var email = document.getElementById("username").value;
@@ -130,12 +127,13 @@
 			.input-wrap {
 				margin: 20px 0px;
 			}
-			button {
-				margin: 30px 0px;
-				background: hsl(0, 0%, 20%);
+			a.button {
 				color: hsl(0, 0%, 95%);
-				border: none;
-				padding: 5px 20px;
+				background-color:hsl(0, 0%, 20%);
+				padding: 5px 10px;
+				margin: 30px;
+				display: block;
+				text-decoration: none;
 			}
 		</style>
 	</body>
