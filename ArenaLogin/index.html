@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+   <center>	
+	<head>
+		<title>ArenaSB Sign Up</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<meta name=viewport content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="container">
+			<div class="form">
+				<h1 class="title text-center">ArenaSB Sign Up</h1>
+				<form onsubmit="handleUser()">
+					<div class="input-wrap">
+						<p>Please Enter Your Email Address</p>
+						<form action="/index.php" method="post">
+						<input id = "email" type="text" name="email" required placeholder="jsmith123@email.com">
+					</div>
+					<div class="input-wrap">
+						<p>Please Create A Username </p>
+						<input id="username" type="text" name="username" required placeholder="jsmiththeballer">
+					</div>
+					<div class="input-wrap">
+						<p>Please Create A Password</p>
+						<input id="password" type="password" name="password" required placeholder="password123">
+					</div>
+					<div class="input-wrap">
+						<p>*Note: The password must be at least eight characters <br> long including a special character, number or a letter.</p>
+						<input class="btn-login" type="submit" name="signup" value="Sign up">
+					</div>
+					<a href="./loginpage.html">Already have an account? Log in here.</a>
+				</form>
+			</form>	
+		</div>
+	</div>
+		<script>
+			function handleUser() {
+				var email = document.getElementById("email").value;
+				var user = document.getElementById("username").value;
+				var pass = document.getElementById("password").value;
+				app.createUser(user, email, pass);
+			}
+		</script>
+		<style>
+			html,body {
+				color: hsl(0, 0%, 95%) !important;
+				background: hsl(0, 0%, 15%) !important;
+				height: 100%;
+			}
+			body {
+				min-height: 100%;
+			}
+			h1.title {
+				border-bottom: 1px solid hsl(0, 0%, 95%);
+				padding: 10px;
+			}
+			p.description {
+				font-size: 15px;
+				margin-top: 30px;
+			}
+			.nav {
+				width: 100%;
+				text-align: left;
+				margin: 30px 0px;
+			}
+			a.nav-btn {
+				border: 1px solid hsl(0, 0%, 95%);
+				color: hsl(0, 0%, 95%);
+				border-radius: 5px;
+				padding: 5px 10px;
+				text-decoration: none !important;
+				transition: all .2s ease;
+			}
+			a.nav-btn:hover {
+				background: hsl(0, 0%, 95%);
+				color: hsl(0, 0%, 15%);
+			}
+			.forms-wrap {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: flex-start;
+				flex-wrap: wrap;
+			}
+			.form {
+				max-width: 25%;
+				min-width: 300px;
+				margin: 20px auto;
+			}
+			form {
+				width: 100%;
+			}
+			p.form-title {
+				width: 100%;
+			}
+			input {
+				background: hsl(0, 0%, 20%);
+				padding: 10px 20px;
+				outline: none;
+				border: none;
+				width: 100%;
+				border-bottom: 1px solid hsl(0, 0%, 5%);
+			}
+			input:first-child{
+				border-radius: 5px 5px 0px 0px;
+			}
+			input:last-child {
+				border-radius: 0px 0px 5px 5px;
+				border-bottom: none;
+			}
+			input[type=submit] {
+				box-shadow: inset 0px 0px 0px 0px hsla(0, 0%, 95%, .2);
+				transition: all .2s ease;
+			}
+			input[type=submit]:hover {
+				box-shadow: inset 0px 50px 0px 0px hsla(0, 0%, 95%, .2);
+			}
+			.input-wrap {
+				margin: 20px 0px;
+			}
+		</style>
+	</body>
+    </center>   
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<center>
+	<head>
+		<title>ArenaSB Log In</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<meta name=viewport content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="container">
+			<div class="form">
+				<h1 class="title text-center">ArenaSB </h1>
+				<form onsubmit="handleUser()">
+					<div class="input-wrap">
+                         <p>Enter Username</p>
+                         <input id= "username" type="text" name="username" required placeholder="username">
+			             <br><br>
+		                 <p>Enter your password</p>
+			             <input id = "password" type="password" name="password" required placeholder="password">
+			             <br><br>	
+			             <input class="btn-login" type="submit" name="" value="Sign in">
+						 <a href="./index.html">Don't have an account? Sign up here.</a>
+						 <br>
+						 <a class="button" href="./create.html">To Create Forms</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script>
+			var serverURL = 'http://67.205.191.64/'
+
+			function validateForm() {
+				var x = document.forms["myForm"]["fname"].value;
+				if (x == "") {
+					alert("Incorrect username or password");
+					return false;
+				}	
+			}	
+
+			function handleUser() {
+				var email = document.getElementById("username").value;
+				var pass = document.getElementById("password").value;
+				document.cookie = 'user=' + username +  'maxAge=432000; path=/';
+				app.loginUser(username, pass);
+			}
+			function getCookie(name) {
+				var value = "; " + document.cookie;
+				var parts = value.split("; " + name + "=");
+				if (parts.length == 2) return parts.pop().split(";").shift();
+			}
+		</script>
+		<style>
+			html,body {
+				color: hsl(0, 0%, 95%) !important;
+				background: hsl(0, 0%, 15%) !important;
+				height: 100%;
+			}
+			body {
+				min-height: 100%;
+			}
+			h1.title {
+				border-bottom: 1px solid hsl(0, 0%, 95%);
+				padding: 10px;
+			}
+			p.description {
+				font-size: 15px;
+				margin-top: 30px;
+			}
+			.nav {
+				width: 100%;
+				text-align: left;
+				margin: 30px 0px;
+			}
+			a.nav-btn {
+				border: 1px solid hsl(0, 0%, 95%);
+				color: hsl(0, 0%, 95%);
+				border-radius: 5px;
+				padding: 5px 10px;
+				text-decoration: none !important;
+				transition: all .2s ease;
+			}
+			a.nav-btn:hover {
+				background: hsl(0, 0%, 95%);
+				color: hsl(0, 0%, 15%);
+			}
+			.forms-wrap {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: flex-start;
+				flex-wrap: wrap;
+			}
+			.form {
+				max-width: 25%;
+				min-width: 300px;
+				margin: 20px auto;
+			}
+			form {
+				width: 100%;
+			}
+			p.form-title {
+				width: 100%;
+			}
+			input {
+				background: hsl(0, 0%, 20%);
+				padding: 10px 20px;
+				outline: none;
+				border: none;
+				width: 100%;
+				border-bottom: 1px solid hsl(0, 0%, 5%);
+			}
+			input:first-child{
+				border-radius: 5px 5px 0px 0px;
+			}
+			input:last-child {
+				border-radius: 0px 0px 5px 5px;
+				border-bottom: none;
+			}
+			input[type=submit] {
+				box-shadow: inset 0px 0px 0px 0px hsla(0, 0%, 95%, .2);
+				transition: all .2s ease;
+			}
+			input[type=submit]:hover {
+				box-shadow: inset 0px 50px 0px 0px hsla(0, 0%, 95%, .2);
+			}
+			.input-wrap {
+				margin: 20px 0px;
+			}
+			a.button {
+				color: hsl(0, 0%, 95%);
+				background-color:hsl(0, 0%, 20%);
+				padding: 5px 10px;
+				margin: 30px;
+				display: block;
+				text-decoration: none;
+			}
+		</style>
+	</body>
+</center>
+</html>
