@@ -118,7 +118,19 @@ pading: 10px 20px;
 		var type = document.getElementById("classSelect").value;
 		var objName = document.getElementById("name").value;
 		var parentLg = document.getElementById("parentLg").value;
-		app.submitCreate(type, objName, parentLg);
+		switch(type){
+		
+		case "Team":
+			app.submitTeam(objName);
+			break;
+		case "Tournament":
+			app.submitTournament(objName, parentLg);
+			break;
+		case "League":
+			app.submitLeague(objName);
+			break;
+		}
+		
 	}
 </script>
 
