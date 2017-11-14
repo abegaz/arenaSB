@@ -11,19 +11,18 @@
 			<div class="form">
 				<h1 class="title text-center">ArenaSB </h1>
 				<form onsubmit="handleUser()">
-                 
 					<div class="input-wrap">
                          <p>Enter Username</p>
-                         <form action="/login.php" method="post">
                          <input id= "username" type="text" name="username" required placeholder="username">
 			             <br><br>
 		                 <p>Enter your password</p>
 			             <input id = "password" type="password" name="password" required placeholder="password">
 			             <br><br>	
-			             <input action= "login.php" class="btn-login" type="submit" name="" value="Sign in">
-			             <a href="./index.html">Don't have an account? Sign up here.</a>
-			         </form>
-			     </form>
+			             <input class="btn-login" type="submit" name="" value="Sign in">
+						 <a href="./index.html">Don't have an account? Sign up here.</a>
+						 <button onclick="toCreate()">Redirect</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<script>
@@ -130,6 +129,13 @@
 			}
 			.input-wrap {
 				margin: 20px 0px;
+			}
+			button {
+				margin: 30px 0px;
+				background: hsl(0, 0%, 20%);
+				color: hsl(0, 0%, 95%);
+				border: none;
+				padding: 5px 20px;
 			}
 		</style>
 	</body>
