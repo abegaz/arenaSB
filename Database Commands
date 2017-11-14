@@ -43,4 +43,7 @@ Client submits username. User must enter the tournament name and parent league a
 start and/or end dates. Error occurs with duplicate set of name, league, format, and dates. 
 
 INSERT INTO tournament (TrnName, leagueID, TrnStart, TrnEnd, FormatID) VALUES('TrnNameEntry', (SELECT LID FROM league WHERE NAME LIKE 'lgNameEntry'), 'stDateEntry', 'endDateEntry', (SELECT FID FROM format WHERE FName LIKE 'formNameEntry'));
+
+Minimum entry:
+INSERT INTO tournament (TrnName, leagueID) VALUES('TrnNameEntry', (SELECT LID FROM league WHERE NAME LIKE 'lgNameEntry'));
 __________________________________
