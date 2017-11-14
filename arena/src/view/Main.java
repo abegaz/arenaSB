@@ -13,12 +13,12 @@ import javafx.scene.web.WebView;
 import javafx.concurrent.Worker.State;
 
 public class Main extends Application {
-	
+	public WebEngine engine;
 	@Override
 	public void start(Stage primaryStage) {
 		WebView browser = new WebView();
 		browser.setPrefHeight(1080.00);
-		WebEngine engine = browser.getEngine();
+		engine = browser.getEngine();
 		
 		String url = "http://67.205.191.64";
 		engine.load(url);

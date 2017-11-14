@@ -54,7 +54,7 @@ public class DatabaseConnection {
 		System.out.println("Username: " + username + "\nPassword: " + hashPassword);
 	}
 	
-	public int loginUser(String username, String password) {
+	public void loginUser(String username, String password) {
 		String storedPassword;
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
 		String query = "SELECT encrypted FROM passwords as p," + 
