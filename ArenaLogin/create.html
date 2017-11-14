@@ -118,20 +118,26 @@ pading: 10px 20px;
 		var type = document.getElementById("classSelect").value;
 		var objName = document.getElementById("name").value;
 		var parentLg = document.getElementById("parentLg").value;
+		var user = getCookie("user");
 		switch(type){
 		
 		case "Team":
-			app.submitTeam(objName);
+			app.submitTeam(user, objName);
 			break;
 		case "Tournament":
-			app.submitTournament(objName, parentLg);
+			app.submitTournament(user, objName, parentLg);
 			break;
 		case "League":
-			app.submitLeague(objName);
+			app.submitLeague(user, objName);
 			break;
 		}
 		
 	}
+	function getCookie(name) {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length == 2) return parts.pop().split(";").shift();
+}
 </script>
 
 </body>
