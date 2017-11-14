@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<center>
+<head>
+<style>
+html,body {
+  color: hsl(0, 0%, 95%) !important;
+  background: hsl(0, 0%, 15%) !important;
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+h1.title {
+  border-bottom: 1px solid hsl(0, 0%, 95%);
+  padding: 10px;
+}
+.form h2{
+	text-align: center;
+	margin-bottom: 30px;
+	color:hsl(0, 0%, 95%);
+}
+p.description {
+  font-size: 15px;
+  margin-top: 30px;
+}
+.nav {
+	width: 100%;
+	text-align: left;
+	margin: 30px 0px;
+}
+a.nav-btn {
+  border: 1px solid hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 95%);
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none !important;
+  transition: all .2s ease;
+}
+a.nav-btn:hover {
+  background: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 15%);
+}
+.forms-wrap {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+}
+.form {
+	max-width: 25%;
+	margin: 10px;
+}
+form {
+	width: 100%;
+}
+p.form-title {
+	width: 100%;
+}
+input {
+	background: hsl(0, 0%, 20%);
+	padding: 10px 20px;
+	outline: none;
+	border: none;
+	width: 400px;
+	margin: 20px;
+	border-bottom: 1px solid hsl(0, 0%, 5%);
+}
+input:first-child{
+	border-radius: 5px 5px 0px 0px;
+}
+input:last-child {
+	border-radius: 0px 0px 5px 5px;
+	border-bottom: none;
+}
+input[type=submit] {
+	box-shadow: inset 0px 0px 0px 0px hsla(0, 0%, 95%, .2);
+	transition: all .2s ease;
+}
+input[type=submit]:hover {
+	box-shadow: inset 0px 50px 0px 0px hsla(0, 0%, 95%, .2);
+}
+select { 
+background: hsl(0, 0%, 20%);
+pading: 10px 20px;
+}
+</style>
+	<title>Create Team, Tournament, or League</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="form">
+		<h1 class="title text">ArenaSB</h1>
+		
+		<form onsubmit="handleCreate()">
+		Create new: 
+		<select id="classSelect" name="classSelect" type="text">
+		<option value="team" selected>Team</option>
+		<option value="tourn">Tournament</option>
+		<option value="league">League</option>
+		</select>
+		<br><br>
+		Enter a name:
+			<input id= "name" type="text" name="name" placeholder="name">
+			<br><br>
+			For tournaments, enter the parent league name
+			<input id= "parentLg" type="text" name="parentLg" placeholder="parent league">
+			<br><br>
+			<input action= "create.php" class="btn-create" type="submit" name="" value="Create">
+			<br><br>
+		</form>
+		
+
+<script>
+	function handleCreate() {
+		var type = document.getElementById("classSelect").value;
+		var objName = document.getElementById("name").value;
+		var parentLg = document.getElementById("parentLg").value;
+		app.submitCreate(type, objName, parentLg);
+	}
+</script>
+
+</body>
+</center>
+</html>
