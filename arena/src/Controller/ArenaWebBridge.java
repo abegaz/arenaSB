@@ -17,4 +17,10 @@ public class ArenaWebBridge{
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
 		db.createUser(username, email, hashPassword);
 	}
+	
+	public void loginUser(String username, String password) {
+		db = new DatabaseConnection("jdbc:mysql://67.205.191.64/arena","root", "arenasb");
+		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
+		db.loginUser(username, hashPassword);
+	}
 }

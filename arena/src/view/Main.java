@@ -39,6 +39,7 @@ public class Main extends Application {
 				if (newState == State.SUCCEEDED) {
 					JSObject js = (JSObject) engine.executeScript("window"); 
 			        	js.setMember("app", new ArenaWebBridge());
+			        
 		        }
 		    }
 		});
