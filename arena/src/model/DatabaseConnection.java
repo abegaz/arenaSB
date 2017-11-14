@@ -1,14 +1,11 @@
 package model;
 
-import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.apache.commons.codec.digest.DigestUtils;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -55,16 +52,14 @@ public class DatabaseConnection {
 	}
 	
 	public void loginUser(String username, String password) {
-		String storedPassword;
-		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
+		String storedPassword = null;
 		String query = "SELECT encrypted FROM passwords as p," + 
 					   "user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet loginStatement = st.executeQuery(query);
-			while(loginStatement.next()) {
-				storedPassword = loginStatement.getString("p");
-			}
+		    storedPassword = loginStatement.getString("password");
+			System.out.println(storedPassword);
 			st.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
