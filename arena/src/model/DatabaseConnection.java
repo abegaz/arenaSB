@@ -8,6 +8,8 @@ import java.sql.SQLException;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import com.mysql.jdbc.PreparedStatement;
+
 public class DatabaseConnection {
 	private static String DB_DRIVER = "com.mysql.jdbc.Driver";
 	public String db_url;
@@ -35,12 +37,17 @@ public class DatabaseConnection {
 	
 	public void createUser(String username, String email, String password) {
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
-		String query = "BEGIN;\n" + 
-				"INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+ email +"', NOW());\n" + 
-				"INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+  hashPassword +"');\n" + 
+		String query = "BEGIN;" + 
+				"INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+email+"', NOW());" + 
+				"INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+hashPassword+"');" + 
 				"COMMIT;";
 		try {
-			conn.prepareStatement(query);
+			PreparedStatement prepStatement = (PreparedStatement) conn.prepareStatement(query);
+
+		    // execute the preparedstatement
+		    prepStatement.execute();
+		    conn.setAutoCommit(false);
+		    conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
