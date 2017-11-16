@@ -14,7 +14,7 @@
     </header>
     <div class="container">
         <div class="forms">
-            <form onsubmit="createUser(); return false;">
+            <form onsubmit="return createUser()">
                 <h2 class="form-title">Sign Up</h2>
                 <div class="form-group">
                     <label for="email">Email:</label>
@@ -32,11 +32,11 @@
                     <input type="submit" value="Sign Up">
                 </div>
             </form>
-            <form onsubmit="loginUser(); return false;">
+            <form onsubmit="return loginUser()">
                 <h2 class="form-title">Log In</h2>
                 <div class="form-group">
-                    <label for="username-in">Username:</label>
-                    <input type="text" id="username-in" placeholder="Username">
+                    <label for="email-in">Email:</label>
+                    <input type="email" id="email-in" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="password-in">Password:</label>
@@ -51,26 +51,24 @@
 </body>
 
 <script>
+	function createUser() {
+	    var email = document.getElementById("email").value;
+	    var user = document.getElementById("username").value;
+	    var pass = document.getElementById("password").value;
+	    
+	    // Java upcall
+	    app.createUser(user, email, pass);
+	    
+	    return true;
+	}
     function loginUser() {
-        var email = document.getElementById("username-in").value;
+        var email = document.getElementById("email-in").value;
         var pass = document.getElementById("password-in").value;
         
         // Java upcall
-        // app.loginUser(username, pass);
-
-        // if user validation is true, login
-        window.location.href = location.pathname+'/../directory.html';
-    }
-
-    function createUser() {
-        var email = document.getElementById("email").value;
-        var user = document.getElementById("username").value;
-        var pass = document.getElementById("password").value;
+        app.loginUser(email, pass);
         
-        // Java upcall
-        // app.createUser(user, email, pass);
-
-        alert("You've Been Added!");
+        return true;
     }
 </script>
 

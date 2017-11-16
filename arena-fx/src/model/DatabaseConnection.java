@@ -58,7 +58,7 @@ public class DatabaseConnection {
 		try {
 			Statement st = conn.createStatement();
 			ResultSet loginStatement = st.executeQuery(query);
-		    storedPassword = loginStatement.getString("password");
+		    storedPassword = loginStatement.getString("passwords");
 			System.out.println(storedPassword);
 			st.close();
 		} catch (SQLException e) {

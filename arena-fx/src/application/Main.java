@@ -1,5 +1,7 @@
 package application;
 
+import java.net.URL;
+
 import controller.ArenaWebBridge;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -14,14 +16,16 @@ import javafx.concurrent.Worker.State;
 
 public class Main extends Application {
 	public WebEngine engine;
+	ArenaWebBridge bridge = new ArenaWebBridge();
 	@Override
 	public void start(Stage primaryStage) {
 		WebView browser = new WebView();
 		browser.setPrefHeight(1080.00);
 		engine = browser.getEngine();
 		
-		String url = "http://67.205.191.64";
-		engine.load(url);
+//		String url = "../view/index.html";
+		URL url = this.getClass().getResource("../view/index.html");
+		engine.load(url.toString());
 		
 		VBox root = new VBox();
 		root.getChildren().addAll(browser);
@@ -38,7 +42,7 @@ public class Main extends Application {
 			public void changed(@SuppressWarnings("rawtypes") ObservableValue ov, State oldState, State newState) {
 				if (newState == State.SUCCEEDED) {
 					JSObject js = (JSObject) engine.executeScript("window"); 
-			        	js.setMember("app", new ArenaWebBridge());
+			        	js.setMember("app", bridge);
 			        
 		        }
 		    }
