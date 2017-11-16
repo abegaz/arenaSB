@@ -1,11 +1,13 @@
 package model;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import application.Main;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -52,6 +54,12 @@ public class DatabaseConnection {
 	}
 	
 	public void loginUser(String username, String password) {
+//		Testing redirect
+		URL url = this.getClass().getResource("../view/directory.html");
+		Main.engine.load(url.toString());
+//		End testing redirect
+		
+		
 		String storedPassword = null;
 		String query = "SELECT encrypted FROM passwords as p," + 
 					   "user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID";

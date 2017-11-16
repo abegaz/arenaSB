@@ -15,8 +15,9 @@ import javafx.scene.web.WebView;
 import javafx.concurrent.Worker.State;
 
 public class Main extends Application {
-	public WebEngine engine;
+	public static WebEngine engine;
 	ArenaWebBridge bridge = new ArenaWebBridge();
+	
 	@Override
 	public void start(Stage primaryStage) {
 		WebView browser = new WebView();
