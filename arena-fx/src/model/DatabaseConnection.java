@@ -54,11 +54,10 @@ public class DatabaseConnection {
 	}
 	
 	public void loginUser(String username, String password) {
-//		Testing redirect
+//		This is the code for the redirect
+//		Call this if user is found
 		URL url = this.getClass().getResource("../view/directory.html");
 		Main.engine.load(url.toString());
-//		End testing redirect
-		
 		
 		String storedPassword = null;
 		String query = "SELECT encrypted FROM passwords as p," + 
