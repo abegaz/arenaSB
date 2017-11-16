@@ -52,13 +52,16 @@ public class DatabaseConnection {
 	}
 	
 	public void loginUser(String username, String password) {
+		
+		System.out.println("Username: "+username+"\nPassword: "+password);
+		
 		String storedPassword = null;
 		String query = "SELECT encrypted FROM passwords as p," + 
 					   "user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet loginStatement = st.executeQuery(query);
-		    storedPassword = loginStatement.getString("password");
+		    storedPassword = loginStatement.getString("passwords");
 			System.out.println(storedPassword);
 			st.close();
 		} catch (SQLException e) {

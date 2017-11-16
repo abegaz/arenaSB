@@ -1,5 +1,7 @@
 package application;
 
+import java.net.URL;
+
 import controller.ArenaWebBridge;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -20,8 +22,9 @@ public class Main extends Application {
 		browser.setPrefHeight(1080.00);
 		engine = browser.getEngine();
 		
-		String url = "http://67.205.191.64";
-		engine.load(url);
+//		String url = "../view/index.html";
+		URL url = this.getClass().getResource("../view/index.html");
+		engine.load(url.toString());
 		
 		VBox root = new VBox();
 		root.getChildren().addAll(browser);
