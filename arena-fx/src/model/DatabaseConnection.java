@@ -52,9 +52,6 @@ public class DatabaseConnection {
 	}
 	
 	public void loginUser(String username, String password) {
-		
-		System.out.println("Username: "+username+"\nPassword: "+password);
-		
 		String storedPassword = null;
 		String query = "SELECT encrypted FROM passwords as p," + 
 					   "user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID";

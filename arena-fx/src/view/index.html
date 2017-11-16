@@ -14,7 +14,7 @@
     </header>
     <div class="container">
         <div class="forms">
-            <form onsubmit="createUser(); return false;">
+            <form onsubmit="return createUser()">
                 <h2 class="form-title">Sign Up</h2>
                 <div class="form-group">
                     <label for="email">Email:</label>
@@ -32,7 +32,7 @@
                     <input type="submit" value="Sign Up">
                 </div>
             </form>
-            <form onsubmit="loginUser(); return false;">
+            <form onsubmit="return loginUser()">
                 <h2 class="form-title">Log In</h2>
                 <div class="form-group">
                     <label for="username-in">Username:</label>
@@ -58,6 +58,8 @@
 	    
 	    // Java upcall
 	    app.createUser(user, email, pass);
+	    
+	    return true;
 	}
     function loginUser() {
         var email = document.getElementById("username-in").value;
@@ -65,6 +67,8 @@
         
         // Java upcall
         app.loginUser(username, pass);
+        
+        return true;
     }
 </script>
 

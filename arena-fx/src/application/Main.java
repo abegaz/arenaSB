@@ -16,6 +16,7 @@ import javafx.concurrent.Worker.State;
 
 public class Main extends Application {
 	public WebEngine engine;
+	ArenaWebBridge bridge = new ArenaWebBridge();
 	@Override
 	public void start(Stage primaryStage) {
 		WebView browser = new WebView();
@@ -41,7 +42,7 @@ public class Main extends Application {
 			public void changed(@SuppressWarnings("rawtypes") ObservableValue ov, State oldState, State newState) {
 				if (newState == State.SUCCEEDED) {
 					JSObject js = (JSObject) engine.executeScript("window"); 
-			        	js.setMember("app", new ArenaWebBridge());
+			        	js.setMember("app", bridge);
 			        
 		        }
 		    }
