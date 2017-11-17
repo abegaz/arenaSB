@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.time.LocalTime;
 
 import application.Main;
@@ -37,7 +38,21 @@ public class DatabaseConnection {
 		      e.printStackTrace();
 		}
 	}
-	
+	public void createTeam(String team) {
+		String queryTeam = "INSERT INTO team (Name) VALUES('"+ team +"', NOW());"; 
+		try {
+			conn.setAutoCommit(false);
+			PreparedStatement prepStatementTeam = (PreparedStatement) conn.prepareStatement(queryTeam);
+		    // execute the preparedstatement
+		    prepStatementTeam.execute();
+		    conn.commit();
+		    conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Team Name: " + team);
+	}
 	public boolean createUser(String username, String email, String hashPassword) {
 		String queryUser = "INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+email+"', NOW());"; 
 		String queryPassword = "INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+hashPassword+"');";
@@ -107,6 +122,22 @@ public class DatabaseConnection {
 			
 			Statement qL = conn.createStatement();
 			ResultSet leagues = qL.executeQuery(queryLeagues);
+			
+			LinkedList<String> tournamentList = new LinkedList<String>();
+			LinkedList<String> gameList = new LinkedList<String>();
+			LinkedList<String> leagueList = new LinkedList<String>();
+			
+			while (tourns.next()) {
+				tournamentList.push(tourns.getString(1));
+			}
+			while (games.next()) {
+				gameList.push(games.getString(1));
+			}
+			while (leagues.next()) {
+				leagueList.push(leagues.getString(1));
+			}
+			
+			System.out.println(tournamentList.toString()+"\n"+gameList.toString()+"\n"+leagueList.toString());
 			
 			tourns.next();
 			String foundType = tourns.getString(1);
