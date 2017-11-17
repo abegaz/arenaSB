@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 
 import controller.ArenaWebBridge;
+import java.util.HashMap;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +18,7 @@ import javafx.concurrent.Worker.State;
 
 public class Main extends Application {
 	public static WebEngine engine;
+	public static HashMap<String, Object> userMetaData = new HashMap<>();
 	ArenaWebBridge bridge = new ArenaWebBridge();
 	
 	@Override
@@ -25,7 +27,7 @@ public class Main extends Application {
 		browser.setPrefHeight(1080.00);
 		engine = browser.getEngine();
 		
-//		String url = "../view/index.html";
+		// String url = "../view/index.html";
 		URL url = this.getClass().getResource("../view/index.html");
 		engine.load(url.toString());
 		
