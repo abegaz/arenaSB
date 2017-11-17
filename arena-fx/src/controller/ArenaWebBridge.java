@@ -24,10 +24,24 @@ public class ArenaWebBridge{
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
 		boolean createUser = db.createUser(username, email, hashPassword);
 		// Gets boolean value to see if the user should be redirected after successful sign up.
-		if(createUser != false) {
-	    		URL url = this.getClass().getResource("../view/directory.html");
-	    		Main.engine.load(url.toString());
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		URL url = this.getClass().getResource("../view/directory.html");
+		Main.engine.load(url.toString());
+		/*
+		Runnable r = () -> {
+			if(createUser != false) {
+		    		URL url = this.getClass().getResource("../view/directory.html");
+		    		Main.engine.load(url.toString());
+			}
+		};
+		Thread t = new Thread(r);
+		t.start();
+		*/
 	}
 	public void createTeam(String team) {
 		System.out.println("Team: " +team);
