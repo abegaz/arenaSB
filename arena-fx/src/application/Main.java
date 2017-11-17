@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.time.LocalTime;
 
 import controller.ArenaWebBridge;
 import java.util.HashMap;
@@ -25,7 +26,8 @@ public class Main extends Application {
 		WebView browser = new WebView();
 		browser.setPrefHeight(1080.00);
 		engine = browser.getEngine();
-		
+		System.out.println(LocalTime.now() + " Creating WebEngine");
+		System.out.println(LocalTime.now() + " Loading content from server");
 		// String url = "../view/index.html";
 		URL url = this.getClass().getResource("../view/index.html");
 		engine.load(url.toString());

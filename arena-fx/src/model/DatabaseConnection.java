@@ -35,10 +35,10 @@ public class DatabaseConnection {
 		}
 	}
 	
-	public void createUser(String username, String email, String hashPassword) {
+	public boolean createUser(String username, String email, String hashPassword) {
 		String queryUser = "INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+email+"', NOW());"; 
 		String queryPassword = "INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+hashPassword+"');";
-		int createSuccess = 1;
+		boolean createSuccess = false;
 		try {
 			conn.setAutoCommit(false);
 			PreparedStatement prepStatementUser = (PreparedStatement) conn.prepareStatement(queryUser);
@@ -48,30 +48,28 @@ public class DatabaseConnection {
 		    prepStatementPass.execute();
 		    conn.commit();
 		    conn.close();
-		    createSuccess = 0;
+		    createSuccess = true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(createSuccess == 0) {
+		if(createSuccess == true) {
 			// Stores user meta-data that can be rendered to the screen.
 			Main.userMetaData.put("Username", username);
 			Main.userMetaData.put("Email", email);
 			Main.userMetaData.put("LoginTime", LocalDateTime.now());
-			URL url = this.getClass().getResource("../view/directory.html");
-			Main.engine.load(url.toString());
-			Main.engine.executeScript("document.getElementByID('test').value = " 
-												+ Main.userMetaData.get("LoginTime"));
 		}
 		else
 			System.out.println("Could not create the user " + username + ".");
 		System.out.println(Main.userMetaData.get("LoginTime"));
 		System.out.println("Username: " + username + "\nPassword: " + hashPassword);
+		
+		return createSuccess;
 	}
 	
 	public void loginUser(String username, String password) {
-//		This is the code for the redirect
-//		Call this if user is found
+		// This is the code for the redirect
+		// Call this if user is found
 		URL url = this.getClass().getResource("../view/directory.html");
 		Main.engine.load(url.toString());
 		
