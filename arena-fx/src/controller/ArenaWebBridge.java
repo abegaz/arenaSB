@@ -29,7 +29,11 @@ public class ArenaWebBridge{
 	    		Main.engine.load(url.toString());
 		}
 	}
-	
+	public void createTeam(String team) {
+		System.out.println("Team: " +team);
+		db = new DatabaseConnection("jdbc:mysql://67.205.191.64/arena","root", "arenasb");
+		db.createTeam(team);
+	}
 	public void loginUser(String username, String password) {
 		System.out.println("Username: "+username+"\nPassword: "+password);
 		
