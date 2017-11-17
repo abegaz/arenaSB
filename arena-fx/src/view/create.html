@@ -14,7 +14,7 @@
     </header>
     <div class="container">
         <div class="forms">
-            <form onsubmit="submitItem(); return false;">
+            <form onsubmit="return createItem()">
                 <h2 id="create-title" class="form-title">Create Game</h2>
                 <div class="form-group">
                     <label for="type">Type:</label>
@@ -44,14 +44,32 @@
 </body>
 
 <script>
-    function submitItem() {
-
+    function createItem() { 
+         var title = document.getElementById('type').value;
+         var name = document.getElementById('name').value;
+         var leagueName = document.getElementById('parent-league').value;
+         switch(title) {
+         case 'game':
+         title.innerHTML = "Create Game";
+         app.createGame(name);
+         break;
+         case 'tournament':
+         title.innerHTML = "Create Tournament";
+         app.createTournament(name, leagueName);
+         break;
+         case 'league':
+         title.innerHTML = "Create League";
+         app.createLeague(name);
+         break;
+         }
     }
+         
+        
 
     function checkTournament() {
         var v = document.getElementById('type').value;
         var title = document.getElementById('create-title');
-
+        
         switch(v) {
             case 'tournament':
                 title.innerHTML = "Create Tournament";
@@ -67,8 +85,9 @@
                 break;
             default:
                 title.innerHTML("Create Item");
-                break;
+                break; 
         }
+
     }
 </script>
 

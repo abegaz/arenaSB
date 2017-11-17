@@ -71,7 +71,69 @@ public class DatabaseConnection {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			//System.out.println("Incorrect username or password!");
 		}
 		System.out.println("Username: " + username + "\nPassword: " + password);
 	}
-}
+	 
+	public void createGame(String name) {
+		// This is for creating games and such.
+		 
+		String queryGame = "INSERT INTO game (name) VALUES('"+ name +"')";
+		try {
+			conn.setAutoCommit(false);
+			PreparedStatement prepStatementGame = (PreparedStatement) conn.prepareStatement(queryGame);
+		    // execute the prepared statement
+		    prepStatementGame.execute();
+		    conn.commit();
+		    conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		System.out.println("Game name: " + name);
+		
+  }
+	public void createTournament(String trnname, String leagueName) {
+		// This is for creating games and such.
+		 
+		String queryTournament = "INSERT INTO tournament (TrnName, leagueID) VALUES('"+ trnname +"', (SELECT LID FROM league WHERE NAME LIKE '"+leagueName+"'))";
+		try {
+			System.out.println(trnname + "\t" + leagueName); // debug operation
+			conn.setAutoCommit(false);
+			PreparedStatement prepStatementGame = (PreparedStatement) conn.prepareStatement(queryTournament);
+		    // execute the prepared statement
+		    prepStatementGame.execute();
+		    conn.commit();
+		    conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		System.out.println("Tournament name: " + trnname);
+	
+    }	
+	public void createLeague(String name) {
+		// This is for creating games and such.
+		 
+		String queryLeague = "INSERT INTO league (name) VALUES('"+ name +"')";
+		try {
+			conn.setAutoCommit(false);
+			PreparedStatement prepStatementGame = (PreparedStatement) conn.prepareStatement(queryLeague);
+		    // execute the prepared statement
+		    prepStatementGame.execute();
+		    conn.commit();
+		    conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		System.out.println("League name: " + name);
+  }
+}	
+		
+
+
