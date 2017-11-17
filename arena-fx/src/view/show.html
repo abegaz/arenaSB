@@ -14,20 +14,23 @@
     </header>
     <div class="container">
         <div class="lists">
-            <ul>
+            <ul id="game-list">
                 <h2>Games:</h2>
+                <!-- Foreach item in games render the li -->
                 <li>Test</li>
                 <li>Test</li>
                 <li>Test</li>
             </ul>
-            <ul>
+            <ul id="league-list">
                 <h2>Leagues:</h2>
+                <!-- Foreach item in leagues render the li -->
                 <li>Test</li>
                 <li>Test</li>
                 <li>Test</li>
             </ul>
-            <ul>
+            <ul id="tournament-list">
                 <h2>Tournaments:</h2>
+                <!-- Foreach item in tournaments render the li -->
                 <li>Test</li>
                 <li>Test</li>
                 <li>Test</li>
@@ -37,4 +40,13 @@
             <a href="directory.html" class="short">Back</a>
         </nav>
     </div>
+    <script>
+        function dataTransfer(games, leagues, tournaments) {
+            var gameList = document.getElementById("game-list");
+            var leagueList = document.getElementById("league-list");
+            var tournamentList = document.getElementById("tournament-list");
+            
+            
+        }
+    </script>    
 </body>

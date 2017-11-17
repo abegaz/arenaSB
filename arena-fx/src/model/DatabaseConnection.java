@@ -6,6 +6,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.time.LocalTime;
 
 import application.Main;
 
@@ -22,8 +26,10 @@ public class DatabaseConnection {
 		this.db_url = db_url;
 		this.db_user = db_user;
 		this.db_pass = db_pass;
+		
 		try {
 			Class.forName(DB_DRIVER);
+			System.out.println(LocalTime.now() + " Successfully connected to the database");
 			conn = DriverManager.getConnection(db_url,db_user,db_pass);
 		} catch(SQLException se) {
 		      //Handle errors for JDBC
@@ -33,10 +39,25 @@ public class DatabaseConnection {
 		      e.printStackTrace();
 		}
 	}
-	
-	public void createUser(String username, String email, String hashPassword) {
+	public void createTeam(String team) {
+		String queryTeam = "INSERT INTO team (Name) VALUES('"+ team +"', NOW());"; 
+		try {
+			conn.setAutoCommit(false);
+			PreparedStatement prepStatementTeam = (PreparedStatement) conn.prepareStatement(queryTeam);
+		    // execute the preparedstatement
+		    prepStatementTeam.execute();
+		    conn.commit();
+		    conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Team Name: " + team);
+	}
+	public boolean createUser(String username, String email, String hashPassword) {
 		String queryUser = "INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+email+"', NOW());"; 
 		String queryPassword = "INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+hashPassword+"');";
+		boolean createSuccess = false;
 		try {
 			conn.setAutoCommit(false);
 			PreparedStatement prepStatementUser = (PreparedStatement) conn.prepareStatement(queryUser);
@@ -46,35 +67,93 @@ public class DatabaseConnection {
 		    prepStatementPass.execute();
 		    conn.commit();
 		    conn.close();
+		    createSuccess = true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		if(createSuccess == true) {
+			// Stores user meta-data that can be rendered to the screen.
+			Main.userMetaData.put("Username", username);
+			Main.userMetaData.put("Email", email);
+			Main.userMetaData.put("LoginTime", LocalDateTime.now());
+		}
+		else
+			System.out.println("Could not create the user " + username + ".");
+		System.out.println(Main.userMetaData.get("LoginTime"));
 		System.out.println("Username: " + username + "\nPassword: " + hashPassword);
+		
+		return createSuccess;
 	}
 	
 	public void loginUser(String username, String password) {
-//		This is the code for the redirect
-//		Call this if user is found
-		URL url = this.getClass().getResource("../view/directory.html");
-		Main.engine.load(url.toString());
+		// This is the code for the redirect
+		// Call this if user is found
 		
 		String storedPassword = null;
-		String query = "SELECT encrypted FROM passwords as p," + 
-					   "user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID";
+		String query = "SELECT encrypted FROM passwords as p, user as u WHERE u.Username LIKE '"+ username +"' AND p.UIDno = u.UID";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet loginStatement = st.executeQuery(query);
-		    storedPassword = loginStatement.getString("passwords");
-			System.out.println(storedPassword);
+			while(loginStatement.next())
+		    		storedPassword = loginStatement.getString(1);
 			st.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			//System.out.println("Incorrect username or password!");
 		}
-		System.out.println("Username: " + username + "\nPassword: " + password);
+		if(storedPassword.equals(password)) {
+			System.out.print(LocalTime.now() + " Account has been verified, logging in");
+			URL url = this.getClass().getResource("../view/directory.html");
+			Main.engine.load(url.toString());
+		}
 	}
+	
+//	Pulls all the item types from the db and passes them to show.html
+	public void pullItems() {
+		System.out.println("Pulling items");
+		
+		String queryTournaments = "SELECT TrnName FROM tournament";
+		String queryGames = "SELECT Name FROM game";
+		String queryLeagues = "SELECT NAME FROM league";
+		try {
+			Statement qT = conn.createStatement();
+			ResultSet tourns = qT.executeQuery(queryTournaments);
+			
+			Statement qG = conn.createStatement();
+			ResultSet games = qG.executeQuery(queryGames);
+			
+			Statement qL = conn.createStatement();
+			ResultSet leagues = qL.executeQuery(queryLeagues);
+			
+			ArrayList<String> tournamentList = new ArrayList<String>();
+			ArrayList<String> gameList = new ArrayList<String>();
+			ArrayList<String> leagueList = new ArrayList<String>();
+			
+			while (tourns.next()) {
+				tournamentList.add(tourns.getString(1));
+			}
+			while (games.next()) {
+				gameList.add(games.getString(1));
+			}
+			while (leagues.next()) {
+				leagueList.add(leagues.getString(1));
+			}
+			
+			// Pass that data to javascript
+			
+			Main.engine.executeScript("dataTransfer("+toJsArr(gameList)+", "+toJsArr(leagueList)+", "+toJsArr(tournamentList)+")");
+			
+			qT.close();
+			qG.close();
+			qL.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+<<<<<<< HEAD
 	 
 	public void createGame(String name) {
 		// This is for creating games and such.
@@ -137,3 +216,22 @@ public class DatabaseConnection {
 		
 
 
+=======
+	
+//	JS Array Helper
+	private String toJsArr(ArrayList<String> arr) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("[");
+
+        for (String str : arr)
+            sb.append("\"").append(str).append("\"").append(", ");
+
+        if (sb.length() > 1)
+            sb.replace(sb.length() - 2, sb.length(), "");
+
+        sb.append("]");
+
+        return sb.toString();
+    }
+}
+>>>>>>> 711d525046c0bb1a1d33f047f492c1cc63524b3b
