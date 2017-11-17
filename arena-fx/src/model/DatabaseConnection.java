@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
+import java.time.LocalTime;
 
 import application.Main;
 
@@ -24,8 +25,10 @@ public class DatabaseConnection {
 		this.db_url = db_url;
 		this.db_user = db_user;
 		this.db_pass = db_pass;
+		System.out.println(LocalTime.now() + " Connecting to database");
 		try {
 			Class.forName(DB_DRIVER);
+			System.out.println(LocalTime.now() + " Successfully connected to the database");
 			conn = DriverManager.getConnection(db_url,db_user,db_pass);
 		} catch(SQLException se) {
 		      //Handle errors for JDBC
@@ -35,11 +38,25 @@ public class DatabaseConnection {
 		      e.printStackTrace();
 		}
 	}
-	
-	public void createUser(String username, String email, String hashPassword) {
+	public void createTeam(String team) {
+		String queryTeam = "INSERT INTO team (Name) VALUES('"+ team +"', NOW());"; 
+		try {
+			conn.setAutoCommit(false);
+			PreparedStatement prepStatementTeam = (PreparedStatement) conn.prepareStatement(queryTeam);
+		    // execute the preparedstatement
+		    prepStatementTeam.execute();
+		    conn.commit();
+		    conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Team Name: " + team);
+	}
+	public boolean createUser(String username, String email, String hashPassword) {
 		String queryUser = "INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+email+"', NOW());"; 
 		String queryPassword = "INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+hashPassword+"');";
-		int createSuccess = 1;
+		boolean createSuccess = false;
 		try {
 			conn.setAutoCommit(false);
 			PreparedStatement prepStatementUser = (PreparedStatement) conn.prepareStatement(queryUser);
@@ -49,30 +66,28 @@ public class DatabaseConnection {
 		    prepStatementPass.execute();
 		    conn.commit();
 		    conn.close();
-		    createSuccess = 0;
+		    createSuccess = true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(createSuccess == 0) {
+		if(createSuccess == true) {
 			// Stores user meta-data that can be rendered to the screen.
 			Main.userMetaData.put("Username", username);
 			Main.userMetaData.put("Email", email);
 			Main.userMetaData.put("LoginTime", LocalDateTime.now());
-			URL url = this.getClass().getResource("../view/directory.html");
-			Main.engine.load(url.toString());
-			Main.engine.executeScript("document.getElementByID('test').value = " 
-												+ Main.userMetaData.get("LoginTime"));
 		}
 		else
 			System.out.println("Could not create the user " + username + ".");
 		System.out.println(Main.userMetaData.get("LoginTime"));
 		System.out.println("Username: " + username + "\nPassword: " + hashPassword);
+		
+		return createSuccess;
 	}
 	
 	public void loginUser(String username, String password) {
-//		This is the code for the redirect
-//		Call this if user is found
+		// This is the code for the redirect
+		// Call this if user is found
 		URL url = this.getClass().getResource("../view/directory.html");
 		Main.engine.load(url.toString());
 		
