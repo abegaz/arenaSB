@@ -37,7 +37,21 @@ public class DatabaseConnection {
 		      e.printStackTrace();
 		}
 	}
-	
+	public void createTeam(String team) {
+		String queryTeam = "INSERT INTO team (Name) VALUES('"+ team +"', NOW());"; 
+		try {
+			conn.setAutoCommit(false);
+			PreparedStatement prepStatementTeam = (PreparedStatement) conn.prepareStatement(queryTeam);
+		    // execute the preparedstatement
+		    prepStatementTeam.execute();
+		    conn.commit();
+		    conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Team Name: " + team);
+	}
 	public boolean createUser(String username, String email, String hashPassword) {
 		String queryUser = "INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+email+"', NOW());"; 
 		String queryPassword = "INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+hashPassword+"');";
