@@ -25,7 +25,7 @@ public class DatabaseConnection {
 		this.db_url = db_url;
 		this.db_user = db_user;
 		this.db_pass = db_pass;
-		System.out.println(LocalTime.now() + " Connecting to database");
+		
 		try {
 			Class.forName(DB_DRIVER);
 			System.out.println(LocalTime.now() + " Successfully connected to the database");
@@ -88,22 +88,24 @@ public class DatabaseConnection {
 	public void loginUser(String username, String password) {
 		// This is the code for the redirect
 		// Call this if user is found
-		URL url = this.getClass().getResource("../view/directory.html");
-		Main.engine.load(url.toString());
 		
 		String storedPassword = null;
 		String query = "SELECT encrypted FROM passwords as p, user as u WHERE u.Username LIKE '"+ username +"' AND p.UIDno = u.UID";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet loginStatement = st.executeQuery(query);
-		    storedPassword = loginStatement.getString("passwords");
-			System.out.println(storedPassword);
+			while(loginStatement.next())
+		    		storedPassword = loginStatement.getString(1);
 			st.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Username: " + username + "\nPassword: " + password);
+		if(storedPassword.equals(password)) {
+			System.out.print(LocalTime.now() + " Account has been verified, logging in");
+			URL url = this.getClass().getResource("../view/directory.html");
+			Main.engine.load(url.toString());
+		}
 	}
 	
 //	Pulls all the item types from the db and passes them to show.html

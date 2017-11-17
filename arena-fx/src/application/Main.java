@@ -3,8 +3,12 @@ package application;
 import java.net.URL;
 import java.time.LocalTime;
 
+import application.Main;
 import controller.ArenaWebBridge;
+
 import java.util.HashMap;
+
+
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +24,7 @@ import javafx.concurrent.Worker.State;
 public class Main extends Application {
 	public static WebEngine engine;
 	public static HashMap<String, Object> userMetaData = new HashMap<>();
+	
 	ArenaWebBridge bridge = new ArenaWebBridge();
 	
 	@Override
