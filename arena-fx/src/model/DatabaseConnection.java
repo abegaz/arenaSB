@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import application.Main;
 
@@ -23,8 +24,10 @@ public class DatabaseConnection {
 		this.db_url = db_url;
 		this.db_user = db_user;
 		this.db_pass = db_pass;
+		System.out.println(LocalTime.now() + " Connecting to database");
 		try {
 			Class.forName(DB_DRIVER);
+			System.out.println(LocalTime.now() + " Successfully connected to the database");
 			conn = DriverManager.getConnection(db_url,db_user,db_pass);
 		} catch(SQLException se) {
 		      //Handle errors for JDBC
