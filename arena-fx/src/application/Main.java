@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
+import model.DatabaseConnection;
 import netscape.javascript.JSObject;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -48,10 +49,18 @@ public class Main extends Application {
 				if (newState == State.SUCCEEDED) {
 					JSObject js = (JSObject) engine.executeScript("window"); 
 			        	js.setMember("app", bridge);
-			        
+			        	
+			        	String show = "show.html";
+			        	String loc = engine.getLocation().substring(engine.getLocation().length()-9);
+			        	
+			        	if(show.equals(loc)) {
+			        		DatabaseConnection db = new DatabaseConnection("jdbc:mysql://67.205.191.64/arena","root", "arenasb");
+			        		db.pullItems();
+			        	}
 		        }
 		    }
 		});
+		
 	}
 	
 	public static void main(String[] args) {

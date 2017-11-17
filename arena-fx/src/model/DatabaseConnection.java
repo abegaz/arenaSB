@@ -87,4 +87,34 @@ public class DatabaseConnection {
 		}
 		System.out.println("Username: " + username + "\nPassword: " + password);
 	}
+	
+//	Pulls all the item types from the db and passes them to show.html
+	public void pullItems() {
+		System.out.println("Pulling items");
+		
+		String queryTournaments = "SELECT TrnName FROM tournament";
+		String queryGames = "SELECT Name FROM game";
+		String queryLeagues = "SELECT NAME FROM league";
+		try {
+			Statement qT = conn.createStatement();
+			ResultSet tourns = qT.executeQuery(queryTournaments);
+			
+			Statement qG = conn.createStatement();
+			ResultSet games = qG.executeQuery(queryGames);
+			
+			Statement qL = conn.createStatement();
+			ResultSet leagues = qL.executeQuery(queryLeagues);
+			
+			tourns.next();
+			String foundType = tourns.getString(1);
+			System.out.println(foundType);
+			
+			qT.close();
+			qG.close();
+			qL.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
