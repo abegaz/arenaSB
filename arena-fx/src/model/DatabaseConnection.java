@@ -76,8 +76,7 @@ public class DatabaseConnection {
 		Main.engine.load(url.toString());
 		
 		String storedPassword = null;
-		String query = "SELECT encrypted FROM passwords as p," + 
-					   "user as u WHERE u.Username LIKE 'nameEntry' AND p.UIDno = u.UID";
+		String query = "SELECT encrypted FROM passwords as p, user as u WHERE u.Username LIKE '"+ username +"' AND p.UIDno = u.UID";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet loginStatement = st.executeQuery(query);
