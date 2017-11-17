@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.time.LocalTime;
 
 import application.Main;
@@ -125,25 +126,23 @@ public class DatabaseConnection {
 			Statement qL = conn.createStatement();
 			ResultSet leagues = qL.executeQuery(queryLeagues);
 			
-			LinkedList<String> tournamentList = new LinkedList<String>();
-			LinkedList<String> gameList = new LinkedList<String>();
-			LinkedList<String> leagueList = new LinkedList<String>();
+			ArrayList<String> tournamentList = new ArrayList<String>();
+			ArrayList<String> gameList = new ArrayList<String>();
+			ArrayList<String> leagueList = new ArrayList<String>();
 			
 			while (tourns.next()) {
-				tournamentList.push(tourns.getString(1));
+				tournamentList.add(tourns.getString(1));
 			}
 			while (games.next()) {
-				gameList.push(games.getString(1));
+				gameList.add(games.getString(1));
 			}
 			while (leagues.next()) {
-				leagueList.push(leagues.getString(1));
+				leagueList.add(leagues.getString(1));
 			}
 			
-			System.out.println(tournamentList.toString()+"\n"+gameList.toString()+"\n"+leagueList.toString());
+			// Pass that data to javascript
 			
-			tourns.next();
-			String foundType = tourns.getString(1);
-			System.out.println(foundType);
+			Main.engine.executeScript("dataTransfer("+toJsArr(gameList)+", "+toJsArr(leagueList)+", "+toJsArr(tournamentList)+")");
 			
 			qT.close();
 			qG.close();
@@ -153,4 +152,20 @@ public class DatabaseConnection {
 			e.printStackTrace();
 		}
 	}
+	
+//	JS Array Helper
+	private String toJsArr(ArrayList<String> arr) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("[");
+
+        for (String str : arr)
+            sb.append("\"").append(str).append("\"").append(", ");
+
+        if (sb.length() > 1)
+            sb.replace(sb.length() - 2, sb.length(), "");
+
+        sb.append("]");
+
+        return sb.toString();
+    }
 }
