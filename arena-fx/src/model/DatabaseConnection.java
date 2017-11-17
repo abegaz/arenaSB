@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 
 import application.Main;
 
@@ -106,6 +107,22 @@ public class DatabaseConnection {
 			
 			Statement qL = conn.createStatement();
 			ResultSet leagues = qL.executeQuery(queryLeagues);
+			
+			LinkedList<String> tournamentList = new LinkedList<String>();
+			LinkedList<String> gameList = new LinkedList<String>();
+			LinkedList<String> leagueList = new LinkedList<String>();
+			
+			while (tourns.next()) {
+				tournamentList.push(tourns.getString(1));
+			}
+			while (games.next()) {
+				gameList.push(games.getString(1));
+			}
+			while (leagues.next()) {
+				leagueList.push(leagues.getString(1));
+			}
+			
+			System.out.println(tournamentList.toString()+"\n"+gameList.toString()+"\n"+leagueList.toString());
 			
 			tourns.next();
 			String foundType = tourns.getString(1);
