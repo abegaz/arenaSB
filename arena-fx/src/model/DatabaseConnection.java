@@ -152,7 +152,7 @@ public class DatabaseConnection {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
+
 	 
 	public void createGame(String name) {
 		// This is for creating games and such.
@@ -211,11 +211,11 @@ public class DatabaseConnection {
 	
 		System.out.println("League name: " + name);
   }
-}	
+	
 		
 
 
-=======
+
 	
 //	JS Array Helper
 	private String toJsArr(ArrayList<String> arr) {
@@ -233,4 +233,4 @@ public class DatabaseConnection {
         return sb.toString();
     }
 }
->>>>>>> 711d525046c0bb1a1d33f047f492c1cc63524b3b
+
