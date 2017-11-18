@@ -38,12 +38,13 @@ public class DatabaseConnection {
 		      e.printStackTrace();
 		}
 	}
-	public void createTeam(String team) {
-		String queryTeam = "INSERT INTO team (Name) VALUES('"+ team +"', NOW());"; 
+	public void createTeam(String name, String ownerName) {
+		String queryTeam = "INSERT INTO team (Name, OwnerID) VALUES('"+ name +"',(SELECT UID FROM user WHERE Username LIKE '"+ownerName+"'));"; 
 		try {
+			System.out.println(name + "\t" + ownerName); // debug operation
 			conn.setAutoCommit(false);
 			PreparedStatement prepStatementTeam = (PreparedStatement) conn.prepareStatement(queryTeam);
-		    // execute the preparedstatement
+		    // execute the prepared statement
 		    prepStatementTeam.execute();
 		    conn.commit();
 		    conn.close();
@@ -51,7 +52,7 @@ public class DatabaseConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Team Name: " + team);
+		System.out.println("Team Name: " + name);
 	}
 	public boolean createUser(String username, String email, String hashPassword) {
 		String queryUser = "INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+email+"', NOW());"; 

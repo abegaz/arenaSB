@@ -43,9 +43,9 @@ public class ArenaWebBridge{
 		t.start();
 		*/
 	}
-	public void createTeam(String team) {
-		System.out.println("Team: " +team);
-		db.createTeam(team);
+	public void createTeam(String name, String ownerName) {
+		System.out.println("Team: " +name +"\tOwner name: " + ownerName);
+		db.createTeam(name, ownerName);
 	}
 	public void loginUser(String username, String password) {
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
