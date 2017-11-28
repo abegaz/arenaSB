@@ -168,7 +168,7 @@ public class DatabaseConnection {
 		    // execute the prepared statement
 		    prepStatementGame.execute();
 		    conn.commit();
-		    conn.close();
+	//	    conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -188,7 +188,7 @@ public class DatabaseConnection {
 		    // execute the prepared statement
 		    prepStatementGame.execute();
 		    conn.commit();
-		    conn.close();
+		//    conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -207,7 +207,7 @@ public class DatabaseConnection {
 		    // execute the prepared statement
 		    prepStatementGame.execute();
 		    conn.commit();
-		    conn.close();
+		//    conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
