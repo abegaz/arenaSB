@@ -66,7 +66,8 @@ public class DatabaseConnection {
 		    prepStatementUser.execute();
 		    prepStatementPass.execute();
 		    conn.commit();
-		    conn.close();
+		    
+//		    conn.close(); // Causing conflicts with logging out and trying to log back in
 		    createSuccess = true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

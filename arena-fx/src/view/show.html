@@ -6,10 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="frontend.css">
-
-    <!-- Importing vue.js -->
-    <script src="https://unpkg.com/vue"></script>
-    
     <title>ArenaSB</title>
 </head>
 <body>
@@ -21,17 +17,17 @@
             <ul id="game-list">
                 <h2>Games:</h2>
                 <!-- Foreach item in games render the li -->
-                <li v-for="item in items">{{item}}</li>
+                <li id="game-item"></li>
             </ul>
             <ul id="league-list">
                 <h2>Leagues:</h2>
                 <!-- Foreach item in leagues render the li -->
-                <li v-for="item in items">{{item}}</li>
+                <li></li>
             </ul>
             <ul id="tournament-list">
                 <h2>Tournaments:</h2>
                 <!-- Foreach item in tournaments render the li -->
-                <li v-for="item in items">{{item}}</li>
+                <li></li>
             </ul>
         </div>
         <nav>
@@ -48,28 +44,8 @@
             g = games;
             l = leagues;
             t = tournaments;
+
+            document.getElementsById("game-item").innerHTML = g;
         }
-
-        var games = new Vue({
-            el: "#game-list",
-            data: {
-                items: g
-            }
-        });
-
-        var leagues = new Vue({
-            el: "#league-list",
-            data: {
-                items: l
-            }
-        });
-
-        var tournaments = new Vue({
-            el: "#tournament-list",
-            data: {
-                items: t
-            }
-        });
-
     </script>    
 </body>
