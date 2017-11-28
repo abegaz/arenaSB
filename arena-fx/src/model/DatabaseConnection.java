@@ -104,6 +104,11 @@ public class DatabaseConnection {
 			//System.out.println("Incorrect username or password!");
 		}
 		if(storedPassword.equals(password)) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			System.out.print(LocalTime.now() + " Account has been verified, logging in");
 			URL url = this.getClass().getResource("../view/directory.html");
 			Main.engine.load(url.toString());
@@ -112,7 +117,7 @@ public class DatabaseConnection {
 		}
 	}
 	
-//	Pulls all the item types from the db and passes them to show.html
+	//	Pulls all the item types from the db and passes them to show.html
 	public void pullItems() {
 		System.out.println("Pulling items");
 		

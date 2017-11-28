@@ -43,13 +43,13 @@ public class ArenaWebBridge{
 		t.start();
 		*/
 	}
-	public void createTeam(String name, String ownerName) {
-		System.out.println("Team: " +name +"\tOwner name: " + ownerName);
-		db.createTeam(name, ownerName);
-	}
 	public void loginUser(String username, String password) {
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
 		db.loginUser(username, hashPassword);
+	}
+	public void createTeam(String name, String ownerName) {
+		System.out.println("Team: " +name +"\tOwner name: " + ownerName);
+		db.createTeam(name, ownerName);
 	}
 	public void createGame(String name) {
 		System.out.println("Game name: " + name);
