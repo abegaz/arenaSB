@@ -47,7 +47,7 @@ public class DatabaseConnection {
 		    // execute the prepared statement
 		    prepStatementTeam.execute();
 		    conn.commit();
-		    conn.close();
+		//    conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
