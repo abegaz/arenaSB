@@ -30,8 +30,7 @@ public class ArenaWebBridge{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		URL url = this.getClass().getResource("../view/directory.html");
-//		Main.engine.load(url.toString());
+		
 		Main.loadDirectory();
 		/*
 		Runnable r = () -> {
@@ -44,14 +43,14 @@ public class ArenaWebBridge{
 		t.start();
 		*/
 	}
-	public void createTeam(String name, String ownerName) {
-		System.out.println("Team: " +name +"\tOwner name: " + ownerName);
-		db.createTeam(name, ownerName);
-	}
 	
 	public void loginUser(String username, String password) {
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
 		db.loginUser(username, hashPassword);
+	}
+	public void createTeam(String name, String ownerName) {
+		System.out.println("Team: " +name +"\tOwner name: " + ownerName);
+		db.createTeam(name, ownerName);
 	}
 	public void createGame(String name) {
 		System.out.println("Game name: " + name);

@@ -105,15 +105,14 @@ public class DatabaseConnection {
 		}
 		if(storedPassword.equals(password)) {
 			System.out.print(LocalTime.now() + " Account has been verified, logging in\n");
-//			URL url = this.getClass().getResource("../view/directory.html");
-//			Main.engine.load(url.toString());
+			
 			Main.loadDirectory();
 		} else {
 			System.out.println(LocalTime.now() + " Login Failed");
 		}
 	}
 	
-//	Pulls all the item types from the db and passes them to show.html
+	//	Pulls all the item types from the db and passes them to show.html
 	public void pullItems() {
 		System.out.println("Pulling items");
 		
