@@ -107,6 +107,8 @@ public class DatabaseConnection {
 			System.out.print(LocalTime.now() + " Account has been verified, logging in");
 			URL url = this.getClass().getResource("../view/directory.html");
 			Main.engine.load(url.toString());
+		} else {
+			System.out.println(LocalTime.now() + " Login Failed");
 		}
 	}
 	
