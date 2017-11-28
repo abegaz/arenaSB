@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="frontend.css">
+
+    <!-- Importing vue.js -->
+    <script src="https://unpkg.com/vue"></script>
+    
     <title>ArenaSB</title>
 </head>
 <body>
@@ -17,23 +21,17 @@
             <ul id="game-list">
                 <h2>Games:</h2>
                 <!-- Foreach item in games render the li -->
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
+                <li v-for="item in items">{{item}}</li>
             </ul>
             <ul id="league-list">
                 <h2>Leagues:</h2>
                 <!-- Foreach item in leagues render the li -->
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
+                <li v-for="item in items">{{item}}</li>
             </ul>
             <ul id="tournament-list">
                 <h2>Tournaments:</h2>
                 <!-- Foreach item in tournaments render the li -->
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
+                <li v-for="item in items">{{item}}</li>
             </ul>
         </div>
         <nav>
@@ -41,12 +39,37 @@
         </nav>
     </div>
     <script>
+        // Populated with dummy data until they get set correctly by our Java code
+        var g = ['No Games'];
+        var l = ['No Leagues'];
+        var t = ['No Teams'];
+
         function dataTransfer(games, leagues, tournaments) {
-            var gameList = document.getElementById("game-list");
-            var leagueList = document.getElementById("league-list");
-            var tournamentList = document.getElementById("tournament-list");
-            
-            
+            g = games;
+            l = leagues;
+            t = tournaments;
         }
+
+        var games = new Vue({
+            el: "#game-list",
+            data: {
+                items: g
+            }
+        });
+
+        var leagues = new Vue({
+            el: "#league-list",
+            data: {
+                items: l
+            }
+        });
+
+        var tournaments = new Vue({
+            el: "#tournament-list",
+            data: {
+                items: t
+            }
+        });
+
     </script>    
 </body>
