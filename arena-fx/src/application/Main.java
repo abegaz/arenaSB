@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import model.DatabaseConnection;
 import netscape.javascript.JSObject;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.concurrent.Worker.State;
