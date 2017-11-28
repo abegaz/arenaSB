@@ -17,17 +17,14 @@
             <ul id="game-list">
                 <h2>Games:</h2>
                 <!-- Foreach item in games render the li -->
-                <li id="game-item"></li>
             </ul>
             <ul id="league-list">
                 <h2>Leagues:</h2>
                 <!-- Foreach item in leagues render the li -->
-                <li></li>
             </ul>
             <ul id="tournament-list">
                 <h2>Tournaments:</h2>
                 <!-- Foreach item in tournaments render the li -->
-                <li></li>
             </ul>
         </div>
         <nav>
@@ -44,8 +41,27 @@
             g = games;
             l = leagues;
             t = tournaments;
+            
+            g.forEach(element => {
+                var item = document.createElement("LI");
+                var itemName = document.createTextNode(element);
+                item.appendChild(itemName);
+                document.getElementById("game-list").appendChild(item);
+            });
 
-            document.getElementsById("game-item").innerHTML = g;
+            l.forEach(element => {
+                var item = document.createElement("LI");
+                var itemName = document.createTextNode(element);
+                item.appendChild(itemName);
+                document.getElementById("league-list").appendChild(item);
+            });
+
+            t.forEach(element => {
+                var item = document.createElement("LI");
+                var itemName = document.createTextNode(element);
+                item.appendChild(itemName);
+                document.getElementById("tournament-list").appendChild(item);
+            });
         }
     </script>    
 </body>
