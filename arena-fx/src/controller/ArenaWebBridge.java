@@ -30,8 +30,9 @@ public class ArenaWebBridge{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		URL url = this.getClass().getResource("../view/directory.html");
-		Main.engine.load(url.toString());
+//		URL url = this.getClass().getResource("../view/directory.html");
+//		Main.engine.load(url.toString());
+		Main.loadDirectory();
 		/*
 		Runnable r = () -> {
 			if(createUser != false) {

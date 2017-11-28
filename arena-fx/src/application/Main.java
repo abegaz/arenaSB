@@ -22,26 +22,23 @@ import javafx.scene.web.WebView;
 import javafx.concurrent.Worker.State;
 
 public class Main extends Application {
-	public static WebEngine engine;
+	public static WebView browser = new WebView();
+	public final static WebEngine engine = browser.getEngine();
 	public static HashMap<String, Object> userMetaData = new HashMap<>();
 	
 	ArenaWebBridge bridge = new ArenaWebBridge();
 	
 	@Override
 	public void start(Stage primaryStage) {
-		WebView browser = new WebView();
 		browser.setPrefHeight(1080.00);
-		engine = browser.getEngine();
+		
 		System.out.println(LocalTime.now() + " Creating WebEngine");
 		System.out.println(LocalTime.now() + " Loading content from server");
 		// String url = "../view/index.html";
 		URL url = this.getClass().getResource("../view/index.html");
 		engine.load(url.toString());
 		
-		VBox root = new VBox();
-		root.getChildren().addAll(browser);
-		
-		Scene scene = new Scene(root, 1080, 840);
+		Scene scene = new Scene(browser, 1080, 840);
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
@@ -70,5 +67,17 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+//	Testing external method to redirect
+	public static void loadDirectory() {
+		System.out.println("Redirecting to directory...");
+		URL directory = Main.class.getResource("../view/directory.html");
+		engine.load(directory.toString());
+		Scene scene = new Scene(browser, 1080, 840);
+		Stage primaryStage = null;
+		primaryStage.setScene(scene);
+		
+		primaryStage.show();
 	}
 }

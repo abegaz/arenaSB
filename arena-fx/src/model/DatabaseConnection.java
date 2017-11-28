@@ -104,9 +104,10 @@ public class DatabaseConnection {
 			//System.out.println("Incorrect username or password!");
 		}
 		if(storedPassword.equals(password)) {
-			System.out.print(LocalTime.now() + " Account has been verified, logging in");
-			URL url = this.getClass().getResource("../view/directory.html");
-			Main.engine.load(url.toString());
+			System.out.print(LocalTime.now() + " Account has been verified, logging in\n");
+//			URL url = this.getClass().getResource("../view/directory.html");
+//			Main.engine.load(url.toString());
+			Main.loadDirectory();
 		} else {
 			System.out.println(LocalTime.now() + " Login Failed");
 		}
