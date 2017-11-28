@@ -52,23 +52,16 @@ public class ArenaWebBridge{
 		String hashPassword = new DigestUtils(SHA_256).digestAsHex(password);
 		db.loginUser(username, hashPassword);
 	}
-	
 	public void createGame(String name) {
 		System.out.println("Game name: " + name);
-		
-		db = new DatabaseConnection("jdbc:mysql://67.205.191.64/arena","root", "arenasb");
 		db.createGame(name);
 	}
 	public void createLeague(String name) {
         System.out.println("League name: " + name);
-		
-		db = new DatabaseConnection("jdbc:mysql://67.205.191.64/arena","root", "arenasb");
 		db.createLeague(name);
 	}
 	public void createTournament(String trnname, String leagueName) {
         System.out.println("Tournament name: " + trnname +"\nleague id: " + leagueName);
-		
-		db = new DatabaseConnection("jdbc:mysql://67.205.191.64/arena","root", "arenasb");
 		db.createTournament(trnname, leagueName);
 	}
 }
