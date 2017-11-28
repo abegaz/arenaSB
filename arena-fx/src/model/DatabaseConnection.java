@@ -38,22 +38,7 @@ public class DatabaseConnection {
 		      e.printStackTrace();
 		}
 	}
-	public void createTeam(String name, String ownerName) {
-		String queryTeam = "INSERT INTO team (Name, OwnerID) VALUES('"+ name +"',(SELECT UID FROM user WHERE Username LIKE '"+ownerName+"'));"; 
-		try {
-			System.out.println(name + "\t" + ownerName); // debug operation
-			conn.setAutoCommit(false);
-			PreparedStatement prepStatementTeam = (PreparedStatement) conn.prepareStatement(queryTeam);
-		    // execute the prepared statement
-		    prepStatementTeam.execute();
-		    conn.commit();
-		//    conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Team Name: " + name);
-	}
+
 	public boolean createUser(String username, String email, String hashPassword) {
 		String queryUser = "INSERT INTO user (Username, Email, DateJoined) VALUES('"+ username +"', '"+email+"', NOW());"; 
 		String queryPassword = "INSERT INTO passwords (UIDno, encrypted) VALUES(LAST_INSERT_ID(), '"+hashPassword+"');";
@@ -110,6 +95,7 @@ public class DatabaseConnection {
 			Main.loadDirectory();
 		} else {
 			System.out.println(LocalTime.now() + " Login Failed");
+			
 		}
 	}
 	
@@ -168,13 +154,13 @@ public class DatabaseConnection {
 		    // execute the prepared statement
 		    prepStatementGame.execute();
 		    conn.commit();
-	//	    conn.close();
+		//    conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
-		System.out.println("Game name: " + name);
+		System.out.println("Game name: " + name); 
 		
   }
 	public void createTournament(String trnname, String leagueName) {
@@ -188,7 +174,7 @@ public class DatabaseConnection {
 		    // execute the prepared statement
 		    prepStatementGame.execute();
 		    conn.commit();
-		//    conn.close();
+	     //   conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -214,7 +200,26 @@ public class DatabaseConnection {
 		}
 	
 		System.out.println("League name: " + name);
+		
   }
+	
+	public void createTeam(String name, String ownerName) {
+		String queryTeam = "INSERT INTO team (Name, OwnerID) VALUES('"+ name +"',(SELECT UID FROM user WHERE Username LIKE '"+ownerName+"'));"; 
+		try {
+			System.out.println(name + "\t" + ownerName); // debug operation
+			conn.setAutoCommit(false);
+			PreparedStatement prepStatementTeam = (PreparedStatement) conn.prepareStatement(queryTeam);
+		    // execute the prepared statement
+		    prepStatementTeam.execute();
+		    conn.commit();
+		//    conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Team Name: " + name);
+	}
+	
 	
 		
 
