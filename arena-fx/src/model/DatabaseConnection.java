@@ -112,6 +112,7 @@ public class DatabaseConnection {
 		String queryTournaments = "SELECT TrnName FROM tournament";
 		String queryGames = "SELECT Name FROM game";
 		String queryLeagues = "SELECT NAME FROM league";
+		String queryTeams = "SELECT NAME FROM team";
 		try {
 			Statement qT = conn.createStatement();
 			ResultSet tourns = qT.executeQuery(queryTournaments);
@@ -122,9 +123,13 @@ public class DatabaseConnection {
 			Statement qL = conn.createStatement();
 			ResultSet leagues = qL.executeQuery(queryLeagues);
 			
+			Statement qTeams = conn.createStatement();
+			ResultSet teams = qTeams.executeQuery(queryTeams);
+			
 			ArrayList<String> tournamentList = new ArrayList<String>();
 			ArrayList<String> gameList = new ArrayList<String>();
 			ArrayList<String> leagueList = new ArrayList<String>();
+			ArrayList<String> teamList = new ArrayList<String>();
 			
 			while (tourns.next()) {
 				tournamentList.add(tourns.getString(1));
@@ -135,14 +140,18 @@ public class DatabaseConnection {
 			while (leagues.next()) {
 				leagueList.add(leagues.getString(1));
 			}
+			while (teams.next()) {
+				teamList.add(teams.getString(1));
+			}
 			
 			// Pass that data to javascript
 			
-			Main.engine.executeScript("dataTransfer("+toJsArr(gameList)+", "+toJsArr(leagueList)+", "+toJsArr(tournamentList)+")");
+			Main.engine.executeScript("dataTransfer("+toJsArr(gameList)+", "+toJsArr(leagueList)+", "+toJsArr(tournamentList)+", "+ toJsArr(teamList) +")");
 			
 			qT.close();
 			qG.close();
 			qL.close();
+			qTeams.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

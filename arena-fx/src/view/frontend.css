@@ -75,7 +75,7 @@ nav a {
 }
 nav a:hover {
     color: hsl(0, 0%, 15%);
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .lists {
@@ -91,6 +91,17 @@ ul {
     padding: 0;
     list-style-type: none;
 }
+
+ul.item-list {
+    width: 45%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+ul.item-list li {
+    min-width: none !important;
+    width: 100% !important;
+}
+
 li {
     font-size: 15px;
     margin: 15px 0px;

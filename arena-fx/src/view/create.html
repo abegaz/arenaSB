@@ -56,25 +56,25 @@
          var leagueName = document.getElementById('parent-league').value;
          var ownerName = document.getElementById('owner-name').value
          switch(title) {
-         case 'game':
-         title.innerHTML = "Create Game";
-         app.createGame(name);
-         break;
-         case 'tournament':
-         title.innerHTML = "Create Tournament";
-         app.createTournament(name, leagueName);
-         break;
-         case 'league':
-         title.innerHTML = "Create League";
-         app.createLeague(name);
-         break;
-         case 'team':
-         title.innerHTML = "Create Team";
-         app.createTeam(name, ownerName);
-         break;
-         default:
-         title.innerHTML("Create Item");
-         break;
+            case 'game':
+                title.innerHTML = "Create Game";
+                app.createGame(name);
+                break;
+            case 'tournament':
+                title.innerHTML = "Create Tournament";
+                app.createTournament(name, leagueName);
+                break;
+            case 'league':
+                title.innerHTML = "Create League";
+                app.createLeague(name);
+                break;
+            case 'team':
+                title.innerHTML = "Create Team";
+                app.createTeam(name, ownerName);
+                break;
+            default:
+                title.innerHTML("Create Item");
+                break;
          }
     }
          
@@ -88,18 +88,22 @@
             case 'tournament':
                 title.innerHTML = "Create Tournament";
                 document.getElementById('parent-l').style.display = "block";
+                document.getElementById('parent-o').style.display = "none";  
                 break;
             case 'game':
                 title.innerHTML = "Create Game";
                 document.getElementById('parent-l').style.display = "none";
+                document.getElementById('parent-o').style.display = "none";  
                 break;
             case 'league':
                 title.innerHTML = "Create League";
                 document.getElementById('parent-l').style.display = "none";
+                document.getElementById('parent-o').style.display = "none";  
                 break;
             case 'team':
                  title.innerHTML = "Create Team";
-                  document.getElementById('parent-o').style.display = "none";  
+                  document.getElementById('parent-o').style.display = "block";  
+                  document.getElementById('parent-l').style.display = "none";
                   break;  
             default:
                 title.innerHTML("Create Item");

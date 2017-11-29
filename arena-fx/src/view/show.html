@@ -15,33 +15,39 @@
     </header>
     <div class="container">
         <div class="lists">
-            <ul id="game-list">
+            <ul id="game-list" class="item-list">
                 <h2>Games:</h2>
                 <!-- Foreach item in games render the li -->
             </ul>
-            <ul id="league-list">
+            <ul id="league-list" class="item-list">
                 <h2>Leagues:</h2>
                 <!-- Foreach item in leagues render the li -->
             </ul>
-            <ul id="tournament-list">
+            <ul id="tournament-list" class="item-list">
                 <h2>Tournaments:</h2>
                 <!-- Foreach item in tournaments render the li -->
             </ul>
+            <ul id="team-list" class="item-list">
+                <h2>Teams:</h2>
+                <!-- Foreach item in teams render the li -->
+            </ul>
         </div>
         <nav>
-            <a href="directory.html" class="short, hovercolor">Back</a>
+            <a href="directory.html" class="short hovercolor">Back</a>
         </nav>
     </div>
     <script>
         // Populated with dummy data until they get set correctly by our Java code
         var g = ['No Games'];
         var l = ['No Leagues'];
-        var t = ['No Teams'];
+        var t = ['No Tournaments'];
+        var te = ['No Teams'];
 
-        function dataTransfer(games, leagues, tournaments) {
+        function dataTransfer(games, leagues, tournaments, teams) {
             g = games;
             l = leagues;
             t = tournaments;
+            te = teams;
             
             g.forEach(element => {
                 var item = document.createElement("LI");
@@ -62,6 +68,13 @@
                 var itemName = document.createTextNode(element);
                 item.appendChild(itemName);
                 document.getElementById("tournament-list").appendChild(item);
+            });
+
+            te.forEach(element => {
+                var item = document.createElement("LI");
+                var itemName = document.createTextNode(element);
+                item.appendChild(itemName);
+                document.getElementById("team-list").appendChild(item);
             });
         }
     </script>    

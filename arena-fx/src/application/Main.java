@@ -49,11 +49,17 @@ public class Main extends Application {
 		System.out.println(LocalTime.now() + " Loading content from server");
 		// String url = "../view/index.html";
 		//URL url = this.getClass().getResource("../view/index.html");
+		
+//		Uncomment this line when done -Conner
 		engine.load("http://67.205.191.64/index.html");
+		
+		// This was for testing purposes
+//		URL url = this.getClass().getResource("../view/show.html");
+//		engine.load(url.toString());
 		
 		vb.getChildren().addAll(browser);
 		
-		Scene scene = new Scene(vb, 1080, 840);
+		Scene scene = new Scene(vb, 1280, 840);
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
