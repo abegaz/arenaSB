@@ -69,6 +69,7 @@ public class Main extends Application {
 	}
 	
 //	Testing external method to redirect
+	@SuppressWarnings("null")
 	public static void loadDirectory() {
 		System.out.println("Redirecting to directory...");
 		URL directory = Main.class.getResource("../view/directory.html");
