@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
@@ -20,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.concurrent.Worker.State;
+import javafx.event.ActionEvent;
 
 public class Main extends Application {
 	public static WebView browser = new WebView();
@@ -63,6 +65,18 @@ public class Main extends Application {
 		    }
 		});
 		
+	}
+	
+	public void exitApplication(ActionEvent event) {
+	   Platform.exit();
+	   System.out.println("Exiting...");
+	}
+	
+	@Override
+	public void stop(){
+		System.out.println(LocalTime.now() + " Exiting...");
+	    System.out.println("Stage is closing");
+	    // Save file
 	}
 	
 	public static void main(String[] args) {
