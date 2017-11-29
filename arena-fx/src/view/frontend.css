@@ -103,3 +103,8 @@ a.short {
     min-width: 300px;
     text-align: center;
 }
+
+.hovercolor:hover {
+    background-color: #f3351e;
+    color: white;
+}
