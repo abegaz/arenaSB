@@ -1,5 +1,6 @@
 package application;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalTime;
 
@@ -34,8 +35,8 @@ public class Main extends Application {
 		System.out.println(LocalTime.now() + " Creating WebEngine");
 		System.out.println(LocalTime.now() + " Loading content from server");
 		// String url = "../view/index.html";
-		URL url = this.getClass().getResource("../view/index.html");
-		engine.load(url.toString());
+		//URL url = this.getClass().getResource("../view/index.html");
+		engine.load("http://67.205.191.64/index.html");
 		
 		Scene scene = new Scene(browser, 1080, 840);
 		primaryStage.setScene(scene);
@@ -71,7 +72,13 @@ public class Main extends Application {
 //	Testing external method to redirect
 	public static void loadDirectory() {
 		System.out.println("Redirecting to directory...");
-		URL directory = Main.class.getResource("../view/directory.html");
+		URL directory = null;
+		try {
+			directory = new URL("http://67.205.191.64/directory.html");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		engine.load(directory.toString());
 		Scene scene = new Scene(browser, 1080, 840);
 		Stage primaryStage = null;
