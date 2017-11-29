@@ -1,5 +1,6 @@
 package model;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +15,8 @@ import application.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -23,6 +26,7 @@ public class DatabaseConnection {
 	public String db_user;
 	public String db_pass;
 	public static Connection conn;
+	public static boolean loginSuccess = false;
 	
 	public DatabaseConnection(String db_url, String db_user, String db_pass) {
 		this.db_url = db_url;
@@ -94,8 +98,8 @@ public class DatabaseConnection {
 		}
 		if(storedPassword.equals(password)) {
 			System.out.print(LocalTime.now() + " Account has been verified, logging in\n");
-			
-			Main.loadDirectory();
+			Platform.runLater(Main.runRedirect);
+			loginSuccess = true;
 		} else {
 			System.out.println(LocalTime.now() + " Login Failed");
 			
@@ -235,10 +239,7 @@ public class DatabaseConnection {
 		 }  
 	}
 
-
-
-	
-//	JS Array Helper
+	//	JS Array Helper
 	private String toJsArr(ArrayList<String> arr) {
         StringBuffer sb = new StringBuffer();
         sb.append("[");
