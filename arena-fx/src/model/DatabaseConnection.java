@@ -22,7 +22,7 @@ public class DatabaseConnection {
 	public String db_url;
 	public String db_user;
 	public String db_pass;
-	public Connection conn;
+	public static Connection conn;
 	
 	public DatabaseConnection(String db_url, String db_user, String db_pass) {
 		this.db_url = db_url;
@@ -165,7 +165,7 @@ public class DatabaseConnection {
 	
 		System.out.println("Game name: " + name); 
 		
-  }
+	}
 	public void createTournament(String trnname, String leagueName) {
 		// This is for creating games and such.
 		 
@@ -224,14 +224,14 @@ public class DatabaseConnection {
 	}
 	
 	
-	public void closeConnection() throws SQLException {
+	public static void closeConnection() throws SQLException {
 		 if(conn != null) {
-		        try {
-		            conn.close();
-		            System.out.println("Connection has been terminated");
-		        } catch (SQLException se) {
-		        	se.printStackTrace();
-		        } 
+			 try {
+				 conn.close();
+				 System.out.println(LocalTime.now() + " Connection has been terminated");
+		     } catch (SQLException se) {
+		    	 	se.printStackTrace();
+		     } 
 		 }  
 	}
 

@@ -2,9 +2,11 @@ package application;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalTime;
 
 import application.Main;
+import model.DatabaseConnection;
 import controller.ArenaWebBridge;
 
 import java.util.HashMap;
@@ -75,7 +77,12 @@ public class Main extends Application {
 	@Override
 	public void stop(){
 		System.out.println(LocalTime.now() + " Exiting...");
-	    System.out.println("Stage is closing");
+		try {
+			DatabaseConnection.closeConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    // Save file
 	}
 	
