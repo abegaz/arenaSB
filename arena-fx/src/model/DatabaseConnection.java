@@ -39,7 +39,7 @@ public class DatabaseConnection {
 		} catch(Exception e) {
 		      //Handle errors for Class.forName
 		      e.printStackTrace();
-		}
+		} 
 	}
 
 	public boolean createUser(String username, String email, String hashPassword) {
@@ -99,7 +99,7 @@ public class DatabaseConnection {
 		} else {
 			System.out.println(LocalTime.now() + " Login Failed");
 			
-		}
+		} 
 	}
 	
 	//	Pulls all the item types from the db and passes them to show.html
@@ -224,7 +224,16 @@ public class DatabaseConnection {
 	}
 	
 	
-		
+	public void closeConnection() throws SQLException {
+		 if(conn != null) {
+		        try {
+		            conn.close();
+		            System.out.println("Connection has been terminated");
+		        } catch (SQLException se) {
+		        	se.printStackTrace();
+		        } 
+		 }  
+	}
 
 
 
