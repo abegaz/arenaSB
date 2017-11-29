@@ -1,2 +1,8 @@
-.metadata
 .DS_Store
+.metadata
+<<<<<<< HEAD
+.DS_Store
+=======
+RemoteSystemsTempFiles
+.recommenders
+>>>>>>> 3e93189c2a2d3ee467434cef6810157341116247

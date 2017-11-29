@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="frontend.css">
+    <title>ArenaSB</title>
+</head>
+<body>
+    <header>
+        <h1></h1>
+        <div align="middle"><img src="ArenaLogoRed.png" alt="ArenaLogoRed" align="middle" style="width:200px;height:50px;"></div>
+    </header>
+    <div class="container">
+        <div class="forms">
+            <form onsubmit="return createItem()">
+                <h2 id="create-title" class="form-title">Create Game</h2>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <select id="type" onchange="checkTournament()">
+                        <option value="game">Game</option>
+                        <option value="league">League</option>
+                        <option value="tournament">Tournament</option>
+                        <option value="team">Team</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Name">
+                </div>
+                <div id="parent-l" class="form-group" style="display: none;">
+                    <label for="name">Parent League:</label>
+                    <input type="text" id="parent-league" placeholder="Parent League">
+                </div>
+                <div id="parent-o" class="form-group" style="display: none;">
+                    <label for="name">Owner:</label>
+                    <input type="text" id="owner-name" placeholder="Owner Name">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="hovercolor">
+                </div>
+            </form>
+        </div>
+        <nav>
+            <a href="directory.html" class="hovercolor">Back</a>
+        </nav>
+    </div>
+</body>
+
+<script>
+    function createItem() { 
+         var title = document.getElementById('type').value;
+         var name = document.getElementById('name').value;
+         var leagueName = document.getElementById('parent-league').value;
+         var ownerName = document.getElementById('owner-name').value
+         switch(title) {
+            case 'game':
+                title.innerHTML = "Create Game";
+                app.createGame(name);
+                break;
+            case 'tournament':
+                title.innerHTML = "Create Tournament";
+                app.createTournament(name, leagueName);
+                break;
+            case 'league':
+                title.innerHTML = "Create League";
+                app.createLeague(name);
+                break;
+            case 'team':
+                title.innerHTML = "Create Team";
+                app.createTeam(name, ownerName);
+                break;
+            default:
+                title.innerHTML("Create Item");
+                break;
+         }
+    }
+         
+        
+
+    function checkTournament() {
+        var v = document.getElementById('type').value;
+        var title = document.getElementById('create-title');
+        
+        switch(v) {
+            case 'tournament':
+                title.innerHTML = "Create Tournament";
+                document.getElementById('parent-l').style.display = "block";
+                document.getElementById('parent-o').style.display = "none";  
+                break;
+            case 'game':
+                title.innerHTML = "Create Game";
+                document.getElementById('parent-l').style.display = "none";
+                document.getElementById('parent-o').style.display = "none";  
+                break;
+            case 'league':
+                title.innerHTML = "Create League";
+                document.getElementById('parent-l').style.display = "none";
+                document.getElementById('parent-o').style.display = "none";  
+                break;
+            case 'team':
+                 title.innerHTML = "Create Team";
+                  document.getElementById('parent-o').style.display = "block";  
+                  document.getElementById('parent-l').style.display = "none";
+                  break;  
+            default:
+                title.innerHTML("Create Item");
+                break; 
+        }
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="frontend.css">
+    <title>ArenaSB</title>
+</head>
+<body>
+    <header>
+        <h1></h1>
+        <div align="middle"><img src="ArenaLogoRed.png" alt="ArenaLogoRed" align="middle" style="width:200px;height:50px;"></div>
+    </header>
+    <div class="container">
+        <h1 id = "test"></h1>
+        <div class="forms">
+            <form onsubmit="return createUser()">
+                <h2 class="form-title">Sign Up</h2>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Sign Up" class="hovercolor">
+                </div>
+            </form>
+            <form onsubmit="return loginUser()">
+                <h2 class="form-title">Log In</h2>
+                <div class="form-group">
+                    <label for="username-in">Username:</label>
+                    <input type="text" id="username-in" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="password-in">Password:</label>
+                    <input type="password" id="password-in" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Log In" class="hovercolor">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+	function createUser() {
+	    var email = document.getElementById("email").value;
+	    var user = document.getElementById("username").value;
+	    var pass = document.getElementById("password").value;
+	    
+	    // Java upcall
+	    app.createUser(user, email, pass);
+	    
+	    return true;
+	}
+    function loginUser() {
+        var username = document.getElementById("username-in").value;
+        var pass = document.getElementById("password-in").value;
+        
+        // Java upcall
+        app.loginUser(username, pass);
+        
+        return true;
+    }
+</script>
+
+</html>

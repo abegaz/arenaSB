@@ -7,4 +7,5 @@ Scrum Master: Dane Carpenter
 
 trello: https://trello.com/b/EVUrUNdv/arenasb
 
+Executable:
 >arena.jar

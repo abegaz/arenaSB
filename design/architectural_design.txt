@@ -1,6 +1,0 @@
-Client-Server Architecture; since our application will need to host many users, it makes sense for those users to interact with a server.
-
-Arena is a Software as a Service(SaaS).
-Although not accessible from a web browser(aside for the website), Arena will be a client app that satisfies a service for the users.
-
-Arena will be implemented through a MVC using JavaFX.
