@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -27,7 +28,8 @@ import javafx.event.ActionEvent;
 
 public class Main extends Application {
 	public static WebView browser = new WebView();
-	public static WebEngine engine = browser.getEngine();
+	public final static WebEngine engine = browser.getEngine();
+	public static Runnable runRedirect = null;
 	public static HashMap<String, Object> userMetaData = new HashMap<>();
 	
 	private static VBox vb = new VBox();
@@ -77,6 +79,16 @@ public class Main extends Application {
 		    }
 		});
 		
+		runRedirect = () -> {
+			URL directory = null;
+			try {
+				directory = new URL("http://67.205.191.64/directory.html");
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Main.engine.load(directory.toString());
+		}; 
 	}
 	
 	public void exitApplication(ActionEvent event) {
@@ -99,6 +111,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 	
 //	Testing external method to redirect
 	@SuppressWarnings("null")

@@ -10,6 +10,7 @@ import java.net.URL;
 import java.time.LocalTime;
 
 import application.Main;
+import javafx.application.Platform;
 
 public class ArenaWebBridge{
 
@@ -31,7 +32,7 @@ public class ArenaWebBridge{
 			e.printStackTrace();
 		}
 		
-		Main.loadDirectory();
+		Platform.runLater(Main.runRedirect);
 		/*
 		Runnable r = () -> {
 			if(createUser != false) {
