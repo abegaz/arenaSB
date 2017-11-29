@@ -19,6 +19,7 @@ import com.mysql.jdbc.PreparedStatement;
 
 public class DatabaseConnection {
 	private static String DB_DRIVER = "com.mysql.jdbc.Driver";
+	
 	public String db_url;
 	public String db_user;
 	public String db_pass;
@@ -76,8 +77,6 @@ public class DatabaseConnection {
 	}
 	
 	public void loginUser(String username, String password) {
-		// This is the code for the redirect
-		// Call this if user is found
 		
 		String storedPassword = null;
 		String query = "SELECT encrypted FROM passwords as p, user as u WHERE u.Username LIKE '"+ username +"' AND p.UIDno = u.UID";

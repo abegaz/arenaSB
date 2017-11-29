@@ -17,9 +17,9 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
-import model.DatabaseConnection;
 import netscape.javascript.JSObject;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.concurrent.Worker.State;
@@ -27,13 +27,20 @@ import javafx.event.ActionEvent;
 
 public class Main extends Application {
 	public static WebView browser = new WebView();
-	public final static WebEngine engine = browser.getEngine();
+	public static WebEngine engine = browser.getEngine();
 	public static HashMap<String, Object> userMetaData = new HashMap<>();
+	
+	private static VBox vb = new VBox();
+	
+	static Stage stage = null;
 	
 	ArenaWebBridge bridge = new ArenaWebBridge();
 	
 	@Override
 	public void start(Stage primaryStage) {
+		stage = primaryStage;
+		
+		vb.setId("root");
 		browser.setPrefHeight(1080.00);
 		
 		System.out.println(LocalTime.now() + " Creating WebEngine");
@@ -42,10 +49,13 @@ public class Main extends Application {
 		//URL url = this.getClass().getResource("../view/index.html");
 		engine.load("http://67.205.191.64/index.html");
 		
-		Scene scene = new Scene(browser, 1080, 840);
+		vb.getChildren().addAll(browser);
+		
+		Scene scene = new Scene(vb, 1080, 840);
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
+		
 		
 		// engine.executeScript(script) // <--- Execute javascript from JavaFX code
 		
@@ -93,7 +103,7 @@ public class Main extends Application {
 //	Testing external method to redirect
 	@SuppressWarnings("null")
 	public static void loadDirectory() {
-		System.out.println("Redirecting to directory...");
+		System.out.println(LocalTime.now() + " Redirecting to directory...");
 		URL directory = null;
 		try {
 			directory = new URL("http://67.205.191.64/directory.html");
@@ -102,10 +112,12 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 		engine.load(directory.toString());
-		Scene scene = new Scene(browser, 1080, 840);
-		Stage primaryStage = null;
-		primaryStage.setScene(scene);
 		
-		primaryStage.show();
+//		Create new scene, get the stage of the browser, then
+//		update that stage based on new engine load.
+		
+		Scene scene = new Scene(browser, 1080, 840);
+		stage.setScene(scene);
+		stage.show();
 	}
 }
