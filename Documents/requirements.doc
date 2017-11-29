@@ -1,0 +1,32 @@
+Functional: 
+
+Choose a Database Language and Server Technology
+
+Build simple Web API to hold users & games?
+
+The database should have a login page that can distinguish between advertisers, developers, league owners and operators (Spectators can choose whether to log in or not).
+
+The database should provide encryption for each and every password. 
+
+The ability to store statistics post game/tournament
+
+Bug report ability
+
+League owners should be able to designate how many matches to be played and the sequencing of the matches.
+
+Nonfunctional: 
+
+The training time shouldn't take more than five hours
+
+Simple user interface that should be as user friendly as possible
+
+Tools for spectators to view player info/ swap between players
+
+Updated data should be accessible within at least two seconds
+
+
+What it's NOT:
+
+--Broadcasting service, but may link to some (e.g. Twitch)
+--Game-integrated spectation client (e.g. Source TV)
+--Does not /require/ live stats of a game, just records
