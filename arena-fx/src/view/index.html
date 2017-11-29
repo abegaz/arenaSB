@@ -36,8 +36,8 @@
             <form onsubmit="return loginUser()">
                 <h2 class="form-title">Log In</h2>
                 <div class="form-group">
-                    <label for="email-in">Email:</label>
-                    <input type="email" id="email-in" placeholder="Email">
+                    <label for="email-in">Username:</label>
+                    <input type="email" id="email-in" placeholder="Username">
                 </div>
                 <div class="form-group">
                     <label for="password-in">Password:</label>
@@ -63,11 +63,11 @@
 	    return true;
 	}
     function loginUser() {
-        var email = document.getElementById("email-in").value;
+        var username = document.getElementById("email-in").value;
         var pass = document.getElementById("password-in").value;
         
         // Java upcall
-        app.loginUser(email, pass);
+        app.loginUser(username, pass);
         
         return true;
     }
