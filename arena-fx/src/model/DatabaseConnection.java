@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.time.LocalTime;
 
 import application.Main;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -19,7 +22,7 @@ public class DatabaseConnection {
 	public String db_url;
 	public String db_user;
 	public String db_pass;
-	public Connection conn;
+	public static Connection conn;
 	
 	public DatabaseConnection(String db_url, String db_user, String db_pass) {
 		this.db_url = db_url;
@@ -36,7 +39,7 @@ public class DatabaseConnection {
 		} catch(Exception e) {
 		      //Handle errors for Class.forName
 		      e.printStackTrace();
-		}
+		} 
 	}
 
 	public boolean createUser(String username, String email, String hashPassword) {
@@ -96,7 +99,7 @@ public class DatabaseConnection {
 		} else {
 			System.out.println(LocalTime.now() + " Login Failed");
 			
-		}
+		} 
 	}
 	
 	//	Pulls all the item types from the db and passes them to show.html
@@ -162,7 +165,7 @@ public class DatabaseConnection {
 	
 		System.out.println("Game name: " + name); 
 		
-  }
+	}
 	public void createTournament(String trnname, String leagueName) {
 		// This is for creating games and such.
 		 
@@ -221,7 +224,16 @@ public class DatabaseConnection {
 	}
 	
 	
-		
+	public static void closeConnection() throws SQLException {
+		 if(conn != null) {
+			 try {
+				 conn.close();
+				 System.out.println(LocalTime.now() + " Connection has been terminated");
+		     } catch (SQLException se) {
+		    	 	se.printStackTrace();
+		     } 
+		 }  
+	}
 
 
 

@@ -1,15 +1,19 @@
 package application;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalTime;
 
 import application.Main;
+import model.DatabaseConnection;
 import controller.ArenaWebBridge;
 
 import java.util.HashMap;
 
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
@@ -19,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.concurrent.Worker.State;
+import javafx.event.ActionEvent;
 
 public class Main extends Application {
 	public static WebView browser = new WebView();
@@ -34,8 +39,8 @@ public class Main extends Application {
 		System.out.println(LocalTime.now() + " Creating WebEngine");
 		System.out.println(LocalTime.now() + " Loading content from server");
 		// String url = "../view/index.html";
-		URL url = this.getClass().getResource("../view/index.html");
-		engine.load(url.toString());
+		//URL url = this.getClass().getResource("../view/index.html");
+		engine.load("http://67.205.191.64/index.html");
 		
 		Scene scene = new Scene(browser, 1080, 840);
 		primaryStage.setScene(scene);
@@ -64,14 +69,38 @@ public class Main extends Application {
 		
 	}
 	
+	public void exitApplication(ActionEvent event) {
+	   Platform.exit();
+	   System.out.println("Exiting...");
+	}
+	
+	@Override
+	public void stop(){
+		System.out.println(LocalTime.now() + " Exiting...");
+		try {
+			DatabaseConnection.closeConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    // Save file
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
 //	Testing external method to redirect
+	@SuppressWarnings("null")
 	public static void loadDirectory() {
 		System.out.println("Redirecting to directory...");
-		URL directory = Main.class.getResource("../view/directory.html");
+		URL directory = null;
+		try {
+			directory = new URL("http://67.205.191.64/directory.html");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		engine.load(directory.toString());
 		Scene scene = new Scene(browser, 1080, 840);
 		Stage primaryStage = null;
