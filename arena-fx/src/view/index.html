@@ -10,7 +10,8 @@
 </head>
 <body>
     <header>
-        <h1>ArenaSB</h1>
+        <h1></h1>
+    <div align="middle"><img src="ArenaLogoRed.png" alt="ArenaLogoRed" align="middle" style="width:200px;height:50px;"></div>
     </header>
     <div class="container">
         <h1 id = "test"></h1>
@@ -30,21 +31,21 @@
                     <input type="password" id="password" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Sign Up">
+                    <input type="submit" value="Sign Up" class="hovercolor">
                 </div>
             </form>
             <form onsubmit="return loginUser()">
                 <h2 class="form-title">Log In</h2>
                 <div class="form-group">
-                    <label for="email-in">Username:</label>
-                    <input type="email" id="email-in" placeholder="Username">
+                    <label for="username-in">Username:</label>
+                    <input type="text" id="username-in" placeholder="Username">
                 </div>
                 <div class="form-group">
                     <label for="password-in">Password:</label>
                     <input type="password" id="password-in" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Log In">
+                    <input type="submit" value="Log In" class="hovercolor">
                 </div>
             </form>
         </div>
@@ -63,7 +64,7 @@
 	    return true;
 	}
     function loginUser() {
-        var username = document.getElementById("email-in").value;
+        var username = document.getElementById("username-in").value;
         var pass = document.getElementById("password-in").value;
         
         // Java upcall
